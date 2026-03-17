@@ -1,0 +1,266 @@
+.footer {
+  margin-top: auto;
+}
+
+/* Основной подвал (темно-серый) */
+.mainFooter {
+  background-color: #292929;
+  color: white;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 3rem 1rem 1.5rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Первая ячейка - контакты */
+.contactsCell {
+  margin-bottom: 2rem;
+}
+
+.phoneLink {
+  font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.25rem;
+  transition: color 0.2s ease;
+  line-height: 1.2;
+  display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .phoneLink {
+    font-size: 1.75rem;
+  }
+}
+
+.phoneLink:hover {
+  color: #ffa20c;
+  text-decoration: none;
+}
+
+.emailText {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.emailLink {
+  color: #d1d5db;
+  transition: color 0.2s ease;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+}
+
+.emailLink:hover {
+  color: #ffa20c;
+  text-decoration: none;
+}
+
+/* Вторая ячейка - основные колонки */
+.mainColumnsCell {
+  margin-bottom: 2rem;
+}
+
+.mainColumnsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .mainColumnsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mainColumnsGrid {
+    grid-template-columns: repeat(5, 1fr); /* Изменил с 6 на 5 колонок */
+    gap: 2.5rem;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.columnTitle {
+  font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  color: white;
+  font-size: 0.8rem;
+  margin-bottom: 0.6rem;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.columnTitle:hover {
+  color: #ffa20c;
+  text-decoration: none;
+}
+
+.columnList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.columnListItem {
+  margin-bottom: 0.2rem;
+}
+
+.columnLink {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #9ca3af;
+  font-size: 0.7rem;
+  transition: color 0.2s ease;
+  line-height: 1.2;
+}
+
+.columnLink:hover {
+  color: #ffa20c;
+  text-decoration: none;
+}
+
+/* Складные услуги под дополнительными */
+.subColumn {
+  margin-top: 0.8rem;
+}
+
+/* Третья ячейка - колонки с документацией */
+.secondaryColumnsCell {
+  margin-bottom: 1.5rem;
+}
+
+.secondaryColumnsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .secondaryColumnsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .secondaryColumnsGrid {
+    grid-template-columns: repeat(5, 1fr); /* Изменил с 6 на 5 колонок */
+    gap: 2.5rem;
+  }
+}
+
+/* Нижний подвал (черный) */
+.bottomFooter {
+  background-color: #0f0f0f;
+  color: white;
+  padding: 1rem 0;
+}
+
+.bottomContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .bottomContainer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bottomContainer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.bottomContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.topRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+@media (min-width: 768px) {
+  .topRow {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.copyrightLeft {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.copyright {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+.city {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+.linksRight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.bottomLink {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #9ca3af;
+  font-size: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.bottomLink:hover {
+  color: #ffa20c;
+  text-decoration: none;
+}
+
+.disclaimer {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #6b7280;
+  font-size: 0.7rem;
+  line-height: 1.3;
+  max-width: 800px;
+  text-align: left;
+}

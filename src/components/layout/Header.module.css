@@ -1,0 +1,205 @@
+.header {
+  background-color: #f4f4f4;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .headerInner {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .headerInner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .headerInner {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .headerInner {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+.logoImage {
+  height: 70px;
+  width: auto;
+}
+
+/* Десктопное меню */
+.nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+    gap: 2.5rem;
+  }
+}
+
+.navLink {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  color: #0f0f0f;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding-bottom: 4px;
+  white-space: nowrap;
+}
+
+/* Полоска при наведении */
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #ffa20c;
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Правая часть с иконками */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-shrink: 0;
+}
+
+.iconLink {
+  color: #0f0f0f;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.iconLink:hover {
+  color: #ffa20c;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+/* Бургер меню */
+.burgerButton {
+  display: block;
+  color: #0f0f0f;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .burgerButton {
+    display: none;
+  }
+}
+
+.burgerIcon {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+/* Мобильное меню */
+.mobileMenu {
+  padding: 1rem 0;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f4f4f4;
+}
+
+.mobileMenuInner {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mobileMenuInner {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobileMenuInner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .mobileMenuInner {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .mobileMenuInner {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+.mobileNavLink {
+  display: block;
+  padding: 0.75rem 0;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  color: #0f0f0f;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.mobileNavLink:hover {
+  color: #ffa20c;
+}

@@ -1,0 +1,247 @@
+.contactForm {
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Карточка с тенью, но цвет фона как основной */
+.formCard {
+  background-color: #f4f4f4;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .formCard {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .formCard {
+    padding: 3rem;
+  }
+}
+
+.title {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+.subtitle {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f0f0f;
+}
+
+.required {
+  color: #ff0000;
+  margin-left: 0.25rem;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.iconInput {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #9ca3af;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #0f0f0f;
+  background-color: #f4f4f4;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.inputWithIcon {
+  padding-left: 3rem;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #9ca3af;
+  opacity: 0.8;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #ffa20c;
+  box-shadow: 0 0 0 3px rgba(255, 162, 12, 0.1);
+  background-color: #ffffff;
+}
+
+.textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+/* Нижняя часть с соглашением и кнопкой */
+.formFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* margin-top: 1rem; */ /* Убрал */
+}
+
+@media (min-width: 768px) {
+  .formFooter {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.agreement {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+@media (min-width: 768px) {
+  .agreement {
+    font-size: 0.9rem;
+  }
+}
+
+.privacyLink {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #ffa20c;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+
+.privacyLink:hover {
+  text-decoration: none;
+}
+
+.submitButton {
+  background-color: #ffa20c;
+  color: #ffffff;
+  font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.875rem 2.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.submitButton:hover {
+  background-color: #e69100;
+}
+
+/* Текст снизу */
+.bottomText {
+  margin-top: 3rem;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+  max-width: 1000px;
+}
+
+@media (min-width: 768px) {
+  .bottomText {
+    font-size: 1rem;
+    margin-top: 4rem;
+  }
+}
