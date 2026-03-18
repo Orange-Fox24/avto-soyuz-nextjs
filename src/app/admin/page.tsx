@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./admin.module.css";
 
@@ -21,16 +20,9 @@ interface Application {
 }
 
 export default function AdminPage() {
-  const router = useRouter();
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
-
-  const handleLogout = async () => {
-    await fetch("/api/admin/logout", { method: "POST" });
-    router.push("/admin/login");
-    router.refresh();
-  };
 
   useEffect(() => {
     fetchApplications();
@@ -61,12 +53,7 @@ export default function AdminPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Админ-панель - Заявки</h1>
-        <button onClick={handleLogout} className={styles.logoutButton}>
-          Выйти
-        </button>
-      </div>
+      <h1 className={styles.title}>Админ-панель - Заявки</h1>
 
       <div className={styles.filters}>
         <button
@@ -79,7 +66,7 @@ export default function AdminPage() {
           onClick={() => setFilter("main")}
           className={`${styles.filterBtn} ${filter === "main" ? styles.active : ""}`}
         >
-          С главной ({applications.filter((a) => a.source === "main").length})
+          Главная ({applications.filter((a) => a.source === "main").length})
         </button>
         <button
           onClick={() => setFilter("contact")}
@@ -101,10 +88,10 @@ export default function AdminPage() {
             <div className={styles.cardHeader}>
               <span className={styles.source}>
                 {app.source === "main"
-                  ? "📋 Главная"
+                  ? "Главная"
                   : app.source === "contact"
-                    ? "📞 Контакты"
-                    : "🤝 Партнеры"}
+                    ? "Контакты"
+                    : "Партнеры"}
               </span>
               <span className={`${styles.status} ${styles[app.status]}`}>
                 {app.status === "new"
