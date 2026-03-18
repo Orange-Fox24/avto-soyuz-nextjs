@@ -1,0 +1,194 @@
+.page {
+  width: 100%;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Сетка для плашек */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Плашка - все одинакового размера */
+.card {
+  background-color: #f4f4f4;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  position: relative;
+  grid-column: span 1;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+@media (min-width: 768px) {
+  .cardTitle {
+    font-size: 1.5rem;
+  }
+}
+
+.cardDescription {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #4b5563;
+  width: 100%;
+  max-width: 100%;
+  padding-right: 120px;
+  position: relative;
+  z-index: 3;
+}
+
+@media (min-width: 768px) {
+  .cardDescription {
+    font-size: 0.85rem;
+    padding-right: 140px;
+  }
+}
+
+/* Контейнер для иконки */
+.cardIcon {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 130px;
+  height: 130px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card:hover .cardIcon {
+  transform: translateX(-4px) translateY(-4px) scale(1.05);
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 640px) {
+  .card {
+    height: 260px;
+    padding: 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .cardDescription {
+    font-size: 0.75rem;
+    padding-right: 90px;
+  }
+
+  .cardIcon {
+    bottom: 1rem;
+    right: 1rem;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Для планшетов */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .card {
+    height: 280px;
+  }
+
+  .cardIcon {
+    width: 115px;
+    height: 115px;
+  }
+
+  .cardDescription {
+    padding-right: 120px;
+  }
+}
+
+/* Для очень больших экранов */
+@media (min-width: 1440px) {
+  .card {
+    height: 320px;
+  }
+
+  .cardIcon {
+    width: 140px;
+    height: 140px;
+  }
+
+  .cardDescription {
+    padding-right: 160px;
+  }
+}
