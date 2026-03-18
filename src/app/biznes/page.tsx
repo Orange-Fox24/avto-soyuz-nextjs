@@ -8,28 +8,28 @@ const biznesItems = [
     description:
       "Прозрачное ценообразование и четкие временные обязательства по доставке грузов.",
     icon: "/icons/tariffs.svg",
-    href: "/public/biznes/tarify",
+    href: "/biznes/tarify",
   },
   {
     title: "Специальные предложения",
     description:
       "Выгодные условия, скидки и временные предложения для клиентов компании.",
     icon: "/icons/special.svg",
-    href: "/public/biznes/special",
+    href: "/biznes/special",
   },
   {
     title: "Партнерам",
     description:
       "Возможности делового сотрудничества и партнерские программы для совместного развития бизнеса.",
     icon: "/icons/partners.svg",
-    href: "/public/biznes/partneram",
+    href: "/biznes/partneram",
   },
   {
     title: "Документы",
     description:
       "Вся необходимая документация для юридического оформления перевозок, от заключения договора до разрешения спорных ситуаций.",
     icon: "/icons/documents.svg",
-    href: "/public/biznes/dokumenty",
+    href: "/biznes/dokumenty",
   },
   {
     title: "Информация",

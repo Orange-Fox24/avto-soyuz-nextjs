@@ -1,21 +1,18 @@
 "use client";
 
-import MarkerMap, { MapStyle } from "../ui/MarkerMap/MarkerMap";
+import dynamic from "next/dynamic";
+import { MapStyle } from "../ui/MarkerMap/MarkerMap";
 import styles from "./Map.module.css";
+const MarkerMap = dynamic(() => import("../ui/MarkerMap/MarkerMap"), {
+  ssr: false, // Отключаем SSR для карты
+  loading: () => <div>Загрузка карты...</div>, // Опционально
+});
 
 export default function MapContainer() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Мы на карте</h2>
-        <div
-          style={{
-            height: 500,
-            width: "100%",
-            borderRadius: 12,
-            overflow: "hidden",
-          }}
-        >
+        <div style={{ height: 500 }}>
           <MarkerMap
             markerList={[
               {
@@ -25,6 +22,7 @@ export default function MapContainer() {
                 popupText: "Светлогорский переулок, 4",
               },
             ]}
+            // height={500}
             readonly
             styleControl
             zoomControl

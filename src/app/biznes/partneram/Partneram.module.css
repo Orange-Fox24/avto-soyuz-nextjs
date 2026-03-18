@@ -1,0 +1,371 @@
+.page {
+  width: 100%;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Заголовок страницы */
+.title {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 3;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+/* Фоновая иконка */
+.backgroundIcon {
+  position: absolute;
+  right: -5%;
+  top: calc(50vh - 100px);
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  opacity: 0.35;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (min-width: 1280px) {
+  .backgroundIcon {
+    width: 700px;
+    height: 700px;
+    right: -5%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .backgroundIcon {
+    width: 800px;
+    height: 800px;
+    right: -5%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .backgroundIcon {
+    width: 400px;
+    height: 400px;
+    opacity: 0.25;
+    right: -10%;
+  }
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.35;
+}
+
+/* Левая часть с контентом */
+.leftColumn {
+  position: relative;
+  z-index: 3;
+  max-width: 70%;
+}
+
+@media (max-width: 1023px) {
+  .leftColumn {
+    max-width: 100%;
+  }
+}
+
+/* Секция */
+.serviceSection {
+  margin-bottom: 2.5rem;
+}
+
+.serviceTitle {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .serviceTitle {
+    font-size: 1.75rem;
+  }
+}
+
+.highlight {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: #0f0f0f;
+}
+
+/* Разделитель */
+.serviceDivider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffa20c, transparent);
+  margin: 2rem 0;
+}
+
+/* Информационный блок */
+.infoBlock {
+  margin-top: 1.5rem;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #0f0f0f;
+  line-height: 1.8;
+}
+
+@media (min-width: 768px) {
+  .infoBlock {
+    font-size: 1.1rem;
+  }
+}
+
+/* Список с точками */
+.bulletList {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.bulletItem {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.bulletItem::before {
+  content: "•";
+  color: #ffa20c;
+  font-size: 1.3rem;
+  position: absolute;
+  left: 0;
+  top: -0.2rem;
+}
+
+@media (min-width: 768px) {
+  .bulletItem {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Форма */
+.formSection {
+  margin-top: 2rem;
+}
+
+.formTitle {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .formTitle {
+    font-size: 1.75rem;
+  }
+}
+
+.formSubtitle {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+@media (min-width: 768px) {
+  .formSubtitle {
+    font-size: 1.1rem;
+  }
+}
+
+.formCard {
+  background-color: #f4f4f4;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .formCard {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .formCard {
+    padding: 3rem;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f0f0f;
+}
+
+.required {
+  color: #ff0000;
+  margin-left: 0.25rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #0f0f0f;
+  background-color: #f4f4f4;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #9ca3af;
+  opacity: 0.8;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #ffa20c;
+  box-shadow: 0 0 0 3px rgba(255, 162, 12, 0.1);
+  background-color: #ffffff;
+}
+
+.textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+/* Нижняя часть с соглашением и кнопкой */
+.formFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .formFooter {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.agreement {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+@media (min-width: 768px) {
+  .agreement {
+    font-size: 0.9rem;
+  }
+}
+
+.privacyLink {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #ffa20c;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+
+.privacyLink:hover {
+  text-decoration: none;
+}
+
+.submitButton {
+  background-color: #ffa20c;
+  color: #ffffff;
+  font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.875rem 2.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.submitButton:hover {
+  background-color: #e69100;
+}
