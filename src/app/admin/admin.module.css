@@ -1,0 +1,143 @@
+.container {
+  padding: 2rem;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: "Actay Wide Bold", sans-serif;
+  font-size: 2rem;
+  color: #0f0f0f;
+  margin: 0;
+}
+
+.logoutButton {
+  background-color: #dc2626;
+  color: white;
+  font-family: "Actay Wide", sans-serif;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logoutButton:hover {
+  background-color: #b91c1c;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "Actay", sans-serif;
+}
+
+.filterBtn:hover {
+  border-color: #ffa20c;
+}
+
+.filterBtn.active {
+  background: #ffa20c;
+  color: white;
+  border-color: #ffa20c;
+}
+
+.applicationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.source {
+  font-family: "Actay Wide", sans-serif;
+  font-size: 0.9rem;
+  color: #ffa20c;
+}
+
+.status {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-family: "Actay", sans-serif;
+}
+
+.status.new {
+  background: #e5e7eb;
+  color: #4b5563;
+}
+
+.status.in_progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status.completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.cardBody {
+  margin-bottom: 1rem;
+}
+
+.cardBody p {
+  margin: 0.5rem 0;
+  font-family: "Actay", sans-serif;
+  font-size: 0.9rem;
+  color: #4b5563;
+  word-break: break-word;
+}
+
+.cardBody strong {
+  color: #0f0f0f;
+}
+
+.date {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 0.5rem;
+  font-family: "Actay", sans-serif;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-family: "Actay", sans-serif;
+  font-size: 1.2rem;
+  color: #4b5563;
+}

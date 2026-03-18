@@ -221,6 +221,27 @@
   }
 }
 
+/* Сообщения об успехе/ошибке */
+.successMessage {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #c3e6cb;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+}
+
+.errorMessage {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #f5c6cb;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+}
+
 .formCard {
   background-color: #f4f4f4;
   border-radius: 24px;
@@ -310,6 +331,12 @@
   min-height: 120px;
 }
 
+.input:disabled,
+.textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* Нижняя часть с соглашением и кнопкой */
 .formFooter {
   display: flex;
@@ -368,4 +395,9 @@
 
 .submitButton:hover {
   background-color: #e69100;
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

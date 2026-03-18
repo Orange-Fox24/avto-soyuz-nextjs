@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useFormSubmit } from "@/hooks/useFormSubmit";
 import styles from "./Form.module.css";
 
 export default function Form() {
@@ -14,6 +15,22 @@ export default function Form() {
     message: "",
   });
 
+  const { submitForm, isSubmitting, error, success } = useFormSubmit(
+    "contact",
+    {
+      onSuccess: () => {
+        setFormData({
+          name: "",
+          company: "",
+          phone: "",
+          email: "",
+          topic: "",
+          message: "",
+        });
+      },
+    },
+  );
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -23,22 +40,29 @@ export default function Form() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Форма отправлена!");
+    await submitForm(formData);
   };
 
   return (
-    <section className={styles.contactForm}>
+    <section className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.formCard}>
-          <h2 className={styles.title}>Форма обратной связи</h2>
-          <p className={styles.subtitle}>
-            Не нашли нужной информации? Отправьте ваш вопрос прямо с сайта, и
-            наш менеджер свяжется с вами в течение 30 минут в рабочее время.
-          </p>
+        <h2 className={styles.title}>Форма обратной связи</h2>
+        <p className={styles.subtitle}>
+          Не нашли нужной информации? Отправьте ваш вопрос прямо с сайта, и наш
+          менеджер свяжется с вами в течение 30 минут в рабочее время.
+        </p>
 
+        {success && (
+          <div className={styles.successMessage}>
+            Спасибо! Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.
+          </div>
+        )}
+
+        {error && <div className={styles.errorMessage}>{error}</div>}
+
+        <div className={styles.formWrapper}>
           <form onSubmit={handleSubmit} className={styles.form}>
             {/* Первая строка - Имя и Компания */}
             <div className={styles.formRow}>
@@ -54,6 +78,7 @@ export default function Form() {
                   placeholder="Укажите ваше имя"
                   required
                   className={styles.input}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -65,6 +90,7 @@ export default function Form() {
                   onChange={handleChange}
                   placeholder="Укажите вашу компанию"
                   className={styles.input}
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -83,6 +109,7 @@ export default function Form() {
                   placeholder="+7 (___) ___-__-__"
                   required
                   className={styles.input}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -94,6 +121,7 @@ export default function Form() {
                   onChange={handleChange}
                   placeholder="example@mail.ru"
                   className={styles.input}
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -111,6 +139,7 @@ export default function Form() {
                 placeholder="Укажите тему обращения"
                 required
                 className={styles.input}
+                disabled={isSubmitting}
               />
             </div>
 
@@ -127,6 +156,7 @@ export default function Form() {
                 placeholder="Ваше сообщение"
                 required
                 className={styles.textarea}
+                disabled={isSubmitting}
               />
             </div>
 
@@ -135,12 +165,19 @@ export default function Form() {
               <p className={styles.agreement}>
                 Нажимая кнопку «Отправить» Вы даете согласие на обработку Ваших
                 персональных данных в соответствии с{" "}
-                <Link href="/privacy-policy" className={styles.privacyLink}>
+                <Link
+                  href="/public/privacy-policy"
+                  className={styles.privacyLink}
+                >
                   политикой конфиденциальности
                 </Link>
               </p>
-              <button type="submit" className={styles.submitButton}>
-                Отправить
+              <button
+                type="submit"
+                className={styles.submitButton}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Отправка..." : "Отправить"}
               </button>
             </div>
           </form>

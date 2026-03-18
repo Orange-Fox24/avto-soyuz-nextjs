@@ -1,8 +1,51 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useFormSubmit } from "@/hooks/useFormSubmit";
 import styles from "./Partneram.module.css";
 
 export default function PartneramPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    phone: "",
+    email: "",
+    experience: "",
+    message: "",
+  });
+
+  const { submitForm, isSubmitting, error, success } = useFormSubmit(
+    "partner",
+    {
+      onSuccess: () => {
+        setFormData({
+          name: "",
+          company: "",
+          phone: "",
+          email: "",
+          experience: "",
+          message: "",
+        });
+      },
+    },
+  );
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await submitForm(formData);
+  };
+
   return (
     <div className={styles.page}>
       {/* Фоновая полупрозрачная иконка */}
@@ -103,8 +146,18 @@ export default function PartneramPage() {
               рабочих дня.
             </p>
 
+            {/* Сообщения об успехе/ошибке */}
+            {success && (
+              <div className={styles.successMessage}>
+                Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее
+                время.
+              </div>
+            )}
+
+            {error && <div className={styles.errorMessage}>{error}</div>}
+
             <div className={styles.formCard}>
-              <form className={styles.form}>
+              <form onSubmit={handleSubmit} className={styles.form}>
                 {/* Первая строка - Имя и Компания */}
                 <div className={styles.formRow}>
                   <div className={styles.formGroup}>
@@ -113,17 +166,25 @@ export default function PartneramPage() {
                     </label>
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       placeholder="Укажите ваше имя"
                       required
                       className={styles.input}
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className={styles.formGroup}>
                     <label className={styles.label}>Компания</label>
                     <input
                       type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
                       placeholder="Укажите вашу компанию"
                       className={styles.input}
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -136,17 +197,25 @@ export default function PartneramPage() {
                     </label>
                     <input
                       type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
                       placeholder="+7 (___) ___-__-__"
                       required
                       className={styles.input}
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className={styles.formGroup}>
                     <label className={styles.label}>E-mail</label>
                     <input
                       type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       placeholder="example@mail.ru"
                       className={styles.input}
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -158,9 +227,13 @@ export default function PartneramPage() {
                   </label>
                   <input
                     type="text"
+                    name="experience"
+                    value={formData.experience}
+                    onChange={handleChange}
                     placeholder="Укажите ваш опыт работы в логистике"
                     required
                     className={styles.input}
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -170,10 +243,14 @@ export default function PartneramPage() {
                     Сообщение <span className={styles.required}>*</span>
                   </label>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows={4}
                     placeholder="Кратко расскажите о вашей компании и предложении"
                     required
                     className={styles.textarea}
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -189,8 +266,12 @@ export default function PartneramPage() {
                       политикой конфиденциальности
                     </Link>
                   </p>
-                  <button type="submit" className={styles.submitButton}>
-                    Отправить
+                  <button
+                    type="submit"
+                    className={styles.submitButton}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Отправка..." : "Отправить"}
                   </button>
                 </div>
               </form>

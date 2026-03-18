@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useFormSubmit } from "@/hooks/useFormSubmit";
 import styles from "./ContactForm.module.css";
 
 export default function ContactForm() {
@@ -16,6 +17,20 @@ export default function ContactForm() {
     message: "",
   });
 
+  const { submitForm, isSubmitting, error, success } = useFormSubmit("main", {
+    onSuccess: () => {
+      setFormData({
+        name: "",
+        company: "",
+        fromCity: "",
+        toCity: "",
+        phone: "",
+        email: "",
+        message: "",
+      });
+    },
+  });
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -25,10 +40,9 @@ export default function ContactForm() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Форма отправлена!");
+    await submitForm(formData);
   };
 
   return (
@@ -41,6 +55,14 @@ export default function ContactForm() {
             <br />
             Мы свяжемся с вами и расскажем подробные условия.
           </p>
+
+          {success && (
+            <div className={styles.successMessage}>
+              Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее время.
+            </div>
+          )}
+
+          {error && <div className={styles.errorMessage}>{error}</div>}
 
           <form onSubmit={handleSubmit} className={styles.form}>
             {/* Первая строка - Имя и Компания */}
@@ -57,6 +79,7 @@ export default function ContactForm() {
                   placeholder="Укажите ваше имя"
                   required
                   className={styles.input}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -68,6 +91,7 @@ export default function ContactForm() {
                   onChange={handleChange}
                   placeholder="Укажите вашу компанию"
                   className={styles.input}
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -95,6 +119,7 @@ export default function ContactForm() {
                     placeholder="Укажите город отправки"
                     required
                     className={`${styles.input} ${styles.inputWithIcon}`}
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -116,6 +141,7 @@ export default function ContactForm() {
                     onChange={handleChange}
                     placeholder="Укажите город доставки"
                     className={`${styles.input} ${styles.inputWithIcon}`}
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -132,6 +158,7 @@ export default function ContactForm() {
                   onChange={handleChange}
                   placeholder="+7 (___) ___-__-__"
                   className={styles.input}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -143,6 +170,7 @@ export default function ContactForm() {
                   onChange={handleChange}
                   placeholder="example@mail.ru"
                   className={styles.input}
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -160,6 +188,7 @@ export default function ContactForm() {
                 placeholder="Ваше сообщение"
                 required
                 className={styles.textarea}
+                disabled={isSubmitting}
               />
             </div>
 
@@ -168,27 +197,22 @@ export default function ContactForm() {
               <p className={styles.agreement}>
                 Нажимая кнопку «Отправить» Вы даете согласие на обработку Ваших
                 персональных данных в соответствии с{" "}
-                <Link href="/privacy-policy" className={styles.privacyLink}>
+                <Link
+                  href="/public/privacy-policy"
+                  className={styles.privacyLink}
+                >
                   политикой конфиденциальности
                 </Link>
               </p>
-              <button type="submit" className={styles.submitButton}>
-                Отправить
+              <button
+                type="submit"
+                className={styles.submitButton}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Отправка..." : "Отправить"}
               </button>
             </div>
           </form>
-        </div>
-
-        {/* Текст снизу */}
-        <div className={styles.bottomText}>
-          <p>
-            Организация автомобильных грузоперевозок — ресурсоемкий вид
-            деятельности. Однако мало какой вид бизнеса может обойтись без
-            транспортных перевозок. Юридические лица, предприниматели
-            предпочитают заказывать логистические услуги в компании,
-            специализирующейся в данной сфере. Это более выгодно, нежели
-            содержать штатный отдел логистики.
-          </p>
         </div>
       </div>
     </section>
