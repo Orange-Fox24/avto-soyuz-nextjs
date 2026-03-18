@@ -4,34 +4,11 @@
   min-height: 100vh;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
 .title {
   font-family: "Actay Wide Bold", sans-serif;
   font-size: 2rem;
   color: #0f0f0f;
-  margin: 0;
-}
-
-.logoutButton {
-  background-color: #dc2626;
-  color: white;
-  font-family: "Actay Wide", sans-serif;
-  font-size: 0.9rem;
-  padding: 0.5rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.logoutButton:hover {
-  background-color: #b91c1c;
+  margin-bottom: 2rem;
 }
 
 .filters {
@@ -109,10 +86,6 @@
 .status.completed {
   background: #d1fae5;
   color: #065f46;
-}
-
-.cardBody {
-  margin-bottom: 1rem;
 }
 
 .cardBody p {
