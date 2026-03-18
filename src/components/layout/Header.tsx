@@ -9,18 +9,18 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: "Услуги", href: "/public/services" },
-    { name: "Сервисы", href: "/public/calc" },
-    { name: "Бизнесу и частным лицам", href: "/public/biznes" },
-    { name: "О компании", href: "/public/o-kompanii" },
-    { name: "Контакты", href: "/public/kontakty" },
+    { name: "Услуги", href: "/services" },
+    { name: "Сервисы", href: "/calc" },
+    { name: "Бизнесу и частным лицам", href: "/biznes" },
+    { name: "О компании", href: "/o-kompanii" },
+    { name: "Контакты", href: "/kontakty" },
   ];
 
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
         {/* Логотип слева */}
-        <Link href="/public" className={styles.logo}>
+        <Link href="/" className={styles.logo}>
           <Image
             src="/images/logo.png"
             alt="АВТО-СОЮЗ"
@@ -54,7 +54,7 @@ export default function Header() {
           </a>
 
           {/* Иконка ЛК */}
-          <Link href="/public/auth/login" className={styles.iconLink}>
+          <Link href="/auth/login" className={styles.iconLink}>
             <Image
               src="/icons/profile.svg"
               alt="Личный кабинет"

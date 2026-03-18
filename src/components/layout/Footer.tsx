@@ -28,7 +28,7 @@ export default function Footer() {
               {/* Колонка 1: Грузоперевозки */}
               <div className={styles.column}>
                 <Link
-                  href="/public/services/gruzoperevozki"
+                  href="/services/gruzoperevozki"
                   className={styles.columnTitle}
                 >
                   Грузоперевозки
@@ -36,7 +36,7 @@ export default function Footer() {
                 <ul className={styles.columnList}>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/gruzoperevozki#sbornye"
+                      href="/services/gruzoperevozki#sbornye"
                       className={styles.columnLink}
                     >
                       Перевозка сборных грузов
@@ -44,7 +44,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/gruzoperevozki#torgovye-seti"
+                      href="/services/gruzoperevozki#torgovye-seti"
                       className={styles.columnLink}
                     >
                       Доставка в торговые сети
@@ -52,7 +52,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/gruzoperevozki#marketplace"
+                      href="/services/gruzoperevozki#marketplace"
                       className={styles.columnLink}
                     >
                       Доставка в маркетплейсы
@@ -60,7 +60,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/gruzoperevozki#stroymarkety"
+                      href="/services/gruzoperevozki#stroymarkety"
                       className={styles.columnLink}
                     >
                       Доставка в строймаркеты
@@ -68,7 +68,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/gruzoperevozki#posylka"
+                      href="/services/gruzoperevozki#posylka"
                       className={styles.columnLink}
                     >
                       Посылка из рук в руки
@@ -76,7 +76,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/gruzoperevozki#paletnaya"
+                      href="/services/gruzoperevozki#paletnaya"
                       className={styles.columnLink}
                     >
                       Палетная перевозка
@@ -84,7 +84,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/gruzoperevozki#konteynernye"
+                      href="/services/gruzoperevozki#konteynernye"
                       className={styles.columnLink}
                     >
                       Контейнерные перевозки
@@ -96,7 +96,7 @@ export default function Footer() {
               {/* Колонка 2: Дополнительные услуги */}
               <div className={styles.column}>
                 <Link
-                  href="/public/services/dop-uslugi"
+                  href="/services/dop-uslugi"
                   className={styles.columnTitle}
                 >
                   Дополнительные услуги
@@ -104,7 +104,7 @@ export default function Footer() {
                 <ul className={styles.columnList}>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/dop-uslugi#zabor-gruza"
+                      href="/services/dop-uslugi#zabor-gruza"
                       className={styles.columnLink}
                     >
                       Забор груза у отправителя
@@ -112,7 +112,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/dop-uslugi#pogruzka"
+                      href="/services/dop-uslugi#pogruzka"
                       className={styles.columnLink}
                     >
                       Погрузо-разгрузочные работы
@@ -120,7 +120,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/dop-uslugi#dostavka-po-vremeni"
+                      href="/services/dop-uslugi#dostavka-po-vremeni"
                       className={styles.columnLink}
                     >
                       Доставка по времени
@@ -131,7 +131,7 @@ export default function Footer() {
                 {/* Складные услуги под дополнительными */}
                 <div className={styles.subColumn}>
                   <Link
-                    href="/public/services/skladskie-uslugi"
+                    href="/services/skladskie-uslugi"
                     className={styles.columnTitle}
                   >
                     Складные услуги
@@ -139,7 +139,7 @@ export default function Footer() {
                   <ul className={styles.columnList}>
                     <li className={styles.columnListItem}>
                       <a
-                        href="/public/services/skladskie-uslugi#otvetstvennoe-hranenie"
+                        href="/services/skladskie-uslugi#otvetstvennoe-hranenie"
                         className={styles.columnLink}
                       >
                         Ответственное хранение
@@ -147,7 +147,7 @@ export default function Footer() {
                     </li>
                     <li className={styles.columnListItem}>
                       <a
-                        href="/public/services/skladskie-uslugi#upakovka"
+                        href="/services/skladskie-uslugi#upakovka"
                         className={styles.columnLink}
                       >
                         Упаковка груза
@@ -155,7 +155,7 @@ export default function Footer() {
                     </li>
                     <li className={styles.columnListItem}>
                       <a
-                        href="/public/services/skladskie-uslugi#besplatnoe-hranenie"
+                        href="/services/skladskie-uslugi#besplatnoe-hranenie"
                         className={styles.columnLink}
                       >
                         Бесплатное хранение грузов
@@ -168,7 +168,7 @@ export default function Footer() {
               {/* Колонка 3: Направления */}
               <div className={styles.column}>
                 <Link
-                  href="/public/services/napravleniya"
+                  href="/services/napravleniya"
                   className={styles.columnTitle}
                 >
                   Направления
@@ -176,7 +176,7 @@ export default function Footer() {
                 <ul className={styles.columnList}>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/napravleniya#rossiya"
+                      href="/services/napravleniya#rossiya"
                       className={styles.columnLink}
                     >
                       Грузоперевозки по России
@@ -184,7 +184,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/napravleniya#kaliningrad"
+                      href="/services/napravleniya#kaliningrad"
                       className={styles.columnLink}
                     >
                       Перевозки в Калининград
@@ -192,7 +192,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/napravleniya#kazahstan"
+                      href="/services/napravleniya#kazahstan"
                       className={styles.columnLink}
                     >
                       Перевозки в Казахстан
@@ -200,7 +200,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/services/napravleniya#belarus"
+                      href="/services/napravleniya#belarus"
                       className={styles.columnLink}
                     >
                       Перевозки в Беларусь
@@ -211,14 +211,14 @@ export default function Footer() {
 
               {/* Колонка 4: О компании */}
               <div className={styles.column}>
-                <Link href="/public/o-kompanii" className={styles.columnTitle}>
+                <Link href="/o-kompanii" className={styles.columnTitle}>
                   О компании
                 </Link>
               </div>
 
               {/* Колонка 5: Контакты */}
               <div className={styles.column}>
-                <Link href="/public/kontakty" className={styles.columnTitle}>
+                <Link href="/kontakty" className={styles.columnTitle}>
                   Контакты
                 </Link>
               </div>
@@ -230,24 +230,18 @@ export default function Footer() {
             <div className={styles.secondaryColumnsGrid}>
               {/* Ячейка 1: Тарифы и сроки */}
               <div className={styles.column}>
-                <Link
-                  href="/public/biznes/tarify"
-                  className={styles.columnTitle}
-                >
+                <Link href="/biznes/tarify" className={styles.columnTitle}>
                   Тарифы и сроки
                 </Link>
                 <ul className={styles.columnList}>
                   <li className={styles.columnListItem}>
-                    <a
-                      href="/public/biznes/tarify#ceny"
-                      className={styles.columnLink}
-                    >
+                    <a href="/biznes/tarify#ceny" className={styles.columnLink}>
                       Цены на грузоперевозки
                     </a>
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/biznes/tarify#sroki"
+                      href="/biznes/tarify#sroki"
                       className={styles.columnLink}
                     >
                       Сроки доставки грузов
@@ -257,7 +251,7 @@ export default function Footer() {
 
                 {/* Специальные предложения */}
                 <Link
-                  href="/public/biznes/special"
+                  href="/biznes/special"
                   className={`${styles.columnTitle} ${styles.subTitle}`}
                 >
                   Специальные предложения
@@ -265,7 +259,7 @@ export default function Footer() {
                 <ul className={styles.columnList}>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/biznes/special#akcii"
+                      href="/biznes/special#akcii"
                       className={styles.columnLink}
                     >
                       Акции
@@ -275,7 +269,7 @@ export default function Footer() {
 
                 {/* Партнерам */}
                 <Link
-                  href="/public/biznes/partneram"
+                  href="/biznes/partneram"
                   className={`${styles.columnTitle} ${styles.subTitle}`}
                 >
                   Партнерам
@@ -283,7 +277,7 @@ export default function Footer() {
                 <ul className={styles.columnList}>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/biznes/partneram#stat-partnerom"
+                      href="/biznes/partneram#stat-partnerom"
                       className={styles.columnLink}
                     >
                       Станьте партнером
@@ -293,7 +287,7 @@ export default function Footer() {
 
                 {/* Сервисы */}
                 <Link
-                  href="/public/calc"
+                  href="/calc"
                   className={`${styles.columnTitle} ${styles.subTitle}`}
                 >
                   Сервисы
@@ -302,16 +296,13 @@ export default function Footer() {
 
               {/* Ячейка 2: Документы */}
               <div className={styles.column}>
-                <Link
-                  href="/public/biznes/dokumenty"
-                  className={styles.columnTitle}
-                >
+                <Link href="/biznes/dokumenty" className={styles.columnTitle}>
                   Документы
                 </Link>
                 <ul className={styles.columnList}>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/biznes/dokumenty#dogovory"
+                      href="/biznes/dokumenty#dogovory"
                       className={styles.columnLink}
                     >
                       Договоры
@@ -319,7 +310,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/biznes/dokumenty#sdacha-gruza"
+                      href="/biznes/dokumenty#sdacha-gruza"
                       className={styles.columnLink}
                     >
                       Документы для сдачи груза
@@ -327,7 +318,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/biznes/dokumenty#poluchenie-gruza"
+                      href="/biznes/dokumenty#poluchenie-gruza"
                       className={styles.columnLink}
                     >
                       Документы для получения груза
@@ -335,7 +326,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/biznes/dokumenty#doverennosti"
+                      href="/biznes/dokumenty#doverennosti"
                       className={styles.columnLink}
                     >
                       Доверенности
@@ -343,7 +334,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/biznes/dokumenty#ustavnye"
+                      href="/biznes/dokumenty#ustavnye"
                       className={styles.columnLink}
                     >
                       Уставные документы
@@ -351,7 +342,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/biznes/dokumenty#pretenzii"
+                      href="/biznes/dokumenty#pretenzii"
                       className={styles.columnLink}
                     >
                       Оформление претензии
@@ -359,7 +350,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/biznes/dokumenty#vozvrat"
+                      href="/biznes/dokumenty#vozvrat"
                       className={styles.columnLink}
                     >
                       Возврат денежных средств
@@ -370,13 +361,13 @@ export default function Footer() {
 
               {/* Ячейка 3: Информация */}
               <div className={styles.column}>
-                <Link href="/public/informaciya" className={styles.columnTitle}>
+                <Link href="/informaciya" className={styles.columnTitle}>
                   Информация
                 </Link>
                 <ul className={styles.columnList}>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#kak-otpravit"
+                      href="/informaciya#kak-otpravit"
                       className={styles.columnLink}
                     >
                       Как отправить груз
@@ -384,7 +375,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#trebovaniya-k-gruzu"
+                      href="/informaciya#trebovaniya-k-gruzu"
                       className={styles.columnLink}
                     >
                       Требования к грузу
@@ -392,7 +383,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#zapret-gruzy"
+                      href="/informaciya#zapret-gruzy"
                       className={styles.columnLink}
                     >
                       Грузы не принимаемые к перевозке
@@ -400,7 +391,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#obyazatelnaya-upakovka"
+                      href="/informaciya#obyazatelnaya-upakovka"
                       className={styles.columnLink}
                     >
                       Грузы, подлежащие обязательной жесткой упаковке
@@ -408,7 +399,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#kak-poluchit"
+                      href="/informaciya#kak-poluchit"
                       className={styles.columnLink}
                     >
                       Как получить груз
@@ -416,7 +407,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#kak-zaklyuchit-dogovor"
+                      href="/informaciya#kak-zaklyuchit-dogovor"
                       className={styles.columnLink}
                     >
                       Как заключить договор
@@ -424,7 +415,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#kak-otsledit"
+                      href="/informaciya#kak-otsledit"
                       className={styles.columnLink}
                     >
                       Как отследить груз
@@ -432,7 +423,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#sposoby-oplaty"
+                      href="/informaciya#sposoby-oplaty"
                       className={styles.columnLink}
                     >
                       Способы оплаты услуг
@@ -440,7 +431,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#kak-vnesti-izmeneniya"
+                      href="/informaciya#kak-vnesti-izmeneniya"
                       className={styles.columnLink}
                     >
                       Как внести изменения
@@ -448,7 +439,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#kak-izmerit-obem"
+                      href="/informaciya#kak-izmerit-obem"
                       className={styles.columnLink}
                     >
                       Как измерить объем груза
@@ -456,7 +447,7 @@ export default function Footer() {
                   </li>
                   <li className={styles.columnListItem}>
                     <a
-                      href="/public/informaciya#chastnye-voprosy"
+                      href="/informaciya#chastnye-voprosy"
                       className={styles.columnLink}
                     >
                       Частные вопросы
@@ -487,16 +478,10 @@ export default function Footer() {
                 <div className={styles.city}>г. Красноярск</div>
               </div>
               <div className={styles.linksRight}>
-                <Link
-                  href="/public/privacy-policy"
-                  className={styles.bottomLink}
-                >
+                <Link href="/privacy-policy" className={styles.bottomLink}>
                   Политика конфиденциальности
                 </Link>
-                <Link
-                  href="/public/legal-documents"
-                  className={styles.bottomLink}
-                >
+                <Link href="/legal-documents" className={styles.bottomLink}>
                   Правовые документы
                 </Link>
               </div>

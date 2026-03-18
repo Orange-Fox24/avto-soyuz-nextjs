@@ -1,0 +1,124 @@
+.section {
+  width: 100%;
+  background-color: #f4f4f4;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.title {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+}
+
+.reviewContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.reviewCard {
+  max-width: 800px;
+  width: 100%;
+  text-align: left;
+  background-color: #f4f4f4;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.reviewText {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.reviewFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reviewAuthor {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 0.25rem;
+}
+
+.reviewPosition {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.logoWrapper {
+  position: relative;
+  width: 100px;
+  height: 50px;
+}
+
+.logoImage {
+  object-fit: contain;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  padding: 0;
+}
+
+.dot:hover {
+  background-color: #ffa20c;
+}
+
+.dotActive {
+  background-color: #ffa20c;
+  width: 24px;
+  border-radius: 4px;
+}
