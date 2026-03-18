@@ -1,18 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import styles from "./ContactForm.module.css";
+import styles from "./Form.module.css";
 
-export default function ContactForm() {
+export default function Form() {
   const [formData, setFormData] = useState({
     name: "",
     company: "",
-    fromCity: "",
-    toCity: "",
     phone: "",
     email: "",
+    topic: "",
     message: "",
   });
 
@@ -35,11 +33,10 @@ export default function ContactForm() {
     <section className={styles.contactForm}>
       <div className={styles.container}>
         <div className={styles.formCard}>
-          <h2 className={styles.title}>Вопрос по услугам</h2>
+          <h2 className={styles.title}>Форма обратной связи</h2>
           <p className={styles.subtitle}>
-            Если у вас остались вопросы - заполните заявку.
-            <br />
-            Мы свяжемся с вами и расскажем подробные условия.
+            Не нашли нужной информации? Отправьте ваш вопрос прямо с сайта, и
+            наш менеджер свяжется с вами в течение 30 минут в рабочее время.
           </p>
 
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -72,70 +69,24 @@ export default function ContactForm() {
               </div>
             </div>
 
-            {/* Вторая строка - Город отправки и Город доставки */}
+            {/* Вторая строка - Телефон и Email */}
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label className={styles.label}>
-                  Город отправки <span className={styles.required}>*</span>
+                  Телефон <span className={styles.required}>*</span>
                 </label>
-                <div className={styles.inputWrapper}>
-                  <div className={styles.iconInput}>
-                    <Image
-                      src="/icons/location-marker.svg"
-                      alt="location"
-                      width={20}
-                      height={20}
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    name="fromCity"
-                    value={formData.fromCity}
-                    onChange={handleChange}
-                    placeholder="Укажите город отправки"
-                    required
-                    className={`${styles.input} ${styles.inputWithIcon}`}
-                  />
-                </div>
-              </div>
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Город доставки</label>
-                <div className={styles.inputWrapper}>
-                  <div className={styles.iconInput}>
-                    <Image
-                      src="/icons/location-marker.svg"
-                      alt="location"
-                      width={20}
-                      height={20}
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    name="toCity"
-                    value={formData.toCity}
-                    onChange={handleChange}
-                    placeholder="Укажите город доставки"
-                    className={`${styles.input} ${styles.inputWithIcon}`}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Третья строка - Телефон и Email */}
-            <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Телефон</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+7 (___) ___-__-__"
+                  required
                   className={styles.input}
                 />
               </div>
               <div className={styles.formGroup}>
-                <label className={styles.label}>Email</label>
+                <label className={styles.label}>E-mail</label>
                 <input
                   type="email"
                   name="email"
@@ -145,6 +96,22 @@ export default function ContactForm() {
                   className={styles.input}
                 />
               </div>
+            </div>
+
+            {/* Третья строка - Тема обращения */}
+            <div className={styles.formGroup}>
+              <label className={styles.label}>
+                Тема обращения <span className={styles.required}>*</span>
+              </label>
+              <input
+                type="text"
+                name="topic"
+                value={formData.topic}
+                onChange={handleChange}
+                placeholder="Укажите тему обращения"
+                required
+                className={styles.input}
+              />
             </div>
 
             {/* Большое поле для сообщения */}
@@ -177,18 +144,6 @@ export default function ContactForm() {
               </button>
             </div>
           </form>
-        </div>
-
-        {/* Текст снизу */}
-        <div className={styles.bottomText}>
-          <p>
-            Организация автомобильных грузоперевозок — ресурсоемкий вид
-            деятельности. Однако мало какой вид бизнеса может обойтись без
-            транспортных перевозок. Юридические лица, предприниматели
-            предпочитают заказывать логистические услуги в компании,
-            специализирующейся в данной сфере. Это более выгодно, нежели
-            содержать штатный отдел логистики.
-          </p>
         </div>
       </div>
     </section>

@@ -1,0 +1,129 @@
+.section {
+  width: 100%;
+  background-color: #f4f4f4;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.title {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+}
+
+.subtitle {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 3rem;
+  max-width: 800px;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .infoGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.infoCard {
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cardTitle {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 1.5rem;
+}
+
+.marginTop {
+  margin-top: 1.5rem;
+}
+
+.contactItem {
+  margin-bottom: 0.75rem;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.contactLabel {
+  font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  color: #ffa20c;
+  margin-right: 0.5rem;
+}
+
+.contactValue {
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contactValue:hover {
+  color: #ffa20c;
+}
+
+.specialistItem {
+  margin-bottom: 1.5rem;
+}
+
+.specialistName {
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: #0f0f0f;
+  font-size: 1.1rem;
+}
+
+.specialistRole {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+.specialistContacts {
+  margin-left: 0.5rem;
+}

@@ -297,7 +297,7 @@ export default function PrivacyPolicyPage() {
 
           {/* Кнопка возврата */}
           <div className={styles.buttonWrapper}>
-            <Link href="/public" className={styles.backButton}>
+            <Link href="/" className={styles.backButton}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={styles.backIcon}
