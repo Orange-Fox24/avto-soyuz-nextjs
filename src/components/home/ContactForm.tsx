@@ -197,10 +197,7 @@ export default function ContactForm() {
               <p className={styles.agreement}>
                 Нажимая кнопку «Отправить» Вы даете согласие на обработку Ваших
                 персональных данных в соответствии с{" "}
-                <Link
-                  href="/public/privacy-policy"
-                  className={styles.privacyLink}
-                >
+                <Link href="/privacy-policy" className={styles.privacyLink}>
                   политикой конфиденциальности
                 </Link>
               </p>
