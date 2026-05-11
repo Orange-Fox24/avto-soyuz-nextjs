@@ -54,7 +54,7 @@ export default function Header() {
           </a>
 
           {/* Иконка ЛК */}
-          <Link href="/auth/login" className={styles.iconLink}>
+          <Link href="/login" className={styles.iconLink}>
             <Image
               src="/icons/profile.svg"
               alt="Личный кабинет"

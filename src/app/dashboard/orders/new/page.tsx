@@ -1,0 +1,208 @@
+// src/app/dashboard/orders/new/page.tsx
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import styles from "./NewOrder.module.css";
+
+export default function NewOrderPage() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    fromCity: "",
+    toCity: "",
+    weight: "",
+    cargoType: "Прочее",
+    desiredDate: "",
+    comment: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage(null);
+
+    try {
+      const res = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage({ type: "success", text: "Заказ успешно создан!" });
+        setFormData({
+          fromCity: "",
+          toCity: "",
+          weight: "",
+          cargoType: "Прочее",
+          desiredDate: "",
+          comment: "",
+        });
+        setTimeout(() => {
+          router.push("/dashboard/orders");
+        }, 1500);
+      } else {
+        setMessage({ type: "error", text: data.error || "Ошибка создания заказа" });
+      }
+    } catch (err) {
+      setMessage({ type: "error", text: "Произошла непредвиденная ошибка" });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const cargoTypes = ["Прочее", "Стройматериалы", "Оборудование", "Продукты", "Мебель", "Одежда", "Автозапчасти"];
+
+  return (
+    <div className={styles.page}>
+      <div className={styles.container}>
+        <Link href="/dashboard/orders" className={styles.backLink}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+          Назад к заказам
+        </Link>
+
+        <div className={styles.card}>
+          <h1 className={styles.title}>Новый заказ</h1>
+          <p className={styles.subtitle}>Заполните данные для оформления заявки на перевозку</p>
+
+          {message && (
+            <div className={message.type === "success" ? styles.success : styles.error}>
+              {message.text}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.formRow}>
+              <div className={styles.formGroup}>
+                <label className={styles.label} htmlFor="fromCity">
+                  Город отправки <span className={styles.required}>*</span>
+                </label>
+                <input
+                  id="fromCity"
+                  name="fromCity"
+                  type="text"
+                  className={styles.input}
+                  placeholder="Откуда"
+                  value={formData.fromCity}
+                  onChange={handleChange}
+                  required
+                  disabled={loading}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.label} htmlFor="toCity">
+                  Город назначения <span className={styles.required}>*</span>
+                </label>
+                <input
+                  id="toCity"
+                  name="toCity"
+                  type="text"
+                  className={styles.input}
+                  placeholder="Куда"
+                  value={formData.toCity}
+                  onChange={handleChange}
+                  required
+                  disabled={loading}
+                />
+              </div>
+            </div>
+
+            <div className={styles.formRow}>
+              <div className={styles.formGroup}>
+                <label className={styles.label} htmlFor="weight">
+                  Вес груза (тонн) <span className={styles.required}>*</span>
+                </label>
+                <input
+                  id="weight"
+                  name="weight"
+                  type="number"
+                  step="0.1"
+                  min="0.1"
+                  className={styles.input}
+                  placeholder="Например: 1.5"
+                  value={formData.weight}
+                  onChange={handleChange}
+                  required
+                  disabled={loading}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.label} htmlFor="cargoType">
+                  Тип груза
+                </label>
+                <select
+                  id="cargoType"
+                  name="cargoType"
+                  className={styles.select}
+                  value={formData.cargoType}
+                  onChange={handleChange}
+                  disabled={loading}
+                >
+                  {cargoTypes.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={styles.label} htmlFor="desiredDate">
+                Желаемая дата доставки
+              </label>
+              <input
+                id="desiredDate"
+                name="desiredDate"
+                type="date"
+                className={styles.input}
+                value={formData.desiredDate}
+                onChange={handleChange}
+                disabled={loading}
+              />
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={styles.label} htmlFor="comment">
+                Комментарий
+              </label>
+              <textarea
+                id="comment"
+                name="comment"
+                className={styles.textarea}
+                placeholder="Дополнительная информация по заказу"
+                value={formData.comment}
+                onChange={handleChange}
+                disabled={loading}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className={styles.submitButton}
+              disabled={loading}
+            >
+              {loading ? "Создание заказа..." : "Создать заказ"}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}

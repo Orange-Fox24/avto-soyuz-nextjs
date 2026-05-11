@@ -1,3 +1,5 @@
+/* src/app/dashboard/Dashboard.module.css */
+
 .page {
   min-height: calc(100vh - 200px);
   background-color: #f4f4f4;
@@ -25,7 +27,7 @@
   color: #0f0f0f;
 }
 
-.subtitle {
+.welcome {
   font-family: "Actay", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   color: #4b5563;
@@ -38,6 +40,24 @@
   color: #ffa20c;
 }
 
+.logoutButton {
+  background-color: #ef4444;
+  color: #ffffff;
+  font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logoutButton:hover {
+  background-color: #dc2626;
+}
+
+/* Карточки */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -103,4 +123,46 @@
   font-size: 0.9rem;
   color: #6b7280;
   line-height: 1.5;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 4rem 1rem;
+  background-color: #f4f4f4;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-top: 2rem;
+}
+
+.emptyTitle {
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 0.5rem;
+}
+
+.emptyText {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.primaryButton {
+  background-color: #ffa20c;
+  color: #ffffff;
+  font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.primaryButton:hover {
+  background-color: #e69100;
 }
