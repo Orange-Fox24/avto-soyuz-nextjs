@@ -4,24 +4,24 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import LogoutButton from "./LogoutButton";
-import DriverOrdersClient from "./DriverOrdersClient";
+import DriverTabs from "./DriverTabs";
 import styles from "./Driver.module.css";
 
 export default async function DriverPage() {
   const session = await getServerSession(authOptions);
-
-  if (!session) {
-    redirect("/login");
-  }
+  if (!session) redirect("/login");
 
   const driverId = (session.user as any)?.id;
 
-  const orders = await prisma.order.findMany({
-    where: {
-      driverId: driverId,
-      status: { not: "DELIVERED" },
-    },
+  const activeOrders = await prisma.order.findMany({
+    where: { driverId, status: { notIn: ["DELIVERED", "CANCELLED"] } },
     orderBy: { createdAt: "desc" },
+  });
+
+  const completedOrders = await prisma.order.findMany({
+    where: { driverId, status: "DELIVERED" },
+    orderBy: { createdAt: "desc" },
+    take: 20,
   });
 
   return (
@@ -38,7 +38,10 @@ export default async function DriverPage() {
           <LogoutButton />
         </div>
 
-        <DriverOrdersClient orders={JSON.parse(JSON.stringify(orders))} />
+        <DriverTabs
+          activeOrders={JSON.parse(JSON.stringify(activeOrders))}
+          completedOrders={JSON.parse(JSON.stringify(completedOrders))}
+        />
       </div>
     </div>
   );

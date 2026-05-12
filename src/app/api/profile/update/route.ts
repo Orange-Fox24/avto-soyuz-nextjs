@@ -14,28 +14,16 @@ export async function PUT(request: Request) {
 
     const userId = (session.user as any)?.id;
     const body = await request.json();
-    const { name, email } = body;
+    const { name, phone } = body;
 
-    if (!name || !email) {
-      return NextResponse.json({ error: "Имя и email обязательны" }, { status: 400 });
+    if (!name) {
+      return NextResponse.json({ error: "Имя обязательно" }, { status: 400 });
     }
 
-    // Проверяем, не занят ли email другим пользователем
-    const existingUser = await prisma.user.findFirst({
-      where: {
-        email,
-        id: { not: userId },
-      },
-    });
-
-    if (existingUser) {
-      return NextResponse.json({ error: "Этот email уже используется" }, { status: 409 });
-    }
-
-    // Обновляем пользователя в БД
+    // Обновляем только имя и телефон (email менять нельзя)
     const updatedUser = await prisma.user.update({
       where: { id: userId },
-      data: { name, email },
+      data: { name, phone },
     });
 
     return NextResponse.json({
@@ -44,6 +32,7 @@ export async function PUT(request: Request) {
         id: updatedUser.id,
         name: updatedUser.name,
         email: updatedUser.email,
+        phone: updatedUser.phone,
         role: updatedUser.role,
       },
     });

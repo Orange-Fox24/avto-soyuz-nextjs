@@ -36,7 +36,7 @@ const biznesItems = [
     description:
       "Исчерпывающее руководство по всем этапам работы — от отправки до получения, с ответами на частые вопросы клиентов.",
     icon: "/icons/info.svg",
-    href: "/public/biznes/informaciya",
+    href: "/biznes/informaciya",
   },
 ];
 

@@ -16,15 +16,6 @@ const statusLabels: Record<string, string> = {
   CANCELLED: "Отменён",
 };
 
-const statusStyles: Record<string, string> = {
-  NEW: styles.statusNew || "",
-  ASSIGNED: styles.statusAssigned || "",
-  LOADING: styles.statusAssigned || "",
-  IN_TRANSIT: styles.statusInTransit || "",
-  DELIVERED: styles.statusDelivered || "",
-  CANCELLED: styles.statusCancelled || "",
-};
-
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
 
@@ -36,7 +27,6 @@ export default async function DashboardPage() {
   const userRole = (session.user as any)?.role;
   const userName = session.user?.name || session.user?.email;
 
-  // Получаем последние 5 заказов
   const recentOrders = await prisma.order.findMany({
     where: { clientId: userId },
     orderBy: { createdAt: "desc" },
@@ -65,7 +55,6 @@ export default async function DashboardPage() {
           <LogoutButton />
         </div>
 
-        {/* Карточки действий */}
         <div className={styles.grid}>
           <Link href="/dashboard/orders" className={styles.card}>
             <div className={styles.cardIcon}>
@@ -74,9 +63,7 @@ export default async function DashboardPage() {
               </svg>
             </div>
             <h3 className={styles.cardTitle}>Мои заказы</h3>
-            <p className={styles.cardText}>
-              Просмотр и отслеживание статуса ваших заказов ({totalOrders})
-            </p>
+            <p className={styles.cardText}>Просмотр и отслеживание ({totalOrders})</p>
           </Link>
 
           <Link href="/dashboard/orders/new" className={styles.card}>
@@ -86,9 +73,7 @@ export default async function DashboardPage() {
               </svg>
             </div>
             <h3 className={styles.cardTitle}>Создать заказ</h3>
-            <p className={styles.cardText}>
-              Оформить новую заявку на грузоперевозку
-            </p>
+            <p className={styles.cardText}>Оформить новую заявку на грузоперевозку</p>
           </Link>
 
           <Link href="/dashboard/profile" className={styles.card}>
@@ -98,34 +83,90 @@ export default async function DashboardPage() {
               </svg>
             </div>
             <h3 className={styles.cardTitle}>Профиль</h3>
-            <p className={styles.cardText}>
-              Редактирование личных данных и контактной информации
-            </p>
+            <p className={styles.cardText}>Редактирование личных данных</p>
           </Link>
         </div>
 
-        {/* Последние заказы */}
-        <div style={{ marginTop: "2rem" }}>
-          {recentOrders.length > 0 ? (
+        {recentOrders.length > 0 && (
+          <div style={{ marginTop: "2rem" }}>
+            <h2 style={{
+              fontFamily: '"Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif',
+              fontSize: "1.25rem",
+              fontWeight: 700,
+              color: "#0f0f0f",
+              marginBottom: "1rem",
+            }}>
+              Последние заказы
+            </h2>
             <div className={styles.emptyState} style={{ textAlign: "left", padding: "1.5rem" }}>
-              <h2 style={{ fontFamily: '"Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif', fontSize: "1.25rem", color: "#0f0f0f", marginBottom: "1rem" }}>
-                Последние заказы
-              </h2>
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr>
-                    <th style={{ textAlign: "left", padding: "0.5rem", fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif', fontSize: "0.85rem", color: "#6b7280", borderBottom: "1px solid #e5e7eb" }}>Откуда</th>
-                    <th style={{ textAlign: "left", padding: "0.5rem", fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif', fontSize: "0.85rem", color: "#6b7280", borderBottom: "1px solid #e5e7eb" }}>Куда</th>
-                    <th style={{ textAlign: "left", padding: "0.5rem", fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif', fontSize: "0.85rem", color: "#6b7280", borderBottom: "1px solid #e5e7eb" }}>Вес</th>
-                    <th style={{ textAlign: "left", padding: "0.5rem", fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif', fontSize: "0.85rem", color: "#6b7280", borderBottom: "1px solid #e5e7eb" }}>Статус</th>
+                    <th style={{
+                      textAlign: "left",
+                      padding: "0.5rem",
+                      fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif',
+                      fontSize: "0.85rem",
+                      fontWeight: 600,
+                      color: "#6b7280",
+                      borderBottom: "1px solid #e5e7eb",
+                    }}>Откуда</th>
+                    <th style={{
+                      textAlign: "left",
+                      padding: "0.5rem",
+                      fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif',
+                      fontSize: "0.85rem",
+                      fontWeight: 600,
+                      color: "#6b7280",
+                      borderBottom: "1px solid #e5e7eb",
+                    }}>Куда</th>
+                    <th style={{
+                      textAlign: "left",
+                      padding: "0.5rem",
+                      fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif',
+                      fontSize: "0.85rem",
+                      fontWeight: 600,
+                      color: "#6b7280",
+                      borderBottom: "1px solid #e5e7eb",
+                    }}>Цена</th>
+                    <th style={{
+                      textAlign: "left",
+                      padding: "0.5rem",
+                      fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif',
+                      fontSize: "0.85rem",
+                      fontWeight: 600,
+                      color: "#6b7280",
+                      borderBottom: "1px solid #e5e7eb",
+                    }}>Статус</th>
                   </tr>
                 </thead>
                 <tbody>
                   {recentOrders.map((order: any) => (
                     <tr key={order.id}>
-                      <td style={{ padding: "0.5rem", fontFamily: '"Actay", Arial, Helvetica, sans-serif', fontSize: "0.9rem", borderBottom: "1px solid #f3f4f6" }}>{order.fromCity}</td>
-                      <td style={{ padding: "0.5rem", fontFamily: '"Actay", Arial, Helvetica, sans-serif', fontSize: "0.9rem", borderBottom: "1px solid #f3f4f6" }}>{order.toCity}</td>
-                      <td style={{ padding: "0.5rem", fontFamily: '"Actay", Arial, Helvetica, sans-serif', fontSize: "0.9rem", borderBottom: "1px solid #f3f4f6" }}>{order.weight} т</td>
+                      <td style={{
+                        padding: "0.5rem",
+                        fontFamily: '"Actay", Arial, Helvetica, sans-serif',
+                        fontSize: "0.9rem",
+                        color: "#0f0f0f",
+                        borderBottom: "1px solid #f3f4f6",
+                      }}>{order.fromCity}</td>
+                      <td style={{
+                        padding: "0.5rem",
+                        fontFamily: '"Actay", Arial, Helvetica, sans-serif',
+                        fontSize: "0.9rem",
+                        color: "#0f0f0f",
+                        borderBottom: "1px solid #f3f4f6",
+                      }}>{order.toCity}</td>
+                      <td style={{
+                        padding: "0.5rem",
+                        fontFamily: '"Actay", Arial, Helvetica, sans-serif',
+                        fontSize: "0.9rem",
+                        fontWeight: 600,
+                        color: "#0f0f0f",
+                        borderBottom: "1px solid #f3f4f6",
+                      }}>
+                        {order.price ? `${order.price.toLocaleString()} ₽` : "—"}
+                      </td>
                       <td style={{ padding: "0.5rem", borderBottom: "1px solid #f3f4f6" }}>
                         <span style={{
                           display: "inline-block",
@@ -134,7 +175,7 @@ export default async function DashboardPage() {
                           fontSize: "0.8rem",
                           padding: "0.25rem 0.75rem",
                           borderRadius: "8px",
-                          backgroundColor: 
+                          backgroundColor:
                             order.status === "NEW" ? "#dbeafe" :
                             order.status === "ASSIGNED" || order.status === "LOADING" ? "#fef3c7" :
                             order.status === "IN_TRANSIT" ? "#e0e7ff" :
@@ -154,24 +195,19 @@ export default async function DashboardPage() {
               </table>
               {totalOrders > 5 && (
                 <div style={{ marginTop: "1rem", textAlign: "center" }}>
-                  <Link href="/dashboard/orders" style={{ fontFamily: '"Wadik Bold", "Wadik", Arial, Helvetica, sans-serif', fontWeight: 700, color: "#ffa20c", textDecoration: "none" }}>
+                  <Link href="/dashboard/orders" style={{
+                    fontFamily: '"Wadik Bold", "Wadik", Arial, Helvetica, sans-serif',
+                    fontWeight: 700,
+                    color: "#ffa20c",
+                    textDecoration: "none",
+                  }}>
                     Все заказы ({totalOrders}) →
                   </Link>
                 </div>
               )}
             </div>
-          ) : (
-            <div className={styles.emptyState}>
-              <h2 className={styles.emptyTitle}>У вас пока нет активных заказов</h2>
-              <p className={styles.emptyText}>
-                Создайте свой первый заказ на перевозку груза
-              </p>
-              <Link href="/dashboard/orders/new" className={styles.primaryButton}>
-                Создать заказ
-              </Link>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

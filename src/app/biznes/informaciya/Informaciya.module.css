@@ -1,0 +1,162 @@
+.page {
+  min-height: calc(100vh - 200px);
+  background-color: #f4f4f4;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* Этапы работы */
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.sectionTitle::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background-color: #ffa20c;
+  border-radius: 2px;
+}
+
+/* Карточки этапов */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.step {
+  display: flex;
+  gap: 1rem;
+  background-color: #f4f4f4;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 1.25rem;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.step:hover {
+  border-color: #ffa20c;
+}
+
+.stepNumber {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background-color: #ffa20c;
+  color: #ffffff;
+  font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepContent {
+  flex: 1;
+}
+
+.stepTitle {
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin-bottom: 0.35rem;
+}
+
+.stepText {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* FAQ */
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.faqItem {
+  background-color: #f4f4f4;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.faqItem:hover {
+  border-color: #ffa20c;
+}
+
+.faqQuestion {
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  padding: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.faqIcon {
+  font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: #ffa20c;
+  transition: transform 0.2s ease;
+  min-width: 24px;
+  text-align: center;
+}
+
+.faqAnswer {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.6;
+  padding: 0 1.25rem 1.25rem;
+}

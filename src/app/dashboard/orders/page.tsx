@@ -75,6 +75,8 @@ export default async function OrdersPage() {
                   <th>Вес (т)</th>
                   <th>Тип груза</th>
                   <th>Статус</th>
+                  <th>Цена</th>
+                  <th>Оплата</th>
                   <th>Дата</th>
                 </tr>
               </thead>
@@ -89,6 +91,14 @@ export default async function OrdersPage() {
                     <td>
                       <span className={`${styles.status} ${statusStyles[order.status] || ""}`}>
                         {statusLabels[order.status] || order.status}
+                      </span>
+                    </td>
+                    <td style={{ fontFamily: "Actay, Arial, sans-serif", fontWeight: 600 }}>
+                      {order.price ? `${order.price.toLocaleString()} ₽` : "—"}
+                    </td>
+                    <td>
+                      <span className={`${styles.status} ${order.isPaid ? styles.statusDelivered : styles.statusNew}`}>
+                        {order.isPaid ? "Оплачен" : "Не оплачен"}
                       </span>
                     </td>
                     <td>{new Date(order.createdAt).toLocaleDateString("ru-RU")}</td>

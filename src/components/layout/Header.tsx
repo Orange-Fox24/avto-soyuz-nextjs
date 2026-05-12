@@ -42,6 +42,8 @@ export default function Header() {
 
         {/* Правая часть с иконками */}
         <div className={styles.rightSection}>
+          
+
           {/* Иконка телефона */}
           <a href="tel:+79831638209" className={styles.iconLink}>
             <Image

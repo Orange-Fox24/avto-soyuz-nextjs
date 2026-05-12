@@ -4,9 +4,15 @@
 import { signOut } from "next-auth/react";
 
 export default function LogoutButton() {
+  const handleLogout = () => {
+    if (window.confirm("Вы уверены, что хотите выйти?")) {
+      signOut({ callbackUrl: "/" });
+    }
+  };
+
   return (
     <button
-      onClick={() => signOut({ callbackUrl: "/" })}
+      onClick={handleLogout}
       style={{
         backgroundColor: "#ef4444",
         color: "#ffffff",

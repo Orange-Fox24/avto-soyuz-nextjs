@@ -12,6 +12,8 @@ interface Order {
   weight: number;
   cargoType: string;
   status: string;
+  price?: number;
+  isPaid?: boolean;
   createdAt: string;
   driverId?: string;
 }
@@ -44,11 +46,12 @@ const nextStatuses: Record<string, string[]> = {
 export default function AdminOrdersPage() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
-  const [modalType, setModalType] = useState<"assign" | "status" | null>(null);
+  const [modalMode, setModalMode] = useState<"assign" | "status" | "price" | "payment" | null>(null);
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [drivers, setDrivers] = useState<any[]>([]);
   const [selectedDriver, setSelectedDriver] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
+  const [editPrice, setEditPrice] = useState("");
 
   useEffect(() => {
     fetchOrders();
@@ -80,24 +83,36 @@ export default function AdminOrdersPage() {
   const handleAssign = (order: Order) => {
     setSelectedOrder(order);
     setSelectedDriver("");
-    setModalType("assign");
+    setModalMode("assign");
   };
 
   const handleChangeStatus = (order: Order) => {
     setSelectedOrder(order);
     setSelectedStatus("");
-    setModalType("status");
+    setModalMode("status");
+  };
+
+  const handleEditPrice = (order: Order) => {
+    setSelectedOrder(order);
+    setEditPrice(order.price?.toString() || "");
+    setModalMode("price");
+  };
+
+  const handleTogglePayment = (order: Order) => {
+    setSelectedOrder(order);
+    setModalMode("payment");
   };
 
   const submitAssign = async () => {
     if (!selectedOrder || !selectedDriver) return;
+    if (!window.confirm("Назначить водителя на этот заказ?")) return;
     try {
       await fetch("/api/admin/orders/assign", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ orderId: selectedOrder.id, driverId: selectedDriver }),
       });
-      setModalType(null);
+      setModalMode(null);
       fetchOrders();
     } catch (err) {
       console.error("Ошибка:", err);
@@ -106,18 +121,57 @@ export default function AdminOrdersPage() {
 
   const submitStatus = async () => {
     if (!selectedOrder || !selectedStatus) return;
+    if (!window.confirm(`Изменить статус заказа на "${statusLabels[selectedStatus]}"?`)) return;
     try {
       await fetch("/api/admin/orders/status", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ orderId: selectedOrder.id, status: selectedStatus }),
       });
-      setModalType(null);
+      setModalMode(null);
       fetchOrders();
     } catch (err) {
       console.error("Ошибка:", err);
     }
   };
+
+  const submitPrice = async () => {
+    if (!selectedOrder || !editPrice) return;
+    if (!window.confirm(`Установить точную цену ${parseFloat(editPrice).toLocaleString()} руб.? После этого изменить цену будет нельзя.`)) return;
+    try {
+      await fetch("/api/admin/orders/price", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderId: selectedOrder.id, price: parseFloat(editPrice) }),
+      });
+      setModalMode(null);
+      fetchOrders();
+    } catch (err) {
+      console.error("Ошибка:", err);
+    }
+  };
+
+  const submitPayment = async (paid: boolean) => {
+    if (!selectedOrder) return;
+    if (!window.confirm(paid ? "Отметить заказ как оплаченный? После этого изменить будет нельзя." : "Отметить заказ как неоплаченный?")) return;
+    try {
+      await fetch("/api/admin/orders/payment", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderId: selectedOrder.id, isPaid: paid }),
+      });
+      setModalMode(null);
+      fetchOrders();
+    } catch (err) {
+      console.error("Ошибка:", err);
+    }
+  };
+
+  // Проверка: можно ли менять цену (только если цена ещё не установлена)
+  const canEditPrice = (order: Order) => !order.price || order.price === 0;
+
+  // Проверка: можно ли менять оплату (только если ещё не оплачен)
+  const canTogglePayment = (order: Order) => !order.isPaid;
 
   if (loading) return <div className={styles.page}><div className={styles.container}>Загрузка...</div></div>;
 
@@ -144,6 +198,8 @@ export default function AdminOrdersPage() {
                   <th>Вес (т)</th>
                   <th>Тип</th>
                   <th>Статус</th>
+                  <th>Цена</th>
+                  <th>Оплата</th>
                   <th>Дата</th>
                   <th>Действия</th>
                 </tr>
@@ -161,6 +217,14 @@ export default function AdminOrdersPage() {
                         {statusLabels[order.status] || order.status}
                       </span>
                     </td>
+                    <td style={{ fontFamily: "Actay, Arial, sans-serif", fontWeight: 600 }}>
+                      {order.price ? `${order.price.toLocaleString()} руб.` : "—"}
+                    </td>
+                    <td>
+                      <span className={`${styles.status} ${order.isPaid ? styles.statusDelivered : styles.statusNew}`}>
+                        {order.isPaid ? "Оплачен" : "Не оплачен"}
+                      </span>
+                    </td>
                     <td>{new Date(order.createdAt).toLocaleDateString("ru-RU")}</td>
                     <td>
                       <div className={styles.actions}>
@@ -169,9 +233,27 @@ export default function AdminOrdersPage() {
                             Назначить
                           </button>
                         )}
+                        {canEditPrice(order) && (
+                          <button
+                            className={`${styles.actionButton}`}
+                            style={{ backgroundColor: "#22c55e" }}
+                            onClick={() => handleEditPrice(order)}
+                          >
+                            Цена
+                          </button>
+                        )}
+                        {canTogglePayment(order) && (
+                          <button
+                            className={`${styles.actionButton}`}
+                            style={{ backgroundColor: "#3b82f6" }}
+                            onClick={() => handleTogglePayment(order)}
+                          >
+                            Оплатить
+                          </button>
+                        )}
                         {nextStatuses[order.status] && nextStatuses[order.status].length > 0 && (
                           <button className={`${styles.actionButton} ${styles.statusButton}`} onClick={() => handleChangeStatus(order)}>
-                            Сменить статус
+                            Статус
                           </button>
                         )}
                       </div>
@@ -189,10 +271,11 @@ export default function AdminOrdersPage() {
         )}
 
         {/* Модальное окно */}
-        {modalType && (
-          <div className={styles.modalOverlay} onClick={() => setModalType(null)}>
+        {modalMode && (
+          <div className={styles.modalOverlay} onClick={() => setModalMode(null)}>
             <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-              {modalType === "assign" && (
+
+              {modalMode === "assign" && (
                 <>
                   <h2 className={styles.modalTitle}>Назначить водителя</h2>
                   <div className={styles.formGroup}>
@@ -206,15 +289,15 @@ export default function AdminOrdersPage() {
                   </div>
                   <div className={styles.modalButtons}>
                     <button className={styles.saveButton} onClick={submitAssign}>Назначить</button>
-                    <button className={styles.cancelButton} onClick={() => setModalType(null)}>Отмена</button>
+                    <button className={styles.cancelButton} onClick={() => setModalMode(null)}>Отмена</button>
                   </div>
                 </>
               )}
 
-              {modalType === "status" && selectedOrder && (
+              {modalMode === "status" && selectedOrder && (
                 <>
                   <h2 className={styles.modalTitle}>Изменить статус</h2>
-                  <p style={{ marginBottom: "1rem", color: "#6b7280" }}>
+                  <p style={{ marginBottom: "1rem", color: "#6b7280", fontFamily: "Actay, Arial, sans-serif" }}>
                     Заказ: {selectedOrder.fromCity} → {selectedOrder.toCity}
                   </p>
                   <div className={styles.formGroup}>
@@ -228,10 +311,58 @@ export default function AdminOrdersPage() {
                   </div>
                   <div className={styles.modalButtons}>
                     <button className={styles.saveButton} onClick={submitStatus}>Сохранить</button>
-                    <button className={styles.cancelButton} onClick={() => setModalType(null)}>Отмена</button>
+                    <button className={styles.cancelButton} onClick={() => setModalMode(null)}>Отмена</button>
                   </div>
                 </>
               )}
+
+              {modalMode === "price" && selectedOrder && (
+                <>
+                  <h2 className={styles.modalTitle}>Установить точную цену</h2>
+                  <p style={{ marginBottom: "1rem", color: "#6b7280", fontFamily: "Actay, Arial, sans-serif" }}>
+                    Заказ: {selectedOrder.fromCity} → {selectedOrder.toCity} ({selectedOrder.weight} т)
+                  </p>
+                  <p style={{ marginBottom: "1rem", color: "#dc2626", fontFamily: "Actay, Arial, sans-serif", fontSize: "0.85rem" }}>
+                    После установки точной цены изменить её будет нельзя.
+                  </p>
+                  <div className={styles.formGroup}>
+                    <label className={styles.label}>Сумма (руб.)</label>
+                    <input
+                      type="number"
+                      className={styles.select}
+                      value={editPrice}
+                      onChange={(e) => setEditPrice(e.target.value)}
+                      placeholder="Введите точную цену"
+                    />
+                  </div>
+                  <div className={styles.modalButtons}>
+                    <button className={styles.saveButton} onClick={submitPrice}>Установить цену</button>
+                    <button className={styles.cancelButton} onClick={() => setModalMode(null)}>Отмена</button>
+                  </div>
+                </>
+              )}
+
+              {modalMode === "payment" && selectedOrder && (
+                <>
+                  <h2 className={styles.modalTitle}>Подтверждение оплаты</h2>
+                  <p style={{ marginBottom: "1rem", color: "#6b7280", fontFamily: "Actay, Arial, sans-serif" }}>
+                    Заказ: {selectedOrder.fromCity} → {selectedOrder.toCity}
+                  </p>
+                  <p style={{ marginBottom: "1rem", fontFamily: "Actay, Arial, sans-serif" }}>
+                    Сумма: <strong>{selectedOrder.price?.toLocaleString()} руб.</strong>
+                  </p>
+                  <p style={{ marginBottom: "1rem", color: "#dc2626", fontFamily: "Actay, Arial, sans-serif", fontSize: "0.85rem" }}>
+                    После подтверждения оплаты изменить будет нельзя.
+                  </p>
+                  <div className={styles.modalButtons}>
+                    <button className={styles.saveButton} onClick={() => submitPayment(true)}>
+                      Подтвердить оплату
+                    </button>
+                    <button className={styles.cancelButton} onClick={() => setModalMode(null)}>Отмена</button>
+                  </div>
+                </>
+              )}
+
             </div>
           </div>
         )}

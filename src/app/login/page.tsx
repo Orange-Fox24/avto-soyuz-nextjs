@@ -32,7 +32,6 @@ export default function LoginPage() {
       if (result?.error) {
         setError(result.error);
       } else if (result?.ok) {
-        // Получаем сессию, чтобы узнать роль
         const sessionRes = await fetch("/api/auth/session");
         const sessionData = await sessionRes.json();
         const role = sessionData?.user?.role;
@@ -98,6 +97,12 @@ export default function LoginPage() {
               required
               disabled={loading}
             />
+          </div>
+
+          <div style={{ textAlign: "right", marginTop: "-0.5rem" }}>
+            <Link href="/forgot-password" className={styles.link}>
+              Забыли пароль?
+            </Link>
           </div>
 
           {error && <div className={styles.error}>{error}</div>}

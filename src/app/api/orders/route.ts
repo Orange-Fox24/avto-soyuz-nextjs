@@ -18,18 +18,15 @@ export async function GET() {
     let orders;
 
     if (userRole === "CLIENT") {
-      // Клиент видит только свои заказы
       orders = await prisma.order.findMany({
         where: { clientId: userId },
         orderBy: { createdAt: "desc" },
       });
     } else if (userRole === "MANAGER") {
-      // Менеджер видит все заказы
       orders = await prisma.order.findMany({
         orderBy: { createdAt: "desc" },
       });
     } else if (userRole === "DRIVER") {
-      // Водитель видит назначенные ему заказы
       orders = await prisma.order.findMany({
         where: { driverId: userId },
         orderBy: { createdAt: "desc" },
@@ -55,13 +52,14 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { fromCity, toCity, weight, cargoType, desiredDate, comment } = body;
 
-    // Валидация
     if (!fromCity || !toCity || !weight) {
       return NextResponse.json(
         { error: "Город отправки, город назначения и вес обязательны" },
         { status: 400 }
       );
     }
+
+    const price = calculatePrice(fromCity, toCity, parseFloat(weight));
 
     const order = await prisma.order.create({
       data: {
@@ -73,6 +71,7 @@ export async function POST(request: Request) {
         desiredDate: desiredDate ? new Date(desiredDate) : null,
         comment: comment || "",
         status: "NEW",
+        price,
       },
     });
 
@@ -81,4 +80,50 @@ export async function POST(request: Request) {
     console.error("Ошибка создания заказа:", error);
     return NextResponse.json({ error: "Внутренняя ошибка сервера" }, { status: 500 });
   }
+}
+
+function calculatePrice(from: string, to: string, weight: number): number {
+  const toLower = to.toLowerCase().trim();
+  const fromLower = from.toLowerCase().trim();
+
+  const tariffs: Record<string, number> = {
+    "красноярский край": 2000,
+    "ачинск": 2500,
+    "канск": 3000,
+    "новосибирск": 6000,
+    "иркутск": 5500,
+    "москва": 15000,
+    "санкт-петербург": 18000,
+    "екатеринбург": 9000,
+    "казань": 12000,
+    "владивосток": 18000,
+    "хабаровск": 16000,
+    "томск": 4500,
+    "кемерово": 4000,
+    "барнаул": 5500,
+    "омск": 7000,
+    "челябинск": 9500,
+    "уфа": 11000,
+    "самара": 13000,
+    "ростов-на-дону": 16000,
+    "краснодар": 17000,
+    "сочи": 18000,
+    "калининград": 22000,
+  };
+
+  let basePrice = 10000;
+
+  for (const [city, price] of Object.entries(tariffs)) {
+    if (toLower.includes(city) || city.includes(toLower)) {
+      basePrice = price;
+      break;
+    }
+  }
+
+  if (fromLower.includes("красноярск")) {
+    const weightMultiplier = Math.max(0.5, weight / 500);
+    return Math.round(basePrice * weightMultiplier);
+  }
+
+  return Math.round(basePrice * Math.max(0.5, weight / 500));
 }

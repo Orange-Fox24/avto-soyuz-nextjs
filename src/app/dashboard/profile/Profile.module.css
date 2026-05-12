@@ -219,3 +219,9 @@
   border: 1px solid #f5c6cb;
   text-align: center;
 }
+.infoHint {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}

@@ -46,23 +46,24 @@ export default function Form() {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={styles.contactForm}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Форма обратной связи</h2>
-        <p className={styles.subtitle}>
-          Не нашли нужной информации? Отправьте ваш вопрос прямо с сайта, и наш
-          менеджер свяжется с вами в течение 30 минут в рабочее время.
-        </p>
+        {/* Вся форма внутри карточки */}
+        <div className={styles.formCard}>
+          <h2 className={styles.title}>Форма обратной связи</h2>
+          <p className={styles.subtitle}>
+            Не нашли нужной информации? Отправьте ваш вопрос прямо с сайта, и наш
+            менеджер свяжется с вами в течение 30 минут в рабочее время.
+          </p>
 
-        {success && (
-          <div className={styles.successMessage}>
-            Спасибо! Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.
-          </div>
-        )}
+          {success && (
+            <div className={styles.successMessage}>
+              Спасибо! Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.
+            </div>
+          )}
 
-        {error && <div className={styles.errorMessage}>{error}</div>}
+          {error && <div className={styles.errorMessage}>{error}</div>}
 
-        <div className={styles.formWrapper}>
           <form onSubmit={handleSubmit} className={styles.form}>
             {/* Первая строка - Имя и Компания */}
             <div className={styles.formRow}>
