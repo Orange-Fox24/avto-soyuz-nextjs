@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import AddressInput from "@/components/ui/AddressInput";
 import styles from "./NewOrder.module.css";
 
 export default function NewOrderPage() {
@@ -18,12 +19,6 @@ export default function NewOrderPage() {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,18 +72,22 @@ export default function NewOrderPage() {
 
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <label className={styles.label} htmlFor="fromCity">
-                  Город отправки <span className={styles.required}>*</span>
-                </label>
-                <input id="fromCity" name="fromCity" type="text" className={styles.input} placeholder="Откуда" value={formData.fromCity} onChange={handleChange} required disabled={loading} />
-              </div>
-              <div className={styles.formGroup}>
-                <label className={styles.label} htmlFor="toCity">
-                  Город назначения <span className={styles.required}>*</span>
-                </label>
-                <input id="toCity" name="toCity" type="text" className={styles.input} placeholder="Куда" value={formData.toCity} onChange={handleChange} required disabled={loading} />
-              </div>
+              <AddressInput
+                value={formData.fromCity}
+                onChange={(val) => setFormData({ ...formData, fromCity: val })}
+                placeholder="Начните вводить город отправки"
+                required
+                disabled={loading}
+                label="Город отправки"
+              />
+              <AddressInput
+                value={formData.toCity}
+                onChange={(val) => setFormData({ ...formData, toCity: val })}
+                placeholder="Начните вводить город назначения"
+                required
+                disabled={loading}
+                label="Город назначения"
+              />
             </div>
 
             <div className={styles.formRow}>
@@ -96,11 +95,11 @@ export default function NewOrderPage() {
                 <label className={styles.label} htmlFor="weight">
                   Вес груза (тонн) <span className={styles.required}>*</span>
                 </label>
-                <input id="weight" name="weight" type="number" step="0.1" min="0.1" className={styles.input} placeholder="1.5" value={formData.weight} onChange={handleChange} required disabled={loading} />
+                <input id="weight" name="weight" type="number" step="0.1" min="0.1" className={styles.input} placeholder="1.5" value={formData.weight} onChange={(e) => setFormData({ ...formData, weight: e.target.value })} required disabled={loading} />
               </div>
               <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="cargoType">Тип груза</label>
-                <select id="cargoType" name="cargoType" className={styles.input} value={formData.cargoType} onChange={handleChange} disabled={loading}>
+                <select id="cargoType" name="cargoType" className={styles.input} value={formData.cargoType} onChange={(e) => setFormData({ ...formData, cargoType: e.target.value })} disabled={loading}>
                   {cargoTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>
@@ -108,33 +107,30 @@ export default function NewOrderPage() {
 
             <div className={styles.formGroup}>
               <label className={styles.label} htmlFor="desiredDate">Желаемая дата доставки</label>
-              <input id="desiredDate" name="desiredDate" type="date" className={styles.input} value={formData.desiredDate} onChange={handleChange} disabled={loading} />
+              <input id="desiredDate" name="desiredDate" type="date" className={styles.input} value={formData.desiredDate} onChange={(e) => setFormData({ ...formData, desiredDate: e.target.value })} disabled={loading} />
             </div>
 
             <div className={styles.formGroup}>
               <label className={styles.label} htmlFor="comment">Комментарий</label>
-              <textarea id="comment" name="comment" className={styles.textarea} placeholder="Дополнительная информация" value={formData.comment} onChange={handleChange} disabled={loading} />
+              <textarea id="comment" name="comment" className={styles.textarea} placeholder="Дополнительная информация" value={formData.comment} onChange={(e) => setFormData({ ...formData, comment: e.target.value })} disabled={loading} />
             </div>
 
-            {/* Предпросмотр цены */}
-            {formData.fromCity && formData.toCity && formData.weight && (
-  <div style={{
-    background: "#f9fafb",
-    borderRadius: "12px",
-    padding: "1rem",
-    fontFamily: "Actay, Arial, sans-serif",
-  }}>
-    <p style={{ fontSize: "0.9rem", color: "#6b7280", marginBottom: "0.25rem" }}>
-      Примерная стоимость (точную цену установит менеджер):
-    </p>
-    <p style={{ fontFamily: '"Wadik Bold", "Wadik", Arial, sans-serif', fontWeight: 700, fontSize: "1.5rem", color: "#ffa20c" }}>
-      Рассчитывается...
-    </p>
-    <p style={{ fontSize: "0.8rem", color: "#9ca3af", marginTop: "0.5rem" }}>
-      Оплата производится по квитанции в офисе компании или по безналичному расчёту
-    </p>
-  </div>
-)}
+            <div style={{
+              background: "#f9fafb",
+              borderRadius: "12px",
+              padding: "1rem",
+              fontFamily: "Actay, Arial, sans-serif",
+            }}>
+              <p style={{ fontSize: "0.9rem", color: "#6b7280", marginBottom: "0.25rem" }}>
+                Примерная стоимость (точную цену установит менеджер):
+              </p>
+              <p style={{ fontFamily: '"Wadik Bold", "Wadik", Arial, sans-serif', fontWeight: 700, fontSize: "1.5rem", color: "#ffa20c" }}>
+                Рассчитывается при создании...
+              </p>
+              <p style={{ fontSize: "0.8rem", color: "#9ca3af", marginTop: "0.5rem" }}>
+                Оплата производится по квитанции в офисе компании или по безналичному расчёту
+              </p>
+            </div>
 
             <button type="submit" className={styles.submitButton} disabled={loading}>
               {loading ? "Создание заказа..." : "Создать заказ"}

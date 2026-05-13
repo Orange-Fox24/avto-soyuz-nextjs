@@ -1,3 +1,4 @@
+
 /* src/app/admin/drivers/Drivers.module.css */
 
 .page {
@@ -97,4 +98,9 @@
 .emptyText {
   font-family: "Actay", Arial, Helvetica, sans-serif;
   color: #6b7280;
+}
+
+.onLeave {
+  background-color: #fef3c7;
+  color: #92400e;
 }

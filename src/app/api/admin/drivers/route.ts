@@ -13,12 +13,24 @@ export async function GET() {
 
     const drivers = await prisma.user.findMany({
       where: { role: "DRIVER" },
-      select: { id: true, name: true, email: true },
+      select: { id: true, name: true, email: true, isOnLeave: true },
+      orderBy: { name: "asc" },
     });
 
-    return NextResponse.json({ drivers });
+    const driversWithOrders = await Promise.all(
+      drivers.map(async (driver) => {
+        const activeOrders = await prisma.order.count({
+          where: {
+            driverId: driver.id,
+            status: { in: ["ASSIGNED", "LOADING", "IN_TRANSIT"] },
+          },
+        });
+        return { ...driver, activeOrders };
+      })
+    );
+
+    return NextResponse.json({ drivers: driversWithOrders });
   } catch (error) {
-    console.error("Ошибка:", error);
     return NextResponse.json({ error: "Ошибка сервера" }, { status: 500 });
   }
 }

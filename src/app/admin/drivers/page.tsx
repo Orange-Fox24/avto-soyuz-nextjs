@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import DriversClient from "./DriversClient";
 import styles from "./Drivers.module.css";
 
 export default async function DriversPage() {
@@ -15,15 +16,10 @@ export default async function DriversPage() {
 
   const drivers = await prisma.user.findMany({
     where: { role: "DRIVER" },
-    select: {
-      id: true,
-      name: true,
-      email: true,
-    },
+    select: { id: true, name: true, email: true, isOnLeave: true },
     orderBy: { name: "asc" },
   });
 
-  // Считаем активные заказы для каждого водителя
   const driversWithOrders = await Promise.all(
     drivers.map(async (driver) => {
       const activeOrders = await prisma.order.count({
@@ -48,41 +44,7 @@ export default async function DriversPage() {
 
         <h1 className={styles.title}>Водители</h1>
 
-        {driversWithOrders.length > 0 ? (
-          <div className={styles.tableWrapper}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>№</th>
-                  <th>Имя</th>
-                  <th>Email</th>
-                  <th>Активных заказов</th>
-                  <th>Статус</th>
-                </tr>
-              </thead>
-              <tbody>
-                {driversWithOrders.map((driver: any, index: number) => (
-                  <tr key={driver.id}>
-                    <td>{index + 1}</td>
-                    <td>{driver.name || "Без имени"}</td>
-                    <td>{driver.email}</td>
-                    <td>{driver.activeOrders}</td>
-                    <td>
-                      <span className={`${styles.status} ${driver.activeOrders === 0 ? styles.free : styles.busy}`}>
-                        {driver.activeOrders === 0 ? "Свободен" : "Занят"}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div className={styles.emptyState}>
-            <h2 className={styles.emptyTitle}>Нет водителей</h2>
-            <p className={styles.emptyText}>Зарегистрированные водители появятся здесь</p>
-          </div>
-        )}
+        <DriversClient drivers={JSON.parse(JSON.stringify(driversWithOrders))} />
       </div>
     </div>
   );

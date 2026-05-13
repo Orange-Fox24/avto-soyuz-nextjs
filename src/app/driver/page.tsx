@@ -2,6 +2,7 @@
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import LogoutButton from "./LogoutButton";
 import DriverTabs from "./DriverTabs";
@@ -35,7 +36,24 @@ export default async function DriverPage() {
               <span className={styles.role}>(Водитель)</span>
             </p>
           </div>
-          <LogoutButton />
+          <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
+            <Link
+              href="/driver/profile"
+              style={{
+                fontFamily: '"Wadik Bold", "Wadik", Arial, Helvetica, sans-serif',
+                fontWeight: 700,
+                fontSize: "0.9rem",
+                color: "#ffa20c",
+                textDecoration: "none",
+                padding: "0.75rem 1.5rem",
+                border: "1px solid #ffa20c",
+                borderRadius: "12px",
+              }}
+            >
+              Профиль
+            </Link>
+            <LogoutButton />
+          </div>
         </div>
 
         <DriverTabs

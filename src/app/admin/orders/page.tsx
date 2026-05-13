@@ -70,15 +70,16 @@ export default function AdminOrdersPage() {
     }
   };
 
-  const fetchDrivers = async () => {
-    try {
-      const res = await fetch("/api/admin/drivers");
-      const data = await res.json();
-      setDrivers(data.drivers || []);
-    } catch (err) {
-      console.error("Ошибка загрузки водителей:", err);
-    }
-  };
+const fetchDrivers = async () => {
+  try {
+    const res = await fetch("/api/admin/drivers");
+    const data = await res.json();
+    // Фильтруем: только доступные водители
+    setDrivers((data.drivers || []).filter((d: any) => !d.isOnLeave));
+  } catch (err) {
+    console.error("Ошибка загрузки водителей:", err);
+  }
+};
 
   const handleAssign = (order: Order) => {
     setSelectedOrder(order);

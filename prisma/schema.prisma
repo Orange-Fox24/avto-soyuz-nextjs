@@ -82,13 +82,13 @@ model User {
   phone         String?
   password      String?
   role          Role      @default(CLIENT)
+  isOnLeave     Boolean   @default(false)
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   orders        Order[]   @relation("ClientOrders")
   driverOrders  Order[]   @relation("DriverOrders")
-  balance       Balance?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -125,21 +125,6 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
-}
-
-// ==========================================
-// БАЛАНС
-// ==========================================
-
-model Balance {
-  id        String   @id @default(cuid())
-  userId    String   @unique
-  amount    Float    @default(0)
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@map("balances")
 }
 
 // ==========================================
