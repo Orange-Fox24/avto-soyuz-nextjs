@@ -163,3 +163,21 @@ model Order {
 
   @@map("orders")
 }
+
+// ==========================================
+// ТРАНСПОРТ
+// ==========================================
+
+model Vehicle {
+  id            String   @id @default(cuid())
+  brand         String
+  model         String
+  plateNumber   String   @unique
+  type          String   @default("Тент")
+  capacity      Float    @default(5)
+  isAvailable   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("vehicles")
+}

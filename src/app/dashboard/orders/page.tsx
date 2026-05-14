@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import CancelButton from "./CancelButton";
 import styles from "./Orders.module.css";
 
 const statusLabels: Record<string, string> = {
@@ -78,13 +79,18 @@ export default async function OrdersPage() {
                   <th>Цена</th>
                   <th>Оплата</th>
                   <th>Дата</th>
+                  <th>Действия</th>
                 </tr>
               </thead>
               <tbody>
                 {orders.map((order: any, index: number) => (
                   <tr key={order.id}>
                     <td>{index + 1}</td>
-                    <td>{order.fromCity}</td>
+                    <td>
+                      <Link href={`/dashboard/orders/${order.id}`} style={{ color: "#ffa20c", textDecoration: "underline", fontFamily: "Actay, Arial, sans-serif" }}>
+                        {order.fromCity}
+                      </Link>
+                    </td>
                     <td>{order.toCity}</td>
                     <td>{order.weight}</td>
                     <td>{order.cargoType}</td>
@@ -102,6 +108,9 @@ export default async function OrdersPage() {
                       </span>
                     </td>
                     <td>{new Date(order.createdAt).toLocaleDateString("ru-RU")}</td>
+                    <td>
+                      <CancelButton orderId={order.id} status={order.status} />
+                    </td>
                   </tr>
                 ))}
               </tbody>

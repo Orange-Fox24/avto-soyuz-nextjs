@@ -3,6 +3,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
 import styles from "./Reports.module.css";
 
 const statusLabels: Record<string, string> = {
@@ -43,6 +45,92 @@ export default function ReportsPage() {
     }
   };
 
+  const translit = (text: string) => {
+    if (!text) return "";
+    const map: Record<string, string> = {
+      "а": "a","б": "b","в": "v","г": "g","д": "d","е": "e","ё": "e",
+      "ж": "zh","з": "z","и": "i","й": "y","к": "k","л": "l","м": "m",
+      "н": "n","о": "o","п": "p","р": "r","с": "s","т": "t","у": "u",
+      "ф": "f","х": "h","ц": "ts","ч": "ch","ш": "sh","щ": "sch",
+      "ъ": "","ы": "y","ь": "","э": "e","ю": "yu","я": "ya",
+      "А": "A","Б": "B","В": "V","Г": "G","Д": "D","Е": "E","Ё": "E",
+      "Ж": "Zh","З": "Z","И": "I","Й": "Y","К": "K","Л": "L","М": "M",
+      "Н": "N","О": "O","П": "P","Р": "R","С": "S","Т": "T","У": "U",
+      "Ф": "F","Х": "H","Ц": "Ts","Ч": "Ch","Ш": "Sh","Щ": "Sch",
+      "Ъ": "","Ы": "Y","Ь": "","Э": "E","Ю": "Yu","Я": "Ya",
+      " ": " ","-": "-",".": "."
+    };
+    return text.split("").map((c) => map[c] || c).join("");
+  };
+
+  const statusTranslit: Record<string, string> = {
+    "Новая": "Novaya",
+    "Назначен": "Naznachen",
+    "Погрузка": "Pogruzka",
+    "В пути": "V puti",
+    "Доставлен": "Dostavlen",
+    "Отменён": "Otmenen",
+  };
+
+  const exportPDF = () => {
+    if (!data) return;
+
+    const { stats, recentOrders, topDrivers } = data;
+
+    const doc = new jsPDF();
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.text("OTCHET PO ZAKAZAM", 14, 20);
+    doc.setFontSize(9);
+    doc.setFont("helvetica", "normal");
+    doc.text(`AVTO-SOYUZ | ${new Date().toLocaleDateString("ru-RU")}`, 14, 28);
+
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "bold");
+    doc.text("Statistika", 14, 38);
+    doc.setFontSize(9);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Vsego zakazov: ${stats.totalOrders}`, 14, 46);
+    doc.text(`Novyh: ${stats.newOrders}`, 14, 53);
+    doc.text(`V rabote: ${stats.inProgress}`, 14, 60);
+    doc.text(`Dostavleno: ${stats.delivered}`, 14, 67);
+    doc.text(`Otmeneno: ${stats.cancelled}`, 14, 74);
+
+    if (recentOrders.length > 0) {
+      autoTable(doc, {
+        startY: 82,
+        head: [["Otkuda", "Kuda", "Ves (t)", "Status", "Data"]],
+        body: recentOrders.map((o: any) => [
+          translit(o.fromCity),
+          translit(o.toCity),
+          o.weight,
+          statusTranslit[statusLabels[o.status]] || o.status,
+          new Date(o.createdAt).toLocaleDateString("ru-RU"),
+        ]),
+        styles: { fontSize: 8 },
+        headStyles: { fillColor: [255, 162, 12], textColor: [255, 255, 255] },
+      });
+    }
+
+    if (topDrivers && topDrivers.length > 0) {
+      const finalY = (doc as any).lastAutoTable?.finalY || 90;
+      doc.setFontSize(11);
+      doc.setFont("helvetica", "bold");
+      doc.text("Top voditeley", 14, finalY + 10);
+
+      autoTable(doc, {
+        startY: finalY + 16,
+        head: [["Voditel", "Vypolneno zakazov"]],
+        body: topDrivers.map((d: any) => [translit(d.name), d.completed]),
+        styles: { fontSize: 8 },
+        headStyles: { fillColor: [255, 162, 12], textColor: [255, 255, 255] },
+      });
+    }
+
+    doc.save(`otchet-avto-soyuz-${new Date().toISOString().split("T")[0]}.pdf`);
+  };
+
   if (loading) {
     return (
       <div className={styles.page}>
@@ -77,7 +165,25 @@ export default function ReportsPage() {
 
         <h1 className={styles.title}>Отчёты</h1>
 
-        {/* Статистика */}
+        <div style={{ display: "flex", gap: "0.75rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
+          <button
+            onClick={exportPDF}
+            style={{
+              backgroundColor: "#ffa20c",
+              color: "#fff",
+              fontFamily: '"Wadik Bold", "Wadik", Arial, Helvetica, sans-serif',
+              fontWeight: 700,
+              fontSize: "0.9rem",
+              padding: "0.6rem 1.25rem",
+              border: "none",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+          >
+            Скачать PDF
+          </button>
+        </div>
+
         <div className={styles.statsGrid}>
           <div className={styles.statCard}>
             <div className={styles.statIcon}>
@@ -120,7 +226,6 @@ export default function ReportsPage() {
           </div>
         </div>
 
-        {/* Последние заказы */}
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Последние заказы</h2>
           {recentOrders.length > 0 ? (
@@ -159,7 +264,6 @@ export default function ReportsPage() {
           )}
         </div>
 
-        {/* Топ водителей */}
         {topDrivers.length > 0 && (
           <div className={styles.section}>
             <h2 className={styles.sectionTitle}>Топ водителей</h2>

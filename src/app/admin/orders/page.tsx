@@ -1,7 +1,7 @@
 // src/app/admin/orders/page.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import styles from "./AdminOrders.module.css";
 
@@ -53,14 +53,19 @@ export default function AdminOrdersPage() {
   const [selectedStatus, setSelectedStatus] = useState("");
   const [editPrice, setEditPrice] = useState("");
 
-  useEffect(() => {
-    fetchOrders();
-    fetchDrivers();
-  }, []);
+  // Фильтры
+  const [filterStatus, setFilterStatus] = useState("");
+  const [filterDateFrom, setFilterDateFrom] = useState("");
+  const [filterDateTo, setFilterDateTo] = useState("");
 
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     try {
-      const res = await fetch("/api/admin/orders");
+      const params = new URLSearchParams();
+      if (filterStatus) params.append("status", filterStatus);
+      if (filterDateFrom) params.append("dateFrom", filterDateFrom);
+      if (filterDateTo) params.append("dateTo", filterDateTo);
+
+      const res = await fetch(`/api/admin/orders?${params.toString()}`);
       const data = await res.json();
       setOrders(data.orders || []);
     } catch (err) {
@@ -68,18 +73,25 @@ export default function AdminOrdersPage() {
     } finally {
       setLoading(false);
     }
+  }, [filterStatus, filterDateFrom, filterDateTo]);
+
+  useEffect(() => {
+    fetchOrders();
+  }, [fetchOrders]);
+
+  const fetchDrivers = async () => {
+    try {
+      const res = await fetch("/api/admin/drivers");
+      const data = await res.json();
+      setDrivers((data.drivers || []).filter((d: any) => !d.isOnLeave));
+    } catch (err) {
+      console.error("Ошибка загрузки водителей:", err);
+    }
   };
 
-const fetchDrivers = async () => {
-  try {
-    const res = await fetch("/api/admin/drivers");
-    const data = await res.json();
-    // Фильтруем: только доступные водители
-    setDrivers((data.drivers || []).filter((d: any) => !d.isOnLeave));
-  } catch (err) {
-    console.error("Ошибка загрузки водителей:", err);
-  }
-};
+  useEffect(() => {
+    fetchDrivers();
+  }, []);
 
   const handleAssign = (order: Order) => {
     setSelectedOrder(order);
@@ -168,11 +180,15 @@ const fetchDrivers = async () => {
     }
   };
 
-  // Проверка: можно ли менять цену (только если цена ещё не установлена)
-  const canEditPrice = (order: Order) => !order.price || order.price === 0;
+  const canEditPrice = (order: Order) => {
+  if (order.status === "CANCELLED") return false;
+  return !order.price || order.price === 0;
+};
 
-  // Проверка: можно ли менять оплату (только если ещё не оплачен)
-  const canTogglePayment = (order: Order) => !order.isPaid;
+const canTogglePayment = (order: Order) => {
+  if (order.status === "CANCELLED") return false;
+  return !order.isPaid;
+};
 
   if (loading) return <div className={styles.page}><div className={styles.container}>Загрузка...</div></div>;
 
@@ -187,6 +203,65 @@ const fetchDrivers = async () => {
         </Link>
 
         <h1 className={styles.title}>Все заказы</h1>
+
+        {/* Фильтры */}
+        <div style={{
+          display: "flex", gap: "0.75rem", marginBottom: "1.5rem",
+          flexWrap: "wrap", alignItems: "center",
+        }}>
+          <select
+            value={filterStatus}
+            onChange={(e) => { setFilterStatus(e.target.value); setLoading(true); }}
+            style={{
+              padding: "0.6rem 1rem", borderRadius: "10px", border: "1px solid #e5e7eb",
+              fontFamily: "Actay, Arial, sans-serif", fontSize: "0.9rem",
+            }}
+          >
+            <option value="">Все статусы</option>
+            {Object.entries(statusLabels).map(([key, label]) => (
+              <option key={key} value={key}>{label}</option>
+            ))}
+          </select>
+
+          <input
+            type="date"
+            value={filterDateFrom}
+            onChange={(e) => { setFilterDateFrom(e.target.value); setLoading(true); }}
+            style={{
+              padding: "0.6rem 1rem", borderRadius: "10px", border: "1px solid #e5e7eb",
+              fontFamily: "Actay, Arial, sans-serif", fontSize: "0.9rem",
+            }}
+            placeholder="С даты"
+          />
+          <input
+            type="date"
+            value={filterDateTo}
+            onChange={(e) => { setFilterDateTo(e.target.value); setLoading(true); }}
+            style={{
+              padding: "0.6rem 1rem", borderRadius: "10px", border: "1px solid #e5e7eb",
+              fontFamily: "Actay, Arial, sans-serif", fontSize: "0.9rem",
+            }}
+            placeholder="По дату"
+          />
+
+          {(filterStatus || filterDateFrom || filterDateTo) && (
+            <button
+              onClick={() => {
+                setFilterStatus("");
+                setFilterDateFrom("");
+                setFilterDateTo("");
+                setLoading(true);
+              }}
+              style={{
+                padding: "0.6rem 1rem", borderRadius: "10px", border: "1px solid #ef4444",
+                color: "#ef4444", background: "#fff",
+                fontFamily: "Actay, Arial, sans-serif", fontSize: "0.9rem", cursor: "pointer",
+              }}
+            >
+              Сбросить
+            </button>
+          )}
+        </div>
 
         {orders.length > 0 ? (
           <div className={styles.tableWrapper}>
