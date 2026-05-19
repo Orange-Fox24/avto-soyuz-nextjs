@@ -45,3 +45,54 @@
   background-color: var(--text-accent);
   border-radius: 50%;
 }
+
+/* Добавь в конец файла: */
+
+@media (max-width: 768px) {
+  .wrapper {
+    min-width: 80px;
+    border-radius: 6px;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
+    border-width: 2px;
+    padding: 4px;
+  }
+
+  .style_controls {
+    top: 8px;
+    right: 8px;
+    gap: 4px;
+  }
+
+  .style_controls > button {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    min-width: 60px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+    border-width: 2px;
+    padding: 3px;
+  }
+
+  .style_controls {
+    top: 5px;
+    right: 5px;
+    gap: 3px;
+  }
+
+  .style_controls > button {
+    font-size: 10px;
+    padding: 1px 6px;
+  }
+}

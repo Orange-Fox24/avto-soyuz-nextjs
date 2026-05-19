@@ -153,3 +153,43 @@
     object-position: right center;
   }
 }
+
+/* Добавь в конец файла: */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem 0.75rem 1.5rem 0.75rem;
+  }
+
+  .grid {
+    gap: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+
+  .imageWrapper {
+    height: 220px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+
+  .imageWrapper {
+    height: 180px;
+  }
+}

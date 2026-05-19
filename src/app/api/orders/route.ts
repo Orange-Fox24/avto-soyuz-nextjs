@@ -83,9 +83,10 @@ export async function POST(request: Request) {
 }
 
 function calculatePrice(from: string, to: string, weight: number): number {
-  const toLower = to.toLowerCase().trim();
   const fromLower = from.toLowerCase().trim();
+  const toLower = to.toLowerCase().trim();
 
+  // Базовые тарифы за 1 палету (~500 кг) из Красноярска
   const tariffs: Record<string, number> = {
     "красноярский край": 2000,
     "ачинск": 2500,
@@ -111,7 +112,8 @@ function calculatePrice(from: string, to: string, weight: number): number {
     "калининград": 22000,
   };
 
-  let basePrice = 10000;
+  // Ищем подходящий тариф
+  let basePrice = 10000; // По умолчанию
 
   for (const [city, price] of Object.entries(tariffs)) {
     if (toLower.includes(city) || city.includes(toLower)) {
@@ -120,10 +122,9 @@ function calculatePrice(from: string, to: string, weight: number): number {
     }
   }
 
-  if (fromLower.includes("красноярск")) {
-    const weightMultiplier = Math.max(0.5, weight / 500);
-    return Math.round(basePrice * weightMultiplier);
-  }
+  // Коэффициент веса: базовая цена за 500 кг, дальше пропорционально
+  const weightInKg = weight * 1000; // переводим тонны в кг
+  const weightMultiplier = Math.max(0.2, weightInKg / 500); // минимум 0.2
 
-  return Math.round(basePrice * Math.max(0.5, weight / 500));
+  return Math.round(basePrice * weightMultiplier);
 }

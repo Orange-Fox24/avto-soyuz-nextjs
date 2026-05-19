@@ -107,3 +107,54 @@
 .image {
   object-fit: cover;
 }
+
+/* Добавь в конец файла: */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .grid {
+    gap: 2rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .text {
+    font-size: 0.9rem;
+  }
+
+  .imageWrapper {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 0;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .grid {
+    gap: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .text {
+    font-size: 0.85rem;
+  }
+
+  .imageWrapper {
+    height: 250px;
+  }
+}

@@ -82,3 +82,50 @@
   font-weight: 400;
   color: #0f0f0f;
 }
+
+/* Добавь в конец файла: */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  .quote {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 0;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .text {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .quote {
+    font-size: 0.85rem;
+  }
+}

@@ -174,3 +174,13 @@
   border: 1px solid #f5c6cb;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}

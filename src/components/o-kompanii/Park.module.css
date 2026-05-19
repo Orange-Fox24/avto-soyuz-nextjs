@@ -127,3 +127,75 @@
 .image {
   object-fit: cover;
 }
+
+/* Добавь в конец файла: */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .grid {
+    gap: 2rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .text {
+    font-size: 0.9rem;
+  }
+
+  .bulletItem {
+    font-size: 0.9rem;
+    padding-left: 1.25rem;
+  }
+
+  .bulletItem::before {
+    font-size: 1.3rem;
+    top: -0.25rem;
+  }
+
+  .imageWrapper {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 0;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .grid {
+    gap: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .text {
+    font-size: 0.85rem;
+  }
+
+  .bulletItem {
+    font-size: 0.85rem;
+    padding-left: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .bulletItem::before {
+    font-size: 1.1rem;
+    top: -0.2rem;
+  }
+
+  .imageWrapper {
+    height: 250px;
+  }
+}

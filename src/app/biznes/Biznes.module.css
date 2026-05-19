@@ -192,3 +192,60 @@
     padding-right: 160px;
   }
 }
+
+/* Добавь в конец файла: */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .grid {
+    gap: 1rem;
+  }
+
+  .card {
+    height: 220px;
+    padding: 1.25rem;
+    border-radius: 20px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .cardDescription {
+    font-size: 0.7rem;
+    padding-right: 80px;
+  }
+
+  .cardIcon {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 360px) {
+  .card {
+    height: 200px;
+    padding: 1rem;
+  }
+
+  .cardTitle {
+    font-size: 0.9rem;
+  }
+
+  .cardDescription {
+    font-size: 0.65rem;
+    padding-right: 70px;
+  }
+
+  .cardIcon {
+    width: 70px;
+    height: 70px;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+}

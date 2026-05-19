@@ -23,8 +23,13 @@
   transition: color 0.2s ease;
 }
 
-.backLink:hover { color: #ffa20c; }
-.backLink svg { width: 20px; height: 20px; }
+.backLink:hover {
+  color: #ffa20c;
+}
+.backLink svg {
+  width: 20px;
+  height: 20px;
+}
 
 .card {
   background-color: #f4f4f4;
@@ -34,11 +39,14 @@
 }
 
 @media (min-width: 768px) {
-  .card { padding: 2.5rem; }
+  .card {
+    padding: 2.5rem;
+  }
 }
 
 .title {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.75rem;
   font-weight: 700;
   color: #0f0f0f;
@@ -153,8 +161,13 @@
   transition: background-color 0.2s ease;
 }
 
-.saveButton:hover { background-color: #e69100; }
-.saveButton:disabled { opacity: 0.6; cursor: not-allowed; }
+.saveButton:hover {
+  background-color: #e69100;
+}
+.saveButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 .cancelButton {
   background-color: transparent;
@@ -169,7 +182,10 @@
   transition: all 0.2s ease;
 }
 
-.cancelButton:hover { border-color: #ffa20c; color: #ffa20c; }
+.cancelButton:hover {
+  border-color: #ffa20c;
+  color: #ffa20c;
+}
 
 .success {
   background-color: #d4edda;
@@ -181,4 +197,167 @@
   border: 1px solid #c3e6cb;
   text-align: center;
   margin-bottom: 1rem;
+}
+
+/* Добавь в конец файла: */
+
+@media (max-width: 768px) {
+  .page {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .infoBlock {
+    margin-bottom: 1.25rem;
+  }
+
+  .infoLabel {
+    font-size: 0.8rem;
+  }
+
+  .infoValue {
+    font-size: 1rem;
+  }
+
+  .infoHint {
+    font-size: 0.75rem;
+  }
+
+  .roleBadge {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .divider {
+    margin: 1.25rem 0;
+  }
+
+  .label {
+    font-size: 0.85rem;
+  }
+
+  .input {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  .buttons {
+    gap: 0.75rem;
+  }
+
+  .saveButton,
+  .cancelButton {
+    font-size: 0.85rem;
+    padding: 0.65rem 1.5rem;
+  }
+
+  .backLink {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .success {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 1rem 0.5rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .infoBlock {
+    margin-bottom: 1rem;
+  }
+
+  .infoLabel {
+    font-size: 0.75rem;
+  }
+
+  .infoValue {
+    font-size: 0.95rem;
+  }
+
+  .infoHint {
+    font-size: 0.7rem;
+  }
+
+  .roleBadge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+  }
+
+  .divider {
+    margin: 1rem 0;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+
+  .input {
+    padding: 0.7rem 0.75rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .saveButton,
+  .cancelButton {
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+  }
+
+  .backLink {
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .backLink svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .success {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+    border-radius: 10px;
+  }
 }

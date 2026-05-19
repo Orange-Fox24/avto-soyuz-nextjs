@@ -203,3 +203,72 @@
 .mobileNavLink:hover {
   color: #ffa20c;
 }
+
+/* Добавь в конец файла: */
+
+@media (max-width: 768px) {
+  .headerInner {
+    height: 80px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .logoImage {
+    height: 50px;
+  }
+
+  .rightSection {
+    gap: 1.25rem;
+  }
+
+  .icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .burgerIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mobileNavLink {
+    font-size: 1rem;
+    padding: 0.6rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerInner {
+    height: 64px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .logoImage {
+    height: 40px;
+  }
+
+  .rightSection {
+    gap: 1rem;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .burgerIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .mobileMenuInner {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .mobileNavLink {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+  }
+}

@@ -50,20 +50,21 @@
 
 .table th {
   font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #6b7280;
   text-align: left;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 0.5rem;
   background-color: #f9fafb;
   border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
 }
 
 .table td {
   font-family: "Actay", Arial, Helvetica, sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #0f0f0f;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 0.5rem;
   border-bottom: 1px solid #f3f4f6;
   vertical-align: middle;
 }
@@ -202,4 +203,84 @@
 .emptyText {
   font-family: "Actay", Arial, Helvetica, sans-serif;
   color: #6b7280;
+}
+/* Выпадающее меню действий */
+.actionMenu {
+  position: relative;
+  display: inline-block;
+}
+
+.actionMenuButton {
+  font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #6b7280;
+  color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+.actionMenuButton:hover {
+  background-color: #4b5563;
+}
+
+.actionDropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  z-index: 50;
+  min-width: 180px;
+  padding: 0.5rem 0;
+  display: none;
+}
+
+.actionDropdown.open {
+  display: block;
+}
+
+.actionDropdownItem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.6rem 1rem;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: #0f0f0f;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.actionDropdownItem:hover {
+  background-color: #f9fafb;
+  color: #ffa20c;
+}
+
+.actionDropdownItem:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .table {
+    min-width: 900px;
+  }
+
+  .actionMenuButton {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .filterRow {
+    flex-direction: column;
+  }
 }

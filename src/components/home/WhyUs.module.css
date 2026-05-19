@@ -138,3 +138,59 @@
     min-height: 3rem;
   }
 }
+
+/* Добавь в конец файла: */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .title {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+
+  .iconWrapper {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 0.75rem;
+  }
+
+  .text {
+    font-size: 0.78rem;
+    max-width: 110px;
+    min-height: 2.4rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .title {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .grid {
+    gap: 1.25rem 0.75rem;
+  }
+
+  .iconWrapper {
+    width: 44px;
+    height: 44px;
+  }
+
+  .text {
+    font-size: 0.7rem;
+    max-width: 90px;
+    min-height: 2rem;
+  }
+}

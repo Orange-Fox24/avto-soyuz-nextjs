@@ -16,6 +16,11 @@ interface Order {
   isPaid?: boolean;
   createdAt: string;
   driverId?: string;
+  client?: {
+    name: string;
+    email: string;
+    phone: string;
+  };
 }
 
 const statusLabels: Record<string, string> = {
@@ -52,11 +57,23 @@ export default function AdminOrdersPage() {
   const [selectedDriver, setSelectedDriver] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const [editPrice, setEditPrice] = useState("");
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
 
   // Фильтры
   const [filterStatus, setFilterStatus] = useState("");
   const [filterDateFrom, setFilterDateFrom] = useState("");
   const [filterDateTo, setFilterDateTo] = useState("");
+
+  // Закрытие меню при клике вне
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest(`.${styles.actionMenu}`)) {
+        setOpenMenuId(null);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
 
   const fetchOrders = useCallback(async () => {
     try {
@@ -181,14 +198,14 @@ export default function AdminOrdersPage() {
   };
 
   const canEditPrice = (order: Order) => {
-  if (order.status === "CANCELLED") return false;
-  return !order.price || order.price === 0;
-};
+    if (order.status === "CANCELLED") return false;
+    return !order.price || order.price === 0;
+  };
 
-const canTogglePayment = (order: Order) => {
-  if (order.status === "CANCELLED") return false;
-  return !order.isPaid;
-};
+  const canTogglePayment = (order: Order) => {
+    if (order.status === "CANCELLED") return false;
+    return !order.isPaid;
+  };
 
   if (loading) return <div className={styles.page}><div className={styles.container}>Загрузка...</div></div>;
 
@@ -276,6 +293,7 @@ const canTogglePayment = (order: Order) => {
                   <th>Статус</th>
                   <th>Цена</th>
                   <th>Оплата</th>
+                  <th>Клиент</th>
                   <th>Дата</th>
                   <th>Действия</th>
                 </tr>
@@ -301,37 +319,63 @@ const canTogglePayment = (order: Order) => {
                         {order.isPaid ? "Оплачен" : "Не оплачен"}
                       </span>
                     </td>
+                    <td style={{ fontFamily: "Actay, Arial, sans-serif", fontSize: "0.85rem" }}>
+                      <div>{order.client?.name || order.client?.email || "—"}</div>
+                      {order.client?.phone && (
+                        <div style={{ color: "#6b7280", fontSize: "0.8rem" }}>{order.client.phone}</div>
+                      )}
+                    </td>
                     <td>{new Date(order.createdAt).toLocaleDateString("ru-RU")}</td>
                     <td>
-                      <div className={styles.actions}>
-                        {order.status === "NEW" && (
-                          <button className={`${styles.actionButton} ${styles.assignButton}`} onClick={() => handleAssign(order)}>
-                            Назначить
-                          </button>
-                        )}
-                        {canEditPrice(order) && (
-                          <button
-                            className={`${styles.actionButton}`}
-                            style={{ backgroundColor: "#22c55e" }}
-                            onClick={() => handleEditPrice(order)}
-                          >
-                            Цена
-                          </button>
-                        )}
-                        {canTogglePayment(order) && (
-                          <button
-                            className={`${styles.actionButton}`}
-                            style={{ backgroundColor: "#3b82f6" }}
-                            onClick={() => handleTogglePayment(order)}
-                          >
-                            Оплатить
-                          </button>
-                        )}
-                        {nextStatuses[order.status] && nextStatuses[order.status].length > 0 && (
-                          <button className={`${styles.actionButton} ${styles.statusButton}`} onClick={() => handleChangeStatus(order)}>
-                            Статус
-                          </button>
-                        )}
+                      <div className={styles.actionMenu}>
+                        <button
+                          className={styles.actionMenuButton}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setOpenMenuId(openMenuId === order.id ? null : order.id);
+                          }}
+                        >
+                          Действия ▾
+                        </button>
+                        <div className={`${styles.actionDropdown} ${openMenuId === order.id ? styles.open : ""}`}>
+                          {order.status === "NEW" && (
+                            <button
+                              className={styles.actionDropdownItem}
+                              onClick={() => { handleAssign(order); setOpenMenuId(null); }}
+                            >
+                              Назначить водителя
+                            </button>
+                          )}
+                          {canEditPrice(order) && (
+                            <button
+                              className={styles.actionDropdownItem}
+                              onClick={() => { handleEditPrice(order); setOpenMenuId(null); }}
+                            >
+                              Установить цену
+                            </button>
+                          )}
+                          {canTogglePayment(order) && (
+                            <button
+                              className={styles.actionDropdownItem}
+                              onClick={() => { handleTogglePayment(order); setOpenMenuId(null); }}
+                            >
+                              Подтвердить оплату
+                            </button>
+                          )}
+                          {nextStatuses[order.status] && nextStatuses[order.status].length > 0 && (
+                            <button
+                              className={styles.actionDropdownItem}
+                              onClick={() => { handleChangeStatus(order); setOpenMenuId(null); }}
+                            >
+                              Сменить статус
+                            </button>
+                          )}
+                          {!canEditPrice(order) && order.status !== "NEW" && !canTogglePayment(order) && !(nextStatuses[order.status]?.length > 0) && (
+                            <span className={styles.actionDropdownItem} style={{ color: "#9ca3af", cursor: "default" }}>
+                              Нет действий
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </td>
                   </tr>

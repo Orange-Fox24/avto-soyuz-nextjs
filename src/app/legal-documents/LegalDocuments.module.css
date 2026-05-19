@@ -10,7 +10,8 @@
 }
 
 .title {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #0f0f0f;
@@ -41,7 +42,8 @@
 }
 
 .sectionTitle {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   color: #0f0f0f;
@@ -115,4 +117,113 @@
   color: #9ca3af;
   margin-top: 2rem;
   text-align: center;
+}
+
+/* Добавь в конец файла: */
+
+@media (max-width: 768px) {
+  .page {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section {
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.1rem;
+    padding-left: 1rem;
+  }
+
+  .sectionTitle::before {
+    height: 16px;
+    width: 3px;
+  }
+
+  .sectionText {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .listItem {
+    font-size: 0.85rem;
+    padding-left: 1.25rem;
+  }
+
+  .listItem::before {
+    left: 0.15rem;
+  }
+
+  .updated {
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 1rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .section {
+    padding: 1.25rem;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1rem;
+    padding-left: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sectionTitle::before {
+    height: 14px;
+    width: 3px;
+  }
+
+  .sectionText {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .listItem {
+    font-size: 0.8rem;
+    padding-left: 1rem;
+    padding: 0.25rem 0 0.25rem 1rem;
+  }
+
+  .listItem::before {
+    left: 0.1rem;
+    font-size: 0.9rem;
+  }
+
+  .link {
+    font-size: 0.85rem;
+  }
+
+  .updated {
+    font-size: 0.75rem;
+    margin-top: 1.25rem;
+  }
 }

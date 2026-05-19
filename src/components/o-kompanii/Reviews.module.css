@@ -122,3 +122,86 @@
   width: 24px;
   border-radius: 4px;
 }
+
+/* Добавь в конец файла: */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .reviewCard {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .reviewText {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .reviewAuthor {
+    font-size: 0.9rem;
+  }
+
+  .reviewPosition {
+    font-size: 0.8rem;
+  }
+
+  .logoWrapper {
+    width: 80px;
+    height: 40px;
+  }
+
+  .dots {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 0;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .reviewCard {
+    padding: 1.25rem;
+    border-radius: 8px;
+  }
+
+  .reviewText {
+    font-size: 0.85rem;
+  }
+
+  .reviewFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .reviewAuthor {
+    font-size: 0.85rem;
+  }
+
+  .reviewPosition {
+    font-size: 0.75rem;
+  }
+
+  .logoWrapper {
+    width: 70px;
+    height: 35px;
+  }
+}

@@ -127,3 +127,106 @@
 .specialistContacts {
   margin-left: 0.5rem;
 }
+
+/* Добавь в конец файла: */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
+
+  .infoGrid {
+    gap: 1.5rem;
+  }
+
+  .infoCard {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .contactItem {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .specialistName {
+    font-size: 1rem;
+  }
+
+  .specialistRole {
+    font-size: 0.85rem;
+  }
+
+  .specialistItem {
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 0;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .infoGrid {
+    gap: 1rem;
+  }
+
+  .infoCard {
+    padding: 1.25rem;
+    border-radius: 8px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .contactItem {
+    font-size: 0.85rem;
+  }
+
+  .contactLabel {
+    font-size: 0.85rem;
+  }
+
+  .specialistName {
+    font-size: 0.95rem;
+  }
+
+  .specialistRole {
+    font-size: 0.8rem;
+  }
+
+  .specialistContacts {
+    margin-left: 0.25rem;
+  }
+}
