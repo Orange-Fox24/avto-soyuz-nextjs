@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
+import AddressInput from "@/components/ui/AddressInput";
 import styles from "./ContactForm.module.css";
 
 export default function ContactForm() {
@@ -65,7 +65,6 @@ export default function ContactForm() {
           {error && <div className={styles.errorMessage}>{error}</div>}
 
           <form onSubmit={handleSubmit} className={styles.form}>
-            {/* Первая строка - Имя и Компания */}
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label className={styles.label}>
@@ -96,58 +95,30 @@ export default function ContactForm() {
               </div>
             </div>
 
-            {/* Вторая строка - Город отправки и Город доставки */}
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label className={styles.label}>
                   Город отправки <span className={styles.required}>*</span>
                 </label>
-                <div className={styles.inputWrapper}>
-                  <div className={styles.iconInput}>
-                    <Image
-                      src="/icons/location-marker.svg"
-                      alt="location"
-                      width={20}
-                      height={20}
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    name="fromCity"
-                    value={formData.fromCity}
-                    onChange={handleChange}
-                    placeholder="Укажите город отправки"
-                    required
-                    className={`${styles.input} ${styles.inputWithIcon}`}
-                    disabled={isSubmitting}
-                  />
-                </div>
+                <AddressInput
+                  value={formData.fromCity}
+                  onChange={(val) => setFormData({ ...formData, fromCity: val })}
+                  placeholder="Начните вводить город отправки"
+                  required
+                  disabled={isSubmitting}
+                />
               </div>
               <div className={styles.formGroup}>
                 <label className={styles.label}>Город доставки</label>
-                <div className={styles.inputWrapper}>
-                  <div className={styles.iconInput}>
-                    <Image
-                      src="/icons/location-marker.svg"
-                      alt="location"
-                      width={20}
-                      height={20}
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    name="toCity"
-                    value={formData.toCity}
-                    onChange={handleChange}
-                    placeholder="Укажите город доставки"
-                    className={`${styles.input} ${styles.inputWithIcon}`}
-                    disabled={isSubmitting}
-                  />
-                </div>
+                <AddressInput
+                  value={formData.toCity}
+                  onChange={(val) => setFormData({ ...formData, toCity: val })}
+                  placeholder="Начните вводить город назначения"
+                  disabled={isSubmitting}
+                />
               </div>
             </div>
 
-            {/* Третья строка - Телефон и Email */}
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label className={styles.label}>Телефон</label>
@@ -175,7 +146,6 @@ export default function ContactForm() {
               </div>
             </div>
 
-            {/* Большое поле для сообщения */}
             <div className={styles.formGroup}>
               <label className={styles.label}>
                 Сообщение <span className={styles.required}>*</span>
@@ -192,7 +162,6 @@ export default function ContactForm() {
               />
             </div>
 
-            {/* Нижняя часть с соглашением и кнопкой */}
             <div className={styles.formFooter}>
               <p className={styles.agreement}>
                 Нажимая кнопку «Отправить» Вы даете согласие на обработку Ваших

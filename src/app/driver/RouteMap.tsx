@@ -55,7 +55,6 @@ export default function RouteMap({ fromCity, toCity }: Props) {
         setFromCoord(from);
         setToCoord(to);
 
-        // OSRM — маршрут по дорогам
         const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${from[1]},${from[0]};${to[1]},${to[0]}?overview=full&geometries=geojson`;
         const osrmRes = await fetch(osrmUrl);
         const osrmData = await osrmRes.json();
@@ -70,7 +69,6 @@ export default function RouteMap({ fromCity, toCity }: Props) {
           const hours = (osrmData.routes[0].duration / 3600).toFixed(1);
           setDistance(`${km} км, ~${hours} ч`);
         } else {
-          // Fallback: прямая линия
           setRoute([from, to]);
           setDistance("~");
         }
@@ -124,13 +122,21 @@ export default function RouteMap({ fromCity, toCity }: Props) {
         </div>
       )}
       <div style={{ height: "350px", borderRadius: "12px", overflow: "hidden" }}>
-        <MapContainer center={center} zoom={5} style={{ height: "100%", width: "100%" }}>
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <MapContainer
+          center={center}
+          zoom={5}
+          style={{ height: "100%", width: "100%" }}
+          attributionControl={false}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://leafletjs.com">Leaflet</a>'
+          />
           <Marker position={fromCoord} icon={startIcon}>
-            <Popup>🟢 {fromCity} — отправка</Popup>
+            <Popup>{fromCity} — отправка</Popup>
           </Marker>
           <Marker position={toCoord} icon={endIcon}>
-            <Popup>🔴 {toCity} — доставка</Popup>
+            <Popup>{toCity} — доставка</Popup>
           </Marker>
           <Polyline
             positions={route}
