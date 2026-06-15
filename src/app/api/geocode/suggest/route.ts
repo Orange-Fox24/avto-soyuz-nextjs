@@ -1,42 +1,41 @@
 // src/app/api/geocode/suggest/route.ts
 import { NextResponse } from "next/server";
 
-const cities = [
-  "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань",
-  "Нижний Новгород", "Челябинск", "Красноярск", "Самара", "Уфа",
-  "Ростов-на-Дону", "Омск", "Краснодар", "Воронеж", "Волгоград",
-  "Пермь", "Владивосток", "Иркутск", "Хабаровск", "Тюмень",
-  "Сочи", "Калининград", "Барнаул", "Новокузнецк", "Кемерово",
-  "Томск", "Абакан", "Чита", "Якутск", "Сургут",
-  "Архангельск", "Мурманск", "Петрозаводск", "Смоленск", "Тула",
-  "Рязань", "Ярославль", "Ижевск", "Ульяновск", "Саратов",
-  "Оренбург", "Пенза", "Махачкала", "Ставрополь", "Белгород",
-  "Брянск", "Тверь", "Владимир", "Кострома", "Йошкар-Ола",
-  "Саранск", "Чебоксары", "Тамбов", "Липецк", "Курск",
-  "Орёл", "Псков", "Великий Новгород", "Вологда", "Сыктывкар",
-  "Киров", "Магнитогорск", "Нижний Тагил", "Набережные Челны", "Тольятти",
-  "Астрахань", "Грозный", "Владикавказ", "Нальчик", "Черкесск",
-  "Майкоп", "Элиста", "Горно-Алтайск", "Кызыл", "Улан-Удэ",
-  "Благовещенск", "Южно-Сахалинск", "Петропавловск-Камчатский", "Магадан",
-  "Биробиджан", "Анадырь", "Салехард", "Ханты-Мансийск", "Норильск",
-  "Ачинск", "Канск", "Минусинск", "Лесосибирск", "Назарово",
-  "Шарыпово", "Дивногорск", "Сосновоборск", "Железногорск", "Зеленогорск",
-  "Красноярский край",
-  "Астана", "Алматы", "Шымкент", "Караганда", "Актобе",
-  "Минск", "Гомель", "Брест", "Витебск", "Гродно",
-];
-
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const query = searchParams.get("q")?.toLowerCase().trim() || "";
+  const query = searchParams.get("q")?.trim() || "";
 
   if (query.length < 2) {
     return NextResponse.json({ suggestions: [] });
   }
 
-  const suggestions = cities
-    .filter((city) => city.toLowerCase().includes(query))
-    .slice(0, 8);
+  try {
+    const res = await fetch("https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "Token 939374d9d002040d34fd079dcc6191f993a6e449",
+      },
+      body: JSON.stringify({
+        query,
+        from_bound: { value: "city" },
+        to_bound: { value: "city" },
+        locations: [{ country: "*" }],
+        count: 8,
+      }),
+    });
 
-  return NextResponse.json({ suggestions });
+    const data = await res.json();
+    const suggestions = data.suggestions.map((s: any) => s.value);
+    return NextResponse.json({ suggestions });
+  } catch (error) {
+    const cities = [
+      "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань",
+      "Красноярск", "Иркутск", "Владивосток", "Сочи", "Калининград",
+      "Краснодар", "Омск", "Челябинск", "Уфа", "Самара",
+    ];
+    const suggestions = cities.filter((c) => c.toLowerCase().includes(query.toLowerCase())).slice(0, 8);
+    return NextResponse.json({ suggestions });
+  }
 }

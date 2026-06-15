@@ -19,9 +19,7 @@
 }
 
 @media (min-width: 768px) {
-  .card {
-    padding: 2.5rem;
-  }
+  .card { padding: 2.5rem; }
 }
 
 .title {
@@ -54,9 +52,7 @@
 }
 
 @media (min-width: 640px) {
-  .formRow {
-    grid-template-columns: 1fr 1fr;
-  }
+  .formRow { grid-template-columns: 1fr 1fr; }
 }
 
 .formGroup {
@@ -102,6 +98,93 @@
   box-shadow: 0 0 0 3px rgba(255, 162, 12, 0.1);
 }
 
+/* Блок доп. услуг */
+.servicesBlock {
+  background-color: rgba(255, 162, 12, 0.04);
+  border: 1px solid rgba(255, 162, 12, 0.15);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.servicesTitle {
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  margin: 0;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: #4b5563;
+  transition: color 0.2s;
+}
+
+.checkboxLabel:hover {
+  color: #ffa20c;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #ffa20c;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.urgencyRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.urgencyLabel {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: #0f0f0f;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: #4b5563;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.radioLabel:hover {
+  border-color: #ffa20c;
+  color: #ffa20c;
+}
+
+.radioLabelActive {
+  border-color: #ffa20c;
+  background-color: rgba(255, 162, 12, 0.08);
+  color: #ffa20c;
+  font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.radio {
+  accent-color: #ffa20c;
+  cursor: pointer;
+}
+
 .calculateButton {
   background-color: #ffa20c;
   color: #ffffff;
@@ -117,25 +200,52 @@
   margin-top: 0.5rem;
 }
 
-.calculateButton:hover {
-  background-color: #e69100;
-}
+.calculateButton:hover { background-color: #e69100; }
+.calculateButton:disabled { opacity: 0.6; cursor: not-allowed; }
 
 /* Результат */
 .result {
   margin-top: 2rem;
-  text-align: center;
   padding: 1.5rem;
-  background-color: rgba(255, 162, 12, 0.05);
+  background-color: rgba(255, 162, 12, 0.04);
   border: 1px solid rgba(255, 162, 12, 0.2);
   border-radius: 16px;
 }
 
 .resultLabel {
-  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 0.9rem;
+  font-weight: 600;
   color: #6b7280;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.breakdown {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: #4b5563;
+  text-align: left;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.breakdownLine {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+}
+
+.breakdownLineTotal {
+  font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: #ffa20c;
+  font-size: 1.05rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 162, 12, 0.2);
+  margin-top: 0.5rem;
+}
+
+.breakdownLineNote {
+  color: #9ca3af;
+  font-size: 0.8rem;
 }
 
 .resultPrice {
@@ -143,6 +253,15 @@
   font-weight: 700;
   font-size: 2.5rem;
   color: #ffa20c;
+  text-align: center;
+}
+
+.resultDetails {
+  font-family: "Actay", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 
 .resultDisclaimer {
@@ -151,113 +270,33 @@
   color: #9ca3af;
   margin-top: 0.75rem;
   line-height: 1.4;
-}
-
-.resultDetails {
-  font-family: "Actay", Arial, Helvetica, sans-serif;
-  font-size: 0.85rem;
-  color: #6b7280;
-  margin-top: 1rem;
+  text-align: center;
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
-  .page {
-    padding: 1.5rem 0.75rem;
-  }
-
-  .card {
-    padding: 1.5rem;
-    border-radius: 20px;
-  }
-
-  .title {
-    font-size: 1.5rem;
-  }
-
-  .subtitle {
-    font-size: 0.85rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .form {
-    gap: 1rem;
-  }
-
-  .input,
-  .select {
-    padding: 0.75rem 0.85rem;
-    font-size: 0.9rem;
-  }
-
-  .calculateButton {
-    font-size: 0.95rem;
-    padding: 0.75rem 2rem;
-  }
-
-  .resultPrice {
-    font-size: 2rem;
-  }
-
-  .result {
-    padding: 1.25rem;
-  }
+  .page { padding: 1.5rem 0.75rem; }
+  .card { padding: 1.5rem; border-radius: 20px; }
+  .title { font-size: 1.5rem; }
+  .subtitle { font-size: 0.85rem; margin-bottom: 1.5rem; }
+  .form { gap: 1rem; }
+  .input, .select { padding: 0.75rem 0.85rem; font-size: 0.9rem; }
+  .calculateButton { font-size: 0.95rem; padding: 0.75rem 2rem; }
+  .resultPrice { font-size: 2rem; }
+  .result { padding: 1.25rem; }
 }
 
 @media (max-width: 480px) {
-  .page {
-    padding: 1rem 0.5rem;
-  }
-
-  .card {
-    padding: 1.25rem;
-    border-radius: 16px;
-  }
-
-  .title {
-    font-size: 1.3rem;
-  }
-
-  .subtitle {
-    font-size: 0.8rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .form {
-    gap: 0.85rem;
-  }
-
-  .formRow {
-    gap: 0.85rem;
-  }
-
-  .label {
-    font-size: 0.8rem;
-  }
-
-  .input,
-  .select {
-    padding: 0.7rem 0.75rem;
-    font-size: 0.85rem;
-    border-radius: 10px;
-  }
-
-  .calculateButton {
-    font-size: 0.9rem;
-    padding: 0.7rem 1.5rem;
-    border-radius: 10px;
-  }
-
-  .resultPrice {
-    font-size: 1.75rem;
-  }
-
-  .result {
-    padding: 1rem;
-    border-radius: 12px;
-  }
-
-  .resultDisclaimer {
-    font-size: 0.75rem;
-  }
+  .page { padding: 1rem 0.5rem; }
+  .card { padding: 1.25rem; border-radius: 16px; }
+  .title { font-size: 1.3rem; }
+  .subtitle { font-size: 0.8rem; margin-bottom: 1.25rem; }
+  .form { gap: 0.85rem; }
+  .formRow { gap: 0.85rem; }
+  .label { font-size: 0.8rem; }
+  .input, .select { padding: 0.7rem 0.75rem; font-size: 0.85rem; border-radius: 10px; }
+  .calculateButton { font-size: 0.9rem; padding: 0.7rem 1.5rem; border-radius: 10px; }
+  .resultPrice { font-size: 1.75rem; }
+  .result { padding: 1rem; border-radius: 12px; }
+  .servicesBlock { padding: 1rem; }
 }
