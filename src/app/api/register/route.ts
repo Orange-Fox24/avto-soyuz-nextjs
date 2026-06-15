@@ -23,9 +23,22 @@ export async function POST(request: Request) {
       );
     }
 
-    if (password.length < 6) {
+    if (password.length < 8) {
       return NextResponse.json(
-        { error: "Пароль должен быть минимум 6 символов" },
+        { error: "Пароль должен быть минимум 8 символов" },
+        { status: 400 }
+      );
+    }
+
+    const hasUpper = /[A-ZА-Я]/.test(password);
+    const hasLower = /[a-zа-я]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+
+    const passedChecks = [hasUpper, hasLower, hasNumber, hasSpecial].filter(Boolean).length;
+    if (passedChecks < 2) {
+      return NextResponse.json(
+        { error: "Пароль должен содержать минимум 2 из: заглавная буква, строчная буква, цифра, спецсимвол" },
         { status: 400 }
       );
     }

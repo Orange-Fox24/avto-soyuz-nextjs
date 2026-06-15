@@ -4,6 +4,7 @@
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import PasswordInput from "@/components/ui/PasswordInput";
 import styles from "../forgot-password/ForgotPassword.module.css";
 
 function ResetPasswordForm() {
@@ -73,20 +74,14 @@ function ResetPasswordForm() {
 
         {!message || message.type === "error" ? (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.formGroup}>
-              <label className={styles.label} htmlFor="password">Новый пароль</label>
-              <input
-                id="password"
-                type="password"
-                className={styles.input}
-                placeholder="Минимум 6 символов"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                minLength={6}
-                disabled={loading}
-              />
-            </div>
+            <PasswordInput
+              value={password}
+              onChange={setPassword}
+              placeholder="Минимум 8 символов"
+              required
+              disabled={loading}
+              showValidation={true}
+            />
 
             <button type="submit" className={styles.submitButton} disabled={loading}>
               {loading ? "Сохранение..." : "Сохранить пароль"}

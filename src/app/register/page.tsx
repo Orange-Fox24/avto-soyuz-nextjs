@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import PhoneInput from "@/components/ui/PhoneInput";
+import PasswordInput from "@/components/ui/PasswordInput";
 import styles from "../login/Login.module.css";
 
 export default function RegisterPage() {
@@ -90,20 +91,14 @@ export default function RegisterPage() {
             />
           </div>
 
-          <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="password">Пароль</label>
-            <input
-              id="password"
-              type="password"
-              className={styles.input}
-              placeholder="Минимум 6 символов"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength={6}
-              disabled={loading}
-            />
-          </div>
+          <PasswordInput
+            value={password}
+            onChange={setPassword}
+            placeholder="Минимум 8 символов"
+            required
+            disabled={loading}
+            showValidation={true}
+          />
 
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor="role">Роль</label>
