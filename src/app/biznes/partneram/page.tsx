@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
+import PhoneInput from "@/components/ui/PhoneInput";
 import styles from "./Partneram.module.css";
 
 export default function PartneramPage() {
@@ -195,14 +196,11 @@ export default function PartneramPage() {
                     <label className={styles.label}>
                       Телефон <span className={styles.required}>*</span>
                     </label>
-                    <input
-                      type="tel"
-                      name="phone"
+                    <PhoneInput
                       value={formData.phone}
-                      onChange={handleChange}
+                      onChange={(val) => setFormData({ ...formData, phone: val })}
                       placeholder="+7 (___) ___-__-__"
                       required
-                      className={styles.input}
                       disabled={isSubmitting}
                     />
                   </div>
