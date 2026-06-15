@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
+import PhoneInput from "@/components/ui/PhoneInput";
 import styles from "./Form.module.css";
 
 export default function Form() {
@@ -48,7 +49,6 @@ export default function Form() {
   return (
     <section className={styles.contactForm}>
       <div className={styles.container}>
-        {/* Вся форма внутри карточки */}
         <div className={styles.formCard}>
           <h2 className={styles.title}>Форма обратной связи</h2>
           <p className={styles.subtitle}>
@@ -65,7 +65,6 @@ export default function Form() {
           {error && <div className={styles.errorMessage}>{error}</div>}
 
           <form onSubmit={handleSubmit} className={styles.form}>
-            {/* Первая строка - Имя и Компания */}
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label className={styles.label}>
@@ -96,20 +95,13 @@ export default function Form() {
               </div>
             </div>
 
-            {/* Вторая строка - Телефон и Email */}
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
-                <label className={styles.label}>
-                  Телефон <span className={styles.required}>*</span>
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
+                <label className={styles.label}>Телефон</label>
+                <PhoneInput
                   value={formData.phone}
-                  onChange={handleChange}
+                  onChange={(val) => setFormData({ ...formData, phone: val })}
                   placeholder="+7 (___) ___-__-__"
-                  required
-                  className={styles.input}
                   disabled={isSubmitting}
                 />
               </div>
@@ -127,7 +119,6 @@ export default function Form() {
               </div>
             </div>
 
-            {/* Третья строка - Тема обращения */}
             <div className={styles.formGroup}>
               <label className={styles.label}>
                 Тема обращения <span className={styles.required}>*</span>
@@ -144,7 +135,6 @@ export default function Form() {
               />
             </div>
 
-            {/* Большое поле для сообщения */}
             <div className={styles.formGroup}>
               <label className={styles.label}>
                 Сообщение <span className={styles.required}>*</span>
@@ -161,7 +151,6 @@ export default function Form() {
               />
             </div>
 
-            {/* Нижняя часть с соглашением и кнопкой */}
             <div className={styles.formFooter}>
               <p className={styles.agreement}>
                 Нажимая кнопку «Отправить» Вы даете согласие на обработку Ваших

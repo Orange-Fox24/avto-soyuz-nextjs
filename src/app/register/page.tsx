@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import PhoneInput from "@/components/ui/PhoneInput";
 import styles from "../login/Login.module.css";
 
 export default function RegisterPage() {
@@ -11,6 +12,7 @@ export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
   const [role, setRole] = useState("CLIENT");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,7 +26,7 @@ export default function RegisterPage() {
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password, role }),
+        body: JSON.stringify({ name, email, password, phone, role }),
       });
 
       const data = await res.json();
@@ -51,9 +53,7 @@ export default function RegisterPage() {
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="name">
-              Имя
-            </label>
+            <label className={styles.label} htmlFor="name">Имя</label>
             <input
               id="name"
               type="text"
@@ -67,9 +67,7 @@ export default function RegisterPage() {
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="email">
-              Email
-            </label>
+            <label className={styles.label} htmlFor="email">Email</label>
             <input
               id="email"
               type="email"
@@ -83,9 +81,17 @@ export default function RegisterPage() {
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="password">
-              Пароль
-            </label>
+            <PhoneInput
+              value={phone}
+              onChange={setPhone}
+              placeholder="+7 (___) ___-__-__"
+              label="Телефон"
+              disabled={loading}
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label className={styles.label} htmlFor="password">Пароль</label>
             <input
               id="password"
               type="password"
@@ -100,9 +106,7 @@ export default function RegisterPage() {
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="role">
-              Роль
-            </label>
+            <label className={styles.label} htmlFor="role">Роль</label>
             <select
               id="role"
               className={styles.input}

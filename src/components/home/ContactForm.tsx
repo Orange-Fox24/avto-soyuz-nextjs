@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import AddressInput from "@/components/ui/AddressInput";
+import PhoneInput from "@/components/ui/PhoneInput";
 import styles from "./ContactForm.module.css";
 
 export default function ContactForm() {
@@ -122,13 +123,10 @@ export default function ContactForm() {
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label className={styles.label}>Телефон</label>
-                <input
-                  type="tel"
-                  name="phone"
+                <PhoneInput
                   value={formData.phone}
-                  onChange={handleChange}
+                  onChange={(val) => setFormData({ ...formData, phone: val })}
                   placeholder="+7 (___) ___-__-__"
-                  className={styles.input}
                   disabled={isSubmitting}
                 />
               </div>

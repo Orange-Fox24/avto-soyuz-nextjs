@@ -6,9 +6,8 @@ import { prisma } from "@/lib/prisma";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, password, role } = body;
+    const { name, email, password, phone, role } = body;
 
-    // Проверка обязательных полей
     if (!name || !email || !password) {
       return NextResponse.json(
         { error: "Все поля обязательны: имя, email, пароль" },
@@ -16,7 +15,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Проверка email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json(
@@ -25,7 +23,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Проверка длины пароля
     if (password.length < 6) {
       return NextResponse.json(
         { error: "Пароль должен быть минимум 6 символов" },
@@ -33,7 +30,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Проверяем, существует ли пользователь
     const existingUser = await prisma.user.findUnique({
       where: { email },
     });
@@ -45,20 +41,18 @@ export async function POST(request: Request) {
       );
     }
 
-    // Хешируем пароль (12 раундов соли)
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    // Создаём пользователя
     const user = await prisma.user.create({
       data: {
         name,
         email,
+        phone: phone || "",
         password: hashedPassword,
-        role: role || "CLIENT", // По умолчанию CLIENT
+        role: role || "CLIENT",
       },
     });
 
-    // Возвращаем успех (без пароля!)
     return NextResponse.json(
       {
         message: "Регистрация успешна! Теперь вы можете войти.",
@@ -66,6 +60,7 @@ export async function POST(request: Request) {
           id: user.id,
           name: user.name,
           email: user.email,
+          phone: user.phone,
           role: user.role,
         },
       },
