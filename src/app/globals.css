@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Подключение шрифтов с жирным начертанием */
 @font-face {
   font-family: "Actay";
   src: url("/fonts/Actay.woff2") format("woff2");
@@ -62,6 +61,20 @@ body {
   font-weight: 400;
 }
 
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input, textarea, select {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
 .font-accent {
   font-family: "Wadik", Arial, Helvetica, sans-serif;
 }
@@ -81,7 +94,6 @@ body {
   font-weight: 700;
 }
 
-/* Адаптивность */
 @media (max-width: 1024px) {
   .table th,
   .table td {
@@ -191,107 +203,91 @@ body {
     padding: 1rem;
     border-radius: 16px;
   }
+}
 
-  /* Добавь в конец файла перед закрывающей скобкой последнего media: */
-
-  /* Дополнительная адаптивность для самых маленьких экранов */
-  @media (max-width: 360px) {
-    body {
-      font-size: 14px;
-    }
-
-    .title {
-      font-size: 1rem;
-    }
-
-    .subtitle {
-      font-size: 0.75rem;
-    }
-
-    .page {
-      padding: 0.75rem 0.4rem;
-    }
-
-    .container {
-      padding: 0.5rem 0.4rem;
-    }
-
-    .card {
-      padding: 0.75rem;
-      border-radius: 12px;
-    }
-
-    .table th,
-    .table td {
-      padding: 0.3rem 0.3rem;
-      font-size: 0.65rem;
-    }
-
-    .saveButton,
-    .cancelButton,
-    .actionButton,
-    .submitButton {
-      padding: 0.4rem 0.75rem;
-      font-size: 0.7rem;
-      border-radius: 8px;
-    }
-
-    .modal {
-      padding: 0.75rem;
-      border-radius: 12px;
-    }
-
-    .backLink {
-      font-size: 0.7rem;
-    }
-
-    .backLink svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    .cardIcon {
-      width: 32px;
-      height: 32px;
-    }
-
-    .cardIcon svg {
-      width: 16px;
-      height: 16px;
-    }
+@media (max-width: 360px) {
+  body {
+    font-size: 14px;
   }
 
-  /* Плавные переходы для всех интерактивных элементов */
-  button,
-  a,
-  input,
-  select,
-  textarea {
-    transition: all 0.2s ease;
+  .title {
+    font-size: 1rem;
   }
 
-  /* Улучшение для сенсорных экранов */
-  @media (hover: none) and (pointer: coarse) {
-    button,
-    .card,
-    a {
-      min-height: 44px;
-      min-width: 44px;
-    }
-
-    input,
-    select,
-    textarea {
-      font-size: 16px; /* Предотвращает масштабирование на iOS */
-    }
+  .subtitle {
+    font-size: 0.75rem;
   }
 
-  /* Улучшение читаемости на мобильных */
-  @media (max-width: 768px) {
-    p,
-    span,
-    div {
-      line-height: 1.5;
-    }
+  .page {
+    padding: 0.75rem 0.4rem;
+  }
+
+  .container {
+    padding: 0.5rem 0.4rem;
+  }
+
+  .card {
+    padding: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.3rem 0.3rem;
+    font-size: 0.65rem;
+  }
+
+  .saveButton,
+  .cancelButton,
+  .actionButton,
+  .submitButton {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.7rem;
+    border-radius: 8px;
+  }
+
+  .modal {
+    padding: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .backLink {
+    font-size: 0.7rem;
+  }
+
+  .backLink svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .cardIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .cardIcon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+button, a, input, select, textarea {
+  transition: all 0.2s ease;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  button, .card, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  p, span, div {
+    line-height: 1.5;
   }
 }
