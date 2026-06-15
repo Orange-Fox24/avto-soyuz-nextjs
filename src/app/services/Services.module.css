@@ -24,7 +24,6 @@
   }
 }
 
-/* Сетка для плашек */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -43,7 +42,6 @@
   }
 }
 
-/* Плашка - все одинакового размера */
 .card {
   background-color: #f4f4f4;
   border-radius: 24px;
@@ -55,7 +53,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: 300px; /* Уменьшил с 360px до 300px */
+  height: 300px;
   position: relative;
   grid-column: span 1;
   overflow: hidden;
@@ -111,7 +109,6 @@
   }
 }
 
-/* Контейнер для иконки - размер не меняем */
 .cardIcon {
   position: absolute;
   bottom: 1.5rem;
@@ -137,10 +134,9 @@
   opacity: 0.85;
 }
 
-/* Для мобильных устройств */
 @media (max-width: 640px) {
   .card {
-    height: 260px; /* Уменьшил с 320px до 260px */
+    height: 260px;
     padding: 1.5rem;
   }
 
@@ -161,10 +157,9 @@
   }
 }
 
-/* Для планшетов */
 @media (min-width: 641px) and (max-width: 1023px) {
   .card {
-    height: 280px; /* Уменьшил с 340px до 280px */
+    height: 280px;
   }
 
   .cardIcon {
@@ -177,10 +172,9 @@
   }
 }
 
-/* Для очень больших экранов */
 @media (min-width: 1440px) {
   .card {
-    height: 320px; /* Уменьшил с 380px до 320px */
+    height: 320px;
   }
 
   .cardIcon {
@@ -192,7 +186,6 @@
     padding-right: 160px;
   }
 }
-/* Добавь в конец файла: */
 
 @media (max-width: 480px) {
   .container {

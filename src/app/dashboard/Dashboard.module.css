@@ -58,7 +58,6 @@
   background-color: #dc2626;
 }
 
-/* Карточки */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -171,8 +170,6 @@
 .primaryButton:hover {
   background-color: #e69100;
 }
-
-/* Добавь в конец файла (замени существующий @media (max-width: 768px)): */
 
 @media (max-width: 768px) {
   .page {

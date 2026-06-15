@@ -20,7 +20,7 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: "Имя обязательно" }, { status: 400 });
     }
 
-    // Обновляем только имя и телефон (email менять нельзя)
+   
     const updatedUser = await prisma.user.update({
       where: { id: userId },
       data: { name, phone },

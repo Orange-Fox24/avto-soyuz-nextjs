@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     await prisma.order.update({
       where: { id: orderId },
       data: {
-        comment: `⚠ ПРОБЛЕМА: ${problem} (${new Date().toLocaleString("ru-RU")})`,
+        comment: `ПРОБЛЕМА: ${problem} (${new Date().toLocaleString("ru-RU")})`,
       },
     });
 

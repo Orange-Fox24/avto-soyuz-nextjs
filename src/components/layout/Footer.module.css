@@ -2,7 +2,6 @@
   margin-top: auto;
 }
 
-/* Основной подвал (темно-серый) */
 .mainFooter {
   background-color: #292929;
   color: white;
@@ -28,7 +27,6 @@
   }
 }
 
-/* Первая ячейка - контакты */
 .contactsCell {
   margin-bottom: 2rem;
 }
@@ -72,7 +70,6 @@
   text-decoration: none;
 }
 
-/* Вторая ячейка - основные колонки */
 .mainColumnsCell {
   margin-bottom: 2rem;
 }
@@ -92,7 +89,7 @@
 
 @media (min-width: 1024px) {
   .mainColumnsGrid {
-    grid-template-columns: repeat(5, 1fr); /* Изменил с 6 на 5 колонок */
+    grid-template-columns: repeat(5, 1fr);
     gap: 2.5rem;
   }
 }
@@ -140,12 +137,10 @@
   text-decoration: none;
 }
 
-/* Складные услуги под дополнительными */
 .subColumn {
   margin-top: 0.8rem;
 }
 
-/* Третья ячейка - колонки с документацией */
 .secondaryColumnsCell {
   margin-bottom: 1.5rem;
 }
@@ -165,12 +160,11 @@
 
 @media (min-width: 1024px) {
   .secondaryColumnsGrid {
-    grid-template-columns: repeat(5, 1fr); /* Изменил с 6 на 5 колонок */
+    grid-template-columns: repeat(5, 1fr);
     gap: 2.5rem;
   }
 }
 
-/* Нижний подвал (черный) */
 .bottomFooter {
   background-color: #0f0f0f;
   color: white;
@@ -264,8 +258,6 @@
   max-width: 800px;
   text-align: left;
 }
-
-/* Добавь в конец файла: */
 
 @media (max-width: 768px) {
   .container {

@@ -19,11 +19,14 @@
 }
 
 @media (min-width: 768px) {
-  .card { padding: 2.5rem; }
+  .card {
+    padding: 2.5rem;
+  }
 }
 
 .title {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.75rem;
   font-weight: 700;
   color: #0f0f0f;
@@ -52,7 +55,9 @@
 }
 
 @media (min-width: 640px) {
-  .formRow { grid-template-columns: 1fr 1fr; }
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .formGroup {
@@ -98,7 +103,6 @@
   box-shadow: 0 0 0 3px rgba(255, 162, 12, 0.1);
 }
 
-/* Блок доп. услуг */
 .servicesBlock {
   background-color: rgba(255, 162, 12, 0.04);
   border: 1px solid rgba(255, 162, 12, 0.15);
@@ -110,7 +114,8 @@
 }
 
 .servicesTitle {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   color: #0f0f0f;
@@ -200,10 +205,14 @@
   margin-top: 0.5rem;
 }
 
-.calculateButton:hover { background-color: #e69100; }
-.calculateButton:disabled { opacity: 0.6; cursor: not-allowed; }
+.calculateButton:hover {
+  background-color: #e69100;
+}
+.calculateButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
-/* Результат */
 .result {
   margin-top: 2rem;
   padding: 1.5rem;
@@ -273,30 +282,84 @@
   text-align: center;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
-  .page { padding: 1.5rem 0.75rem; }
-  .card { padding: 1.5rem; border-radius: 20px; }
-  .title { font-size: 1.5rem; }
-  .subtitle { font-size: 0.85rem; margin-bottom: 1.5rem; }
-  .form { gap: 1rem; }
-  .input, .select { padding: 0.75rem 0.85rem; font-size: 0.9rem; }
-  .calculateButton { font-size: 0.95rem; padding: 0.75rem 2rem; }
-  .resultPrice { font-size: 2rem; }
-  .result { padding: 1.25rem; }
+  .page {
+    padding: 1.5rem 0.75rem;
+  }
+  .card {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+  .form {
+    gap: 1rem;
+  }
+  .input,
+  .select {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.9rem;
+  }
+  .calculateButton {
+    font-size: 0.95rem;
+    padding: 0.75rem 2rem;
+  }
+  .resultPrice {
+    font-size: 2rem;
+  }
+  .result {
+    padding: 1.25rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .page { padding: 1rem 0.5rem; }
-  .card { padding: 1.25rem; border-radius: 16px; }
-  .title { font-size: 1.3rem; }
-  .subtitle { font-size: 0.8rem; margin-bottom: 1.25rem; }
-  .form { gap: 0.85rem; }
-  .formRow { gap: 0.85rem; }
-  .label { font-size: 0.8rem; }
-  .input, .select { padding: 0.7rem 0.75rem; font-size: 0.85rem; border-radius: 10px; }
-  .calculateButton { font-size: 0.9rem; padding: 0.7rem 1.5rem; border-radius: 10px; }
-  .resultPrice { font-size: 1.75rem; }
-  .result { padding: 1rem; border-radius: 12px; }
-  .servicesBlock { padding: 1rem; }
+  .page {
+    padding: 1rem 0.5rem;
+  }
+  .card {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+  .title {
+    font-size: 1.3rem;
+  }
+  .subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1.25rem;
+  }
+  .form {
+    gap: 0.85rem;
+  }
+  .formRow {
+    gap: 0.85rem;
+  }
+  .label {
+    font-size: 0.8rem;
+  }
+  .input,
+  .select {
+    padding: 0.7rem 0.75rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+  .calculateButton {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 10px;
+  }
+  .resultPrice {
+    font-size: 1.75rem;
+  }
+  .result {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  .servicesBlock {
+    padding: 1rem;
+  }
 }

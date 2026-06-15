@@ -57,7 +57,6 @@
   width: auto;
 }
 
-/* Десктопное меню */
 .nav {
   display: none;
 }
@@ -81,7 +80,6 @@
   white-space: nowrap;
 }
 
-/* Полоска при наведении */
 .navLink::after {
   content: "";
   position: absolute;
@@ -97,7 +95,6 @@
   width: 100%;
 }
 
-/* Правая часть с иконками */
 .rightSection {
   display: flex;
   align-items: center;
@@ -123,7 +120,6 @@
   display: block;
 }
 
-/* Бургер меню */
 .burgerButton {
   display: block;
   color: #0f0f0f;
@@ -146,7 +142,6 @@
   display: block;
 }
 
-/* Мобильное меню */
 .mobileMenu {
   padding: 1rem 0;
   border-top: 1px solid #e5e5e5;
@@ -203,8 +198,6 @@
 .mobileNavLink:hover {
   color: #ffa20c;
 }
-
-/* Добавь в конец файла: */
 
 @media (max-width: 768px) {
   .headerInner {

@@ -23,7 +23,6 @@
   }
 }
 
-/* Карточка с тенью, но цвет фона как основной */
 .formCard {
   background-color: #f4f4f4;
   border-radius: 24px;
@@ -168,12 +167,10 @@
   min-height: 120px;
 }
 
-/* Нижняя часть с соглашением и кнопкой */
 .formFooter {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  /* margin-top: 1rem; */ /* Убрал */
 }
 
 @media (min-width: 768px) {
@@ -229,7 +226,6 @@
   background-color: #e69100;
 }
 
-/* Текст снизу */
 .bottomText {
   margin-top: 3rem;
   font-family: "Actay", Arial, Helvetica, sans-serif;
@@ -273,7 +269,6 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
-/* Добавь в конец файла: */
 
 @media (max-width: 768px) {
   .container {

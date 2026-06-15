@@ -48,7 +48,7 @@
 
 .companyName {
   font-family: "Wadik", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
-  color: #0f0f0f; /* Основной цвет */
+  color: #0f0f0f;
   font-weight: 400;
 }
 
@@ -138,8 +138,6 @@
     min-height: 3rem;
   }
 }
-
-/* Добавь в конец файла: */
 
 @media (max-width: 480px) {
   .container {

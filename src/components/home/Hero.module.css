@@ -2,13 +2,13 @@
   width: 100%;
   overflow: hidden;
   background-color: #f4f4f4;
-  margin-top: -1px; /* Убираем возможный зазор */
+  margin-top: -1px;
 }
 
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1rem 1rem 2rem 1rem; /* Сильно уменьшил верхний отступ */
+  padding: 1rem 1rem 2rem 1rem;
 }
 
 @media (min-width: 640px) {
@@ -30,7 +30,7 @@
   .container {
     padding-left: 2rem;
     padding-right: 2rem;
-    padding-top: 0.5rem; /* Минимальный отступ на десктопе */
+    padding-top: 0.5rem;
   }
 }
 
@@ -48,7 +48,6 @@
   }
 }
 
-/* Левая часть с текстом */
 .textContent {
   order: 1;
   max-width: 600px;
@@ -85,7 +84,6 @@
   }
 }
 
-/* Название компании - шрифт Wadik */
 .companyName {
   font-family:
     "Wadik", "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica,
@@ -114,7 +112,6 @@
   }
 }
 
-/* Правая часть с картинкой */
 .imageWrapper {
   position: relative;
   height: 300px;
@@ -153,8 +150,6 @@
     object-position: right center;
   }
 }
-
-/* Добавь в конец файла: */
 
 @media (max-width: 480px) {
   .container {

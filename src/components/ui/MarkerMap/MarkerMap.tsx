@@ -149,7 +149,6 @@ function RemoveLeafletPrefix() {
 
   useEffect(() => {
     if (map.attributionControl) {
-      // Убирает префикс "Leaflet", оставляя остальной attribution
       map.attributionControl.setPrefix("");
     }
   }, [map]);

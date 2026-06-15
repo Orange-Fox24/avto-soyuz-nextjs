@@ -15,8 +15,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Пароль должен быть минимум 6 символов" }, { status: 400 });
     }
 
-    // Для диплома — принимаем любой токен (упрощение)
-    // В реальном проекте нужно проверять токен из БД
 
     // Хешируем новый пароль
     const hashedPassword = await bcrypt.hash(password, 12);

@@ -4,8 +4,8 @@ import dynamic from "next/dynamic";
 import { MapStyle } from "../ui/MarkerMap/MarkerMap";
 import styles from "./Map.module.css";
 const MarkerMap = dynamic(() => import("../ui/MarkerMap/MarkerMap"), {
-  ssr: false, // Отключаем SSR для карты
-  loading: () => <div>Загрузка карты...</div>, // Опционально
+  ssr: false,
+  loading: () => <div>Загрузка карты...</div>,
 });
 
 export default function MapContainer() {
@@ -22,7 +22,6 @@ export default function MapContainer() {
                 popupText: "Светлогорский переулок, 4",
               },
             ]}
-            // height={500}
             readonly
             styleControl
             zoomControl

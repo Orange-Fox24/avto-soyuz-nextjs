@@ -23,19 +23,24 @@
   transition: color 0.2s ease;
 }
 
-.backLink:hover { color: #ffa20c; }
+.backLink:hover {
+  color: #ffa20c;
+}
 
-.backLink svg { width: 20px; height: 20px; }
+.backLink svg {
+  width: 20px;
+  height: 20px;
+}
 
 .title {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #0f0f0f;
   margin-bottom: 1.5rem;
 }
 
-/* Таблица */
 .tableWrapper {
   background-color: #f4f4f4;
   border-radius: 24px;
@@ -69,9 +74,10 @@
   vertical-align: middle;
 }
 
-.table tr:hover td { background-color: #fafafa; }
+.table tr:hover td {
+  background-color: #fafafa;
+}
 
-/* Статусы */
 .status {
   display: inline-block;
   font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
@@ -81,15 +87,36 @@
   border-radius: 8px;
 }
 
-.statusNew { background-color: #dbeafe; color: #1e40af; }
-.statusAssigned { background-color: #fef3c7; color: #92400e; }
-.statusLoading { background-color: #fef3c7; color: #92400e; }
-.statusInTransit { background-color: #e0e7ff; color: #3730a3; }
-.statusDelivered { background-color: #d1fae5; color: #065f46; }
-.statusCancelled { background-color: #fee2e2; color: #991b1b; }
+.statusNew {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+.statusAssigned {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+.statusLoading {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+.statusInTransit {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+.statusDelivered {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+.statusCancelled {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
 
-/* Кнопки */
-.actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
 
 .actionButton {
   font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
@@ -103,16 +130,26 @@
   color: #ffffff;
 }
 
-.assignButton { background-color: #ffa20c; }
-.assignButton:hover { background-color: #e69100; }
+.assignButton {
+  background-color: #ffa20c;
+}
+.assignButton:hover {
+  background-color: #e69100;
+}
 
-.statusButton { background-color: #6b7280; }
-.statusButton:hover { background-color: #4b5563; }
+.statusButton {
+  background-color: #6b7280;
+}
+.statusButton:hover {
+  background-color: #4b5563;
+}
 
-/* Модальное окно */
 .modalOverlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -131,7 +168,8 @@
 }
 
 .modalTitle {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: #0f0f0f;
@@ -163,7 +201,11 @@
   border-radius: 12px;
 }
 
-.modalButtons { display: flex; gap: 1rem; margin-top: 1.5rem; }
+.modalButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
 
 .saveButton {
   background-color: #ffa20c;
@@ -194,7 +236,8 @@
 }
 
 .emptyTitle {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   color: #0f0f0f;
   margin-bottom: 0.5rem;
@@ -204,7 +247,7 @@
   font-family: "Actay", Arial, Helvetica, sans-serif;
   color: #6b7280;
 }
-/* Выпадающее меню действий */
+
 .actionMenu {
   position: relative;
   display: inline-block;

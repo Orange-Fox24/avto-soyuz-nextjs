@@ -46,7 +46,8 @@
 }
 
 .title {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.75rem;
   font-weight: 700;
   color: #0f0f0f;
@@ -60,7 +61,6 @@
   margin-bottom: 2rem;
 }
 
-/* Информация */
 .infoBlock {
   margin-bottom: 2rem;
 }
@@ -99,7 +99,6 @@
   margin: 1.5rem 0;
 }
 
-/* Форма редактирования */
 .form {
   display: flex;
   flex-direction: column;
@@ -108,7 +107,8 @@
 }
 
 .formTitle {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   color: #0f0f0f;

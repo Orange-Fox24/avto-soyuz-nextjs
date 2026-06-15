@@ -26,7 +26,6 @@
   line-height: 1.6;
 }
 
-/* Этапы работы */
 .section {
   margin-bottom: 2.5rem;
 }
@@ -54,7 +53,6 @@
   border-radius: 2px;
 }
 
-/* Карточки этапов */
 .steps {
   display: flex;
   flex-direction: column;
@@ -111,7 +109,6 @@
   line-height: 1.5;
 }
 
-/* FAQ */
 .faq {
   display: flex;
   flex-direction: column;
@@ -164,8 +161,6 @@
   line-height: 1.6;
   padding: 0 1.25rem 1.25rem;
 }
-
-/* Добавь в конец файла: */
 
 @media (max-width: 768px) {
   .page {

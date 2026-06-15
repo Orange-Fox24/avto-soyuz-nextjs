@@ -113,7 +113,7 @@ function calculatePrice(from: string, to: string, weight: number): number {
   };
 
   // Ищем подходящий тариф
-  let basePrice = 10000; // По умолчанию
+  let basePrice = 10000; 
 
   for (const [city, price] of Object.entries(tariffs)) {
     if (toLower.includes(city) || city.includes(toLower)) {
@@ -123,8 +123,8 @@ function calculatePrice(from: string, to: string, weight: number): number {
   }
 
   // Коэффициент веса: базовая цена за 500 кг, дальше пропорционально
-  const weightInKg = weight * 1000; // переводим тонны в кг
-  const weightMultiplier = Math.max(0.2, weightInKg / 500); // минимум 0.2
+  const weightInKg = weight * 1000; 
+  const weightMultiplier = Math.max(0.2, weightInKg / 500); 
 
   return Math.round(basePrice * weightMultiplier);
 }

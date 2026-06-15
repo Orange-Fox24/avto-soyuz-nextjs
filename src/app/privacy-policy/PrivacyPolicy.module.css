@@ -24,7 +24,6 @@
   }
 }
 
-/* Карточка с тенью, цвет фона как основной */
 .card {
   background-color: #f4f4f4;
   border-radius: 24px;
@@ -156,7 +155,6 @@
   }
 }
 
-/* Кнопка возврата */
 .buttonWrapper {
   margin-top: 3rem;
   display: flex;
@@ -194,7 +192,6 @@
 .backButton:hover .backIcon {
   transform: translateX(-4px);
 }
-/* Добавь в конец файла: */
 
 @media (max-width: 768px) {
   .container {

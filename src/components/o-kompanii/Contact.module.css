@@ -83,8 +83,6 @@
   color: #0f0f0f;
 }
 
-/* Добавь в конец файла: */
-
 @media (max-width: 768px) {
   .section {
     padding: 2.5rem 0;

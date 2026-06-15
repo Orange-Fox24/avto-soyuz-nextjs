@@ -124,8 +124,6 @@
   }
 }
 
-/* Добавь эти стили в конец файла: */
-
 @media (max-width: 768px) {
   .page {
     padding: 1.5rem 0.75rem;

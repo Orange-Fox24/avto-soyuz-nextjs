@@ -23,18 +23,23 @@
   transition: color 0.2s ease;
 }
 
-.backLink:hover { color: #ffa20c; }
-.backLink svg { width: 20px; height: 20px; }
+.backLink:hover {
+  color: #ffa20c;
+}
+.backLink svg {
+  width: 20px;
+  height: 20px;
+}
 
 .title {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #0f0f0f;
   margin-bottom: 2rem;
 }
 
-/* Карточки статистики */
 .statsGrid {
   display: grid;
   grid-template-columns: 1fr;
@@ -93,13 +98,13 @@
   color: #6b7280;
 }
 
-/* Таблица */
 .section {
   margin-top: 2rem;
 }
 
 .sectionTitle {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: #0f0f0f;
@@ -138,9 +143,10 @@
   vertical-align: middle;
 }
 
-.table tr:hover td { background-color: #fafafa; }
+.table tr:hover td {
+  background-color: #fafafa;
+}
 
-/* Статусы */
 .status {
   display: inline-block;
   font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
@@ -150,12 +156,30 @@
   border-radius: 8px;
 }
 
-.statusNew { background-color: #dbeafe; color: #1e40af; }
-.statusAssigned { background-color: #fef3c7; color: #92400e; }
-.statusLoading { background-color: #fef3c7; color: #92400e; }
-.statusInTransit { background-color: #e0e7ff; color: #3730a3; }
-.statusDelivered { background-color: #d1fae5; color: #065f46; }
-.statusCancelled { background-color: #fee2e2; color: #991b1b; }
+.statusNew {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+.statusAssigned {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+.statusLoading {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+.statusInTransit {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+.statusDelivered {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+.statusCancelled {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
 
 .loading {
   text-align: center;

@@ -89,36 +89,35 @@
 .label {
   font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 0.85rem; /* Увеличил с 0.65rem до 0.85rem */
+  font-size: 0.85rem;
   color: #0f0f0f;
   line-height: 1.4;
   text-align: left;
-  max-width: 140px; /* Увеличил max-width */
+  max-width: 140px;
   word-break: normal;
   white-space: normal;
 }
 
 @media (min-width: 480px) {
   .label {
-    font-size: 0.9rem; /* Увеличил */
+    font-size: 0.9rem;
     max-width: 150px;
   }
 }
 
 @media (min-width: 768px) {
   .label {
-    font-size: 1rem; /* Увеличил */
+    font-size: 1rem;
     max-width: 160px;
   }
 }
 
 @media (min-width: 1024px) {
   .label {
-    font-size: 1.1rem; /* Увеличил */
+    font-size: 1.1rem;
     max-width: 180px;
   }
 }
-/* Добавь в конец файла: */
 
 @media (max-width: 640px) {
   .grid {

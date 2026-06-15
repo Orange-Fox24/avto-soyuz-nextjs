@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     const token = crypto.randomInt(100000, 999999).toString();
     const expires = new Date(Date.now() + 30 * 60 * 1000); // 30 минут
 
-    // Сохраняем токен в базе (добавим поле resetToken позже, пока логируем)
+    // Сохраняем токен в базе 
     console.log(`\n=== ВОССТАНОВЛЕНИЕ ПАРОЛЯ ===`);
     console.log(`Email: ${email}`);
     console.log(`Токен: ${token}`);
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     console.log(`Ссылка: http://localhost:3000/reset-password?token=${token}&email=${email}`);
     console.log(`================================\n`);
 
-    // Для диплома — показываем токен в ответе
+
     return NextResponse.json({
       message: "Токен отправлен (для демо показываем в ответе)",
       token: token,
