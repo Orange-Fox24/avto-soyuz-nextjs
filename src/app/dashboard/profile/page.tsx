@@ -23,5 +23,15 @@ export default async function ProfilePage() {
     redirect("/login");
   }
 
-  return <ProfileClient user={dbUser} />;
+  return (
+    <ProfileClient
+      user={{
+        id: dbUser.id,
+        name: dbUser.name || "",
+        email: dbUser.email || "",
+        phone: dbUser.phone || "",
+        role: dbUser.role,
+      }}
+    />
+  );
 }
