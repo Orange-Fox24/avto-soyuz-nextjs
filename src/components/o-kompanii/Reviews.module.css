@@ -155,18 +155,7 @@
   }
 
   .dots {
-    gap: 0.4rem;
-    margin-top: 1rem;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-  }
-
-  .dotActive {
-    width: 24px;
-    border-radius: 4px;
+    display: none;
   }
 }
 
@@ -213,17 +202,6 @@
   }
 
   .dots {
-    gap: 0.35rem;
-    margin-top: 0.75rem;
-  }
-
-  .dot {
-    width: 7px;
-    height: 7px;
-  }
-
-  .dotActive {
-    width: 22px;
-    border-radius: 3px;
+    display: none;
   }
 }
