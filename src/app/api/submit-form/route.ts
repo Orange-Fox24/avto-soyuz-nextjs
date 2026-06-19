@@ -1,56 +1,59 @@
 import { NextResponse } from 'next/server';
-import { query } from '@/lib/db-postgres';
+import { prisma } from '@/lib/prisma';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { formType, ...data } = body;
 
-    let sql = '';
-    let params: any[] = [];
-
     switch (formType) {
       case 'main':
-        sql = `INSERT INTO main_applications 
-               (name, company, from_city, to_city, phone, email, message) 
-               VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`;
-        params = [data.name, data.company, data.fromCity, data.toCity, data.phone, data.email, data.message];
+        await prisma.main_applications.create({
+          data: {
+            name: data.name || '',
+            company: data.company || '',
+            from_city: data.fromCity || '',
+            to_city: data.toCity || '',
+            phone: data.phone || '',
+            email: data.email || '',
+            message: data.message || '',
+          },
+        });
         break;
 
       case 'contact':
-        sql = `INSERT INTO contact_applications 
-               (name, company, phone, email, topic, message) 
-               VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
-        params = [data.name, data.company, data.phone, data.email, data.topic, data.message];
+        await prisma.contact_applications.create({
+          data: {
+            name: data.name || '',
+            company: data.company || '',
+            phone: data.phone || '',
+            email: data.email || '',
+            topic: data.topic || '',
+            message: data.message || '',
+          },
+        });
         break;
 
       case 'partner':
-        sql = `INSERT INTO partner_applications 
-               (name, company, phone, email, experience, message) 
-               VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
-        params = [data.name, data.company, data.phone, data.email, data.experience, data.message];
+        await prisma.partner_applications.create({
+          data: {
+            name: data.name || '',
+            company: data.company || '',
+            phone: data.phone || '',
+            email: data.email || '',
+            experience: data.experience || '',
+            message: data.message || '',
+          },
+        });
         break;
 
       default:
-        return NextResponse.json(
-          { error: 'Неизвестный тип формы' },
-          { status: 400 }
-        );
+        return NextResponse.json({ error: 'Неизвестный тип формы' }, { status: 400 });
     }
 
-    const result = await query(sql, params);
-    
-    return NextResponse.json({ 
-      success: true, 
-      id: result[0]?.id,
-      message: 'Заявка успешно отправлена!' 
-    });
-
+    return NextResponse.json({ success: true, message: 'Заявка успешно отправлена!' });
   } catch (error) {
     console.error('Ошибка:', error);
-    return NextResponse.json(
-      { error: 'Ошибка сервера' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Ошибка сервера' }, { status: 500 });
   }
 }
