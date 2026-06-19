@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Actay";
-  src: url("/fonts/Actay.woff2") format("woff2");
+  src: url("/fonts/actay-regular3.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "Actay Bold";
-  src: url("/fonts/Actay-Bold.woff2") format("woff2");
+  src: url("/fonts/actay-regular3.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: "Actay Wide";
-  src: url("/fonts/ActayWide.woff2") format("woff2");
+  src: url("/fonts/actaywide-bold3.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -26,7 +26,7 @@
 
 @font-face {
   font-family: "Actay Wide Bold";
-  src: url("/fonts/ActayWide-Bold.woff2") format("woff2");
+  src: url("/fonts/actaywide-bold3.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -34,7 +34,7 @@
 
 @font-face {
   font-family: "Wadik";
-  src: url("/fonts/Wadik.woff2") format("woff2");
+  src: url("/fonts/wadik-bold.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -42,7 +42,7 @@
 
 @font-face {
   font-family: "Wadik Bold";
-  src: url("/fonts/Wadik-Bold.woff2") format("woff2");
+  src: url("/fonts/wadik-bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -89,205 +89,62 @@ input, textarea, select {
 }
 
 .font-wide-bold {
-  font-family:
-    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-weight: 700;
 }
 
 @media (max-width: 1024px) {
-  .table th,
-  .table td {
-    padding: 0.5rem 0.5rem;
-    font-size: 0.8rem;
-  }
-
-  .title {
-    font-size: 1.5rem;
-  }
-
-  .card {
-    padding: 1rem;
-  }
+  .table th, .table td { padding: 0.5rem 0.5rem; font-size: 0.8rem; }
+  .title { font-size: 1.5rem; }
+  .card { padding: 1rem; }
 }
 
 @media (max-width: 768px) {
-  .table {
-    min-width: auto;
-  }
-
-  .table th,
-  .table td {
-    padding: 0.4rem 0.4rem;
-    font-size: 0.75rem;
-  }
-
-  .title {
-    font-size: 1.25rem;
-  }
-
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .formRow {
-    grid-template-columns: 1fr;
-  }
-
-  .modal {
-    padding: 1.5rem;
-    max-width: 95%;
-  }
-
-  .container {
-    padding: 1rem 0.75rem;
-  }
-
-  .backLink {
-    font-size: 0.8rem;
-  }
-
-  .statsGrid {
-    grid-template-columns: 1fr 1fr;
-  }
+  .table { min-width: auto; }
+  .table th, .table td { padding: 0.4rem 0.4rem; font-size: 0.75rem; }
+  .title { font-size: 1.25rem; }
+  .header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .grid { grid-template-columns: 1fr; }
+  .formRow { grid-template-columns: 1fr; }
+  .modal { padding: 1.5rem; max-width: 95%; }
+  .container { padding: 1rem 0.75rem; }
+  .backLink { font-size: 0.8rem; }
+  .statsGrid { grid-template-columns: 1fr 1fr; }
+  p, span, div { line-height: 1.5; }
 }
 
 @media (max-width: 480px) {
-  .table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .statsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .statCard {
-    padding: 1rem;
-  }
-
-  .statValue {
-    font-size: 1.5rem;
-  }
-
-  .page {
-    padding: 1rem 0.5rem;
-  }
-
-  .card {
-    border-radius: 16px;
-  }
-
-  .title {
-    font-size: 1.15rem;
-  }
-
-  .subtitle {
-    font-size: 0.85rem;
-  }
-
-  .saveButton,
-  .cancelButton,
-  .actionButton {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-  }
-
-  .modal {
-    padding: 1rem;
-    border-radius: 16px;
-  }
+  .table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .statsGrid { grid-template-columns: 1fr; }
+  .statCard { padding: 1rem; }
+  .statValue { font-size: 1.5rem; }
+  .page { padding: 1rem 0.5rem; }
+  .card { border-radius: 16px; }
+  .title { font-size: 1.15rem; }
+  .subtitle { font-size: 0.85rem; }
+  .saveButton, .cancelButton, .actionButton { padding: 0.5rem 1rem; font-size: 0.8rem; }
+  .modal { padding: 1rem; border-radius: 16px; }
 }
 
 @media (max-width: 360px) {
-  body {
-    font-size: 14px;
-  }
-
-  .title {
-    font-size: 1rem;
-  }
-
-  .subtitle {
-    font-size: 0.75rem;
-  }
-
-  .page {
-    padding: 0.75rem 0.4rem;
-  }
-
-  .container {
-    padding: 0.5rem 0.4rem;
-  }
-
-  .card {
-    padding: 0.75rem;
-    border-radius: 12px;
-  }
-
-  .table th,
-  .table td {
-    padding: 0.3rem 0.3rem;
-    font-size: 0.65rem;
-  }
-
-  .saveButton,
-  .cancelButton,
-  .actionButton,
-  .submitButton {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.7rem;
-    border-radius: 8px;
-  }
-
-  .modal {
-    padding: 0.75rem;
-    border-radius: 12px;
-  }
-
-  .backLink {
-    font-size: 0.7rem;
-  }
-
-  .backLink svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .cardIcon {
-    width: 32px;
-    height: 32px;
-  }
-
-  .cardIcon svg {
-    width: 16px;
-    height: 16px;
-  }
+  body { font-size: 14px; }
+  .title { font-size: 1rem; }
+  .subtitle { font-size: 0.75rem; }
+  .page { padding: 0.75rem 0.4rem; }
+  .container { padding: 0.5rem 0.4rem; }
+  .card { padding: 0.75rem; border-radius: 12px; }
+  .table th, .table td { padding: 0.3rem 0.3rem; font-size: 0.65rem; }
+  .saveButton, .cancelButton, .actionButton, .submitButton { padding: 0.4rem 0.75rem; font-size: 0.7rem; border-radius: 8px; }
+  .modal { padding: 0.75rem; border-radius: 12px; }
+  .backLink { font-size: 0.7rem; }
+  .backLink svg { width: 14px; height: 14px; }
+  .cardIcon { width: 32px; height: 32px; }
+  .cardIcon svg { width: 16px; height: 16px; }
 }
 
-button, a, input, select, textarea {
-  transition: all 0.2s ease;
-}
+button, a, input, select, textarea { transition: all 0.2s ease; }
 
 @media (hover: none) and (pointer: coarse) {
-  button, .card, a {
-    min-height: 44px;
-    min-width: 44px;
-  }
-
-  input, select, textarea {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 768px) {
-  p, span, div {
-    line-height: 1.5;
-  }
+  button, .card, a { min-height: 44px; min-width: 44px; }
+  input, select, textarea { font-size: 16px; }
 }
