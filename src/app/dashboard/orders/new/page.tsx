@@ -53,11 +53,11 @@ export default function NewOrderPage() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <Link href="/dashboard/orders" className={styles.backLink}>
+        <Link href="/dashboard" className={styles.backLink}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
-          Назад к заказам
+          Назад в личный кабинет
         </Link>
 
         <div className={styles.card}>
