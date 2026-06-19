@@ -61,8 +61,7 @@
 }
 
 .title {
-  font-family:
-    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.4;
@@ -85,9 +84,7 @@
 }
 
 .companyName {
-  font-family:
-    "Wadik", "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica,
-    sans-serif;
+  font-family: "Wadik", "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-weight: 400;
   color: #0f0f0f;
 }
@@ -121,9 +118,17 @@
   overflow: hidden;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .imageWrapper {
-    height: 400px;
+    height: 300px;
+    width: 100%;
+    margin-right: 0;
+    right: 0;
+  }
+
+  .image {
+    object-fit: contain;
+    object-position: center;
   }
 }
 
@@ -137,17 +142,25 @@
     justify-self: end;
     border-radius: 12px 0 0 12px;
   }
-}
 
-.image {
-  object-fit: cover;
-  object-position: center;
-}
-
-@media (min-width: 1024px) {
   .image {
     object-fit: contain;
     object-position: right center;
+  }
+}
+
+@media (max-width: 640px) {
+  .imageWrapper {
+    height: 220px;
+    width: 100%;
+    margin-right: 0;
+    right: 0;
+    border-radius: 8px;
+  }
+
+  .image {
+    object-fit: contain;
+    object-position: center;
   }
 }
 
@@ -167,21 +180,6 @@
 
   .description {
     font-size: 0.85rem;
-  }
-
-  .imageWrapper {
-    height: 220px;
-    border-radius: 8px;
-  }
-}
-
-@media (max-width: 360px) {
-  .title {
-    font-size: 1rem;
-  }
-
-  .description {
-    font-size: 0.8rem;
   }
 
   .imageWrapper {

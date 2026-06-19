@@ -10,21 +10,7 @@
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 3rem 1rem 1.5rem 1rem;
-}
-
-@media (min-width: 640px) {
-  .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+  padding: 3rem 2rem 1.5rem 2rem;
 }
 
 .contactsCell {
@@ -33,19 +19,13 @@
 
 .phoneLink {
   font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   color: white;
   margin-bottom: 0.25rem;
   transition: color 0.2s ease;
   line-height: 1.2;
   display: inline-block;
-}
-
-@media (min-width: 768px) {
-  .phoneLink {
-    font-size: 1.75rem;
-  }
 }
 
 .phoneLink:hover {
@@ -76,22 +56,8 @@
 
 .mainColumnsGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 2.5rem;
-}
-
-@media (min-width: 768px) {
-  .mainColumnsGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .mainColumnsGrid {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2.5rem;
-  }
 }
 
 .column {
@@ -147,22 +113,8 @@
 
 .secondaryColumnsGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 2.5rem;
-}
-
-@media (min-width: 768px) {
-  .secondaryColumnsGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .secondaryColumnsGrid {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2.5rem;
-  }
 }
 
 .bottomFooter {
@@ -174,21 +126,7 @@
 .bottomContainer {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 1rem;
-}
-
-@media (min-width: 640px) {
-  .bottomContainer {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .bottomContainer {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+  padding: 0 2rem;
 }
 
 .bottomContent {
@@ -199,17 +137,9 @@
 
 .topRow {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.3rem;
-}
-
-@media (min-width: 768px) {
-  .topRow {
-    flex-direction: row;
-    align-items: center;
-  }
+  align-items: center;
+  gap: 1rem;
 }
 
 .copyrightLeft {
@@ -259,9 +189,37 @@
   text-align: left;
 }
 
+@media (max-width: 1024px) {
+  .container {
+    padding: 2.5rem 1.5rem 1.25rem 1.5rem;
+  }
+
+  .bottomContainer {
+    padding: 0 1.5rem;
+  }
+
+  .mainColumnsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .secondaryColumnsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .phoneLink {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .bottomContainer {
+    padding: 0 1rem;
   }
 
   .phoneLink {
@@ -290,11 +248,9 @@
     font-size: 0.65rem;
   }
 
-  .bottomContent {
-    gap: 0.5rem;
-  }
-
   .topRow {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 0.5rem;
   }
 
@@ -314,17 +270,21 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 540px) {
   .container {
     padding: 1.5rem 0.75rem 0.75rem 0.75rem;
   }
 
+  .bottomContainer {
+    padding: 0 0.75rem;
+  }
+
   .contactsCell {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   .phoneLink {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
   .emailText {
@@ -333,39 +293,33 @@
 
   .mainColumnsGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
   .secondaryColumnsGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
   .columnTitle {
     font-size: 0.7rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.35rem;
   }
 
   .columnLink {
-    font-size: 0.6rem;
+    font-size: 0.62rem;
   }
 
   .columnListItem {
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.12rem;
   }
 
-  .topRow {
-    flex-direction: column;
-    align-items: flex-start;
+  .bottomFooter {
+    padding: 0.75rem 0;
   }
 
   .copyrightLeft {
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .linksRight {
-    gap: 1rem;
+    gap: 0.75rem;
   }
 
   .copyright,
@@ -374,11 +328,56 @@
     font-size: 0.65rem;
   }
 
+  .linksRight {
+    gap: 1rem;
+  }
+
   .disclaimer {
     font-size: 0.6rem;
   }
+}
+
+@media (max-width: 390px) {
+  .container {
+    padding: 1.25rem 0.5rem 0.5rem 0.5rem;
+  }
+
+  .bottomContainer {
+    padding: 0 0.5rem;
+  }
+
+  .phoneLink {
+    font-size: 1rem;
+  }
+
+  .mainColumnsGrid {
+    gap: 0.75rem;
+  }
+
+  .secondaryColumnsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .columnTitle {
+    font-size: 0.65rem;
+  }
+
+  .columnLink {
+    font-size: 0.58rem;
+  }
 
   .bottomFooter {
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
+  }
+
+  .copyright,
+  .city,
+  .bottomLink {
+    font-size: 0.58rem;
+  }
+
+  .disclaimer {
+    font-size: 0.55rem;
   }
 }

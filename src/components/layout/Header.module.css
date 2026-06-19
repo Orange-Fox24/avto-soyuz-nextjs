@@ -199,6 +199,33 @@
   color: #ffa20c;
 }
 
+@media (min-width: 768px) and (max-width: 1077px) {
+  .nav {
+    gap: 1.25rem;
+  }
+
+  .navLink {
+    font-size: 0.9rem;
+  }
+
+  .rightSection {
+    gap: 1rem;
+  }
+
+  .icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .logoImage {
+    height: 55px;
+  }
+
+  .headerInner {
+    height: 80px;
+  }
+}
+
 @media (max-width: 768px) {
   .headerInner {
     height: 80px;
