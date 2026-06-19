@@ -95,6 +95,13 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const city = searchParams.get("city")?.toLowerCase().trim() || "";
 
-  const coords = cities[city] || [55.7558, 37.6173];
-  return NextResponse.json({ lat: coords[0], lon: coords[1], city });
+  // Ищем по частичному совпадению
+  for (const [key, coords] of Object.entries(cities)) {
+    if (city.includes(key) || key.includes(city)) {
+      return NextResponse.json({ lat: coords[0], lon: coords[1], city: key });
+    }
+  }
+
+  // Не нашли — Москва по умолчанию
+  return NextResponse.json({ lat: 55.7558, lon: 37.6173, city: "москва" });
 }

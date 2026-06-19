@@ -1,4 +1,3 @@
-// src/app/driver/RouteMap.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -13,22 +12,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
-const startIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-});
-
-const endIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-});
-
 interface Props {
   fromCity: string;
   toCity: string;
@@ -39,12 +22,12 @@ export default function RouteMap({ fromCity, toCity }: Props) {
   const [fromCoord, setFromCoord] = useState<[number, number] | null>(null);
   const [toCoord, setToCoord] = useState<[number, number] | null>(null);
   const [distance, setDistance] = useState<string>("");
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadRoute() {
-      setLoading(true);
       try {
+        console.log("fromCity:", fromCity, "toCity:", toCity);
+
         const [fromRes, toRes] = await Promise.all([
           fetch(`/api/geocode?city=${encodeURIComponent(fromCity)}`).then((r) => r.json()),
           fetch(`/api/geocode?city=${encodeURIComponent(toCity)}`).then((r) => r.json()),
@@ -55,30 +38,27 @@ export default function RouteMap({ fromCity, toCity }: Props) {
         setFromCoord(from);
         setToCoord(to);
 
+        console.log("From:", from, "To:", to);
+
         const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${from[1]},${from[0]};${to[1]},${to[0]}?overview=full&geometries=geojson`;
+        console.log("OSRM URL:", osrmUrl);
+
         const osrmRes = await fetch(osrmUrl);
         const osrmData = await osrmRes.json();
+        console.log("OSRM response:", osrmData);
 
-        if (osrmData.routes?.length > 0) {
-          const coordinates = osrmData.routes[0].geometry.coordinates.map(
+        if (osrmData.code === "Ok" && osrmData.routes?.length > 0) {
+          const coords = osrmData.routes[0].geometry.coordinates.map(
             (c: [number, number]) => [c[1], c[0]] as [number, number]
           );
-          setRoute(coordinates);
-
-          const km = (osrmData.routes[0].distance / 1000).toFixed(0);
-          const hours = (osrmData.routes[0].duration / 3600).toFixed(1);
-          setDistance(`${km} км, ~${hours} ч`);
+          setRoute(coords);
+          setDistance(`${(osrmData.routes[0].distance / 1000).toFixed(0)} км, ~${(osrmData.routes[0].duration / 3600).toFixed(1)} ч`);
         } else {
           setRoute([from, to]);
           setDistance("~");
         }
       } catch (err) {
-        console.error("Ошибка загрузки маршрута:", err);
-        if (fromCoord && toCoord) {
-          setRoute([fromCoord, toCoord]);
-        }
-      } finally {
-        setLoading(false);
+        console.error("Ошибка:", err);
       }
     }
 
@@ -112,7 +92,7 @@ export default function RouteMap({ fromCity, toCity }: Props) {
       {distance && (
         <div style={{
           textAlign: "center",
-          marginBottom: "0.75rem",
+          marginBottom: "0.5rem",
           fontFamily: '"Wadik Bold", "Wadik", Arial, Helvetica, sans-serif',
           fontWeight: 700,
           fontSize: "1.1rem",
@@ -122,28 +102,17 @@ export default function RouteMap({ fromCity, toCity }: Props) {
         </div>
       )}
       <div style={{ height: "350px", borderRadius: "12px", overflow: "hidden" }}>
-        <MapContainer
-          center={center}
-          zoom={5}
-          style={{ height: "100%", width: "100%" }}
-          attributionControl={false}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://leafletjs.com">Leaflet</a>'
-          />
-          <Marker position={fromCoord} icon={startIcon}>
+        <MapContainer center={center} zoom={5} style={{ height: "100%", width: "100%" }} attributionControl={false}>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="Leaflet" />
+          <Marker position={fromCoord}>
             <Popup>{fromCity} — отправка</Popup>
           </Marker>
-          <Marker position={toCoord} icon={endIcon}>
+          <Marker position={toCoord}>
             <Popup>{toCity} — доставка</Popup>
           </Marker>
-          <Polyline
-            positions={route}
-            color="#ffa20c"
-            weight={4}
-            opacity={0.8}
-          />
+          {route.length > 0 && (
+            <Polyline positions={route} color="#ffa20c" weight={4} opacity={0.8} />
+          )}
         </MapContainer>
       </div>
     </div>
