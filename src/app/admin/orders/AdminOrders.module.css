@@ -307,7 +307,6 @@
   background-color: #f9fafb;
   color: #ffa20c;
 }
-
 .actionDropdownItem:disabled {
   opacity: 0.4;
   cursor: not-allowed;
@@ -317,12 +316,10 @@
   .table {
     min-width: 900px;
   }
-
   .actionMenuButton {
     font-size: 0.7rem;
     padding: 0.3rem 0.5rem;
   }
-
   .filterRow {
     flex-direction: column;
   }
