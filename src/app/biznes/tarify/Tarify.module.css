@@ -145,6 +145,7 @@
 .tableWrapper {
   margin: 1.5rem 0;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table {
@@ -252,4 +253,151 @@
 
 .phoneLink:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .title {
+    font-size: 2rem;
+  }
+  .leftColumn {
+    max-width: 100%;
+  }
+  .backgroundIcon {
+    width: 350px;
+    height: 350px;
+    opacity: 0.2;
+    right: -15%;
+    top: 40%;
+  }
+  .serviceTitle {
+    font-size: 1.35rem;
+  }
+  .serviceDescription {
+    font-size: 0.95rem;
+  }
+  .table th,
+  .table td {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  .bulletItem {
+    font-size: 0.9rem;
+  }
+  .infoBlock {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    min-height: auto;
+  }
+  .container {
+    padding: 2rem 1rem;
+  }
+  .title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .backgroundIcon {
+    width: 250px;
+    height: 250px;
+    opacity: 0.15;
+    right: -20%;
+    top: 30%;
+  }
+  .serviceSection {
+    margin-bottom: 2rem;
+  }
+  .serviceTitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+  .serviceDescription {
+    font-size: 0.9rem;
+  }
+  .tableWrapper {
+    margin: 1rem 0;
+  }
+  .table {
+    min-width: 600px;
+  }
+  .table th,
+  .table td {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+  .bulletItem {
+    font-size: 0.85rem;
+    padding-left: 1.25rem;
+  }
+  .bulletItem::before {
+    font-size: 1.1rem;
+    top: -0.1rem;
+  }
+  .infoBlock {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .serviceDivider {
+    margin: 1.5rem 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .container {
+    padding: 1.5rem 0.75rem;
+  }
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .backgroundIcon {
+    width: 180px;
+    height: 180px;
+    opacity: 0.1;
+    right: -25%;
+    top: 25%;
+  }
+  .serviceTitle {
+    font-size: 1.1rem;
+  }
+  .serviceDescription {
+    font-size: 0.85rem;
+  }
+  .table {
+    min-width: 500px;
+  }
+  .table th,
+  .table td {
+    padding: 0.4rem;
+    font-size: 0.7rem;
+  }
+  .bulletItem {
+    font-size: 0.8rem;
+    padding-left: 1rem;
+  }
+  .bulletItem::before {
+    font-size: 1rem;
+  }
+  .infoBlock {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .container {
+    padding: 1.25rem 0.5rem;
+  }
+  .title {
+    font-size: 1.35rem;
+  }
+  .table {
+    min-width: 420px;
+  }
+  .table th,
+  .table td {
+    padding: 0.3rem;
+    font-size: 0.65rem;
+  }
 }
