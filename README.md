@@ -32,7 +32,7 @@
 | **Аутентификация** | NextAuth.js (Credentials + JWT) |
 | **Стилизация** | CSS Modules |
 | **Шрифты** | Actay, Actay Wide, Wadik |
-| **Деплой** | Vercel + Supabase |
+| **Деплой** | Vercel + Neon |
 
 ## Аутентификация и безопасность
 
