@@ -91,103 +91,31 @@ export default async function DashboardPage() {
           <div style={{ marginTop: "2rem" }}>
             <h2 style={{
               fontFamily: '"Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif',
-              fontSize: "1.25rem",
-              fontWeight: 700,
-              color: "#0f0f0f",
-              marginBottom: "1rem",
+              fontSize: "1.25rem", fontWeight: 700, color: "#0f0f0f", marginBottom: "1rem",
             }}>
               Последние заказы
             </h2>
-            <div className={styles.emptyState} style={{ textAlign: "left", padding: "1.5rem" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <div className={styles.emptyState} style={{ textAlign: "left", padding: "1.5rem", overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+              <table style={{ width: "100%", minWidth: "500px", borderCollapse: "collapse" }}>
                 <thead>
                   <tr>
-                    <th style={{
-                      textAlign: "left",
-                      padding: "0.5rem",
-                      fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif',
-                      fontSize: "0.85rem",
-                      fontWeight: 600,
-                      color: "#6b7280",
-                      borderBottom: "1px solid #e5e7eb",
-                    }}>Откуда</th>
-                    <th style={{
-                      textAlign: "left",
-                      padding: "0.5rem",
-                      fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif',
-                      fontSize: "0.85rem",
-                      fontWeight: 600,
-                      color: "#6b7280",
-                      borderBottom: "1px solid #e5e7eb",
-                    }}>Куда</th>
-                    <th style={{
-                      textAlign: "left",
-                      padding: "0.5rem",
-                      fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif',
-                      fontSize: "0.85rem",
-                      fontWeight: 600,
-                      color: "#6b7280",
-                      borderBottom: "1px solid #e5e7eb",
-                    }}>Цена</th>
-                    <th style={{
-                      textAlign: "left",
-                      padding: "0.5rem",
-                      fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif',
-                      fontSize: "0.85rem",
-                      fontWeight: 600,
-                      color: "#6b7280",
-                      borderBottom: "1px solid #e5e7eb",
-                    }}>Статус</th>
+                    <th style={{ textAlign: "left", padding: "0.5rem", fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif', fontSize: "0.85rem", fontWeight: 600, color: "#6b7280", borderBottom: "1px solid #e5e7eb" }}>Откуда</th>
+                    <th style={{ textAlign: "left", padding: "0.5rem", fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif', fontSize: "0.85rem", fontWeight: 600, color: "#6b7280", borderBottom: "1px solid #e5e7eb" }}>Куда</th>
+                    <th style={{ textAlign: "left", padding: "0.5rem", fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif', fontSize: "0.85rem", fontWeight: 600, color: "#6b7280", borderBottom: "1px solid #e5e7eb" }}>Цена</th>
+                    <th style={{ textAlign: "left", padding: "0.5rem", fontFamily: '"Actay Wide", "Actay", Arial, Helvetica, sans-serif', fontSize: "0.85rem", fontWeight: 600, color: "#6b7280", borderBottom: "1px solid #e5e7eb" }}>Статус</th>
                   </tr>
                 </thead>
                 <tbody>
                   {recentOrders.map((order: any) => (
                     <tr key={order.id}>
-                      <td style={{
-                        padding: "0.5rem",
-                        fontFamily: '"Actay", Arial, Helvetica, sans-serif',
-                        fontSize: "0.9rem",
-                        color: "#0f0f0f",
-                        borderBottom: "1px solid #f3f4f6",
-                      }}>{order.fromCity}</td>
-                      <td style={{
-                        padding: "0.5rem",
-                        fontFamily: '"Actay", Arial, Helvetica, sans-serif',
-                        fontSize: "0.9rem",
-                        color: "#0f0f0f",
-                        borderBottom: "1px solid #f3f4f6",
-                      }}>{order.toCity}</td>
-                      <td style={{
-                        padding: "0.5rem",
-                        fontFamily: '"Actay", Arial, Helvetica, sans-serif',
-                        fontSize: "0.9rem",
-                        fontWeight: 600,
-                        color: "#0f0f0f",
-                        borderBottom: "1px solid #f3f4f6",
-                      }}>
-                        {order.price ? `${order.price.toLocaleString()} ₽` : "—"}
-                      </td>
+                      <td style={{ padding: "0.5rem", fontFamily: '"Actay", Arial, Helvetica, sans-serif', fontSize: "0.9rem", color: "#0f0f0f", borderBottom: "1px solid #f3f4f6" }}>{order.fromCity}</td>
+                      <td style={{ padding: "0.5rem", fontFamily: '"Actay", Arial, Helvetica, sans-serif', fontSize: "0.9rem", color: "#0f0f0f", borderBottom: "1px solid #f3f4f6" }}>{order.toCity}</td>
+                      <td style={{ padding: "0.5rem", fontFamily: '"Actay", Arial, Helvetica, sans-serif', fontSize: "0.9rem", fontWeight: 600, color: "#0f0f0f", borderBottom: "1px solid #f3f4f6" }}>{order.price ? `${order.price.toLocaleString()} ₽` : "—"}</td>
                       <td style={{ padding: "0.5rem", borderBottom: "1px solid #f3f4f6" }}>
-                        <span style={{
-                          display: "inline-block",
-                          fontFamily: '"Wadik Bold", "Wadik", Arial, Helvetica, sans-serif',
-                          fontWeight: 700,
-                          fontSize: "0.8rem",
-                          padding: "0.25rem 0.75rem",
-                          borderRadius: "8px",
-                          backgroundColor:
-                            order.status === "NEW" ? "#dbeafe" :
-                            order.status === "ASSIGNED" || order.status === "LOADING" ? "#fef3c7" :
-                            order.status === "IN_TRANSIT" ? "#e0e7ff" :
-                            order.status === "DELIVERED" ? "#d1fae5" : "#fee2e2",
-                          color:
-                            order.status === "NEW" ? "#1e40af" :
-                            order.status === "ASSIGNED" || order.status === "LOADING" ? "#92400e" :
-                            order.status === "IN_TRANSIT" ? "#3730a3" :
-                            order.status === "DELIVERED" ? "#065f46" : "#991b1b",
-                        }}>
-                          {statusLabels[order.status] || order.status}
-                        </span>
+                        <span style={{ display: "inline-block", fontFamily: '"Wadik Bold", "Wadik", Arial, Helvetica, sans-serif', fontWeight: 700, fontSize: "0.8rem", padding: "0.25rem 0.75rem", borderRadius: "8px",
+                          backgroundColor: order.status === "NEW" ? "#dbeafe" : order.status === "ASSIGNED" || order.status === "LOADING" ? "#fef3c7" : order.status === "IN_TRANSIT" ? "#e0e7ff" : order.status === "DELIVERED" ? "#d1fae5" : "#fee2e2",
+                          color: order.status === "NEW" ? "#1e40af" : order.status === "ASSIGNED" || order.status === "LOADING" ? "#92400e" : order.status === "IN_TRANSIT" ? "#3730a3" : order.status === "DELIVERED" ? "#065f46" : "#991b1b",
+                        }}>{statusLabels[order.status] || order.status}</span>
                       </td>
                     </tr>
                   ))}
@@ -195,12 +123,7 @@ export default async function DashboardPage() {
               </table>
               {totalOrders > 5 && (
                 <div style={{ marginTop: "1rem", textAlign: "center" }}>
-                  <Link href="/dashboard/orders" style={{
-                    fontFamily: '"Wadik Bold", "Wadik", Arial, Helvetica, sans-serif',
-                    fontWeight: 700,
-                    color: "#ffa20c",
-                    textDecoration: "none",
-                  }}>
+                  <Link href="/dashboard/orders" style={{ fontFamily: '"Wadik Bold", "Wadik", Arial, Helvetica, sans-serif', fontWeight: 700, color: "#ffa20c", textDecoration: "none" }}>
                     Все заказы ({totalOrders}) →
                   </Link>
                 </div>
