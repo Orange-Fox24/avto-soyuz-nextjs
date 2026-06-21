@@ -554,6 +554,8 @@
   }
 }
 
+/* ========== АДАПТАЦИЯ ========== */
+
 @media (max-width: 1024px) {
   .title {
     font-size: 2rem;
@@ -626,9 +628,18 @@
   .serviceDescription {
     font-size: 0.9rem;
   }
-  .tableWrapper {
-    margin: 1rem 0;
+
+  /* Все таблицы со скроллом */
+  .tableWrapper,
+  .marketplaceTable,
+  .constructionTable,
+  .palletTable,
+  .containerTable {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    display: block;
   }
+
   .table,
   .marketplaceTable,
   .constructionTable,
@@ -636,6 +647,7 @@
   .containerTable {
     min-width: 600px;
   }
+
   .table th,
   .table td,
   .marketplaceTable th,
@@ -649,6 +661,7 @@
     padding: 0.5rem;
     font-size: 0.75rem;
   }
+
   .infoGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -806,40 +819,5 @@
   .containerTable td {
     padding: 0.3rem;
     font-size: 0.65rem;
-  }
-}
-
-.marketplaceTable,
-.constructionTable,
-.palletTable,
-.containerTable {
-  display: block;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  max-width: 100%;
-}
-
-@media (max-width: 768px) {
-  .marketplaceTable table,
-  .constructionTable table,
-  .palletTable table,
-  .containerTable table,
-  .marketplaceTable,
-  .constructionTable,
-  .palletTable,
-  .containerTable {
-    min-width: 600px;
-  }
-
-  .marketplaceTable th,
-  .marketplaceTable td,
-  .constructionTable th,
-  .constructionTable td,
-  .palletTable th,
-  .palletTable td,
-  .containerTable th,
-  .containerTable td {
-    font-size: 0.75rem;
-    padding: 0.5rem;
   }
 }

@@ -4,7 +4,6 @@ import styles from "./Gruzoperevozki.module.css";
 export default function GruzoperevozkiPage() {
   return (
     <div className={styles.page}>
-      {/* Фоновая полупрозрачная иконка */}
       <div className={styles.backgroundIcon}>
         <Image
           src="/icons/truck.svg"
@@ -32,7 +31,6 @@ export default function GruzoperevozkiPage() {
               отдельным транспортом.
             </p>
 
-            {/* Таблица сравнения */}
             <div className={styles.tableWrapper}>
               <table className={styles.table}>
                 <thead>
@@ -77,7 +75,6 @@ export default function GruzoperevozkiPage() {
               </table>
             </div>
 
-            {/* Дополнительная информация в красивом оформлении */}
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Минимальная партия:</span>
@@ -106,7 +103,6 @@ export default function GruzoperevozkiPage() {
               </span>{" "}
               Мы знаем специфику работы с крупными сетевыми магазинами.
             </p>
-
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Наши услуги:</span>
@@ -127,7 +123,6 @@ export default function GruzoperevozkiPage() {
                 <span>• Кросс-докинг на нашем складе</span>
               </div>
             </div>
-
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Оплата:</span>
@@ -151,44 +146,44 @@ export default function GruzoperevozkiPage() {
               </span>{" "}
               с учетом постоянно меняющихся требований.
             </p>
-
-            <table className={styles.marketplaceTable}>
-              <thead>
-                <tr>
-                  <th>Параметр</th>
-                  <th>Wildberries</th>
-                  <th>OZON</th>
-                  <th>Яндекс.Маркет</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Упаковка</td>
-                  <td>Фирменная коробка</td>
-                  <td>Нейтральная</td>
-                  <td>Любая прочная</td>
-                </tr>
-                <tr>
-                  <td>Маркировка</td>
-                  <td>Штрих-код WB</td>
-                  <td>Ценник OZON</td>
-                  <td>Честный знак</td>
-                </tr>
-                <tr>
-                  <td>Документы</td>
-                  <td>УПД, ТН</td>
-                  <td>Счет-фактура</td>
-                  <td>ТТН, сертификаты</td>
-                </tr>
-                <tr>
-                  <td>Срок поставки</td>
-                  <td>24-48 часов</td>
-                  <td>48-72 часа</td>
-                  <td>72 часа</td>
-                </tr>
-              </tbody>
-            </table>
-
+            <div className={styles.tableWrapper}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Параметр</th>
+                    <th>Wildberries</th>
+                    <th>OZON</th>
+                    <th>Яндекс.Маркет</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Упаковка</td>
+                    <td>Фирменная коробка</td>
+                    <td>Нейтральная</td>
+                    <td>Любая прочная</td>
+                  </tr>
+                  <tr>
+                    <td>Маркировка</td>
+                    <td>Штрих-код WB</td>
+                    <td>Ценник OZON</td>
+                    <td>Честный знак</td>
+                  </tr>
+                  <tr>
+                    <td>Документы</td>
+                    <td>УПД, ТН</td>
+                    <td>Счет-фактура</td>
+                    <td>ТТН, сертификаты</td>
+                  </tr>
+                  <tr>
+                    <td>Срок поставки</td>
+                    <td>24-48 часов</td>
+                    <td>48-72 часа</td>
+                    <td>72 часа</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Минимальная партия:</span>
@@ -212,44 +207,44 @@ export default function GruzoperevozkiPage() {
               </span>{" "}
               с учетом их специфики и требований к транспортировке.
             </p>
-
-            <table className={styles.constructionTable}>
-              <thead>
-                <tr>
-                  <th>Тип материала</th>
-                  <th>Транспорт</th>
-                  <th>Упаковка</th>
-                  <th>Особенности</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Сухие смеси</td>
-                  <td>Тент, рефрижератор</td>
-                  <td>Мешки на палетах</td>
-                  <td>Влажность &lt; 50%</td>
-                </tr>
-                <tr>
-                  <td>Керамическая плитка</td>
-                  <td>Тент с амортизацией</td>
-                  <td>Картон, уголки</td>
-                  <td>Вертикальное положение</td>
-                </tr>
-                <tr>
-                  <td>Металлопрокат</td>
-                  <td>Открытая платформа</td>
-                  <td>Стрейч-пленка</td>
-                  <td>Защита от коррозии</td>
-                </tr>
-                <tr>
-                  <td>ЛКМ</td>
-                  <td>Рефрижератор</td>
-                  <td>Заводская упаковка</td>
-                  <td>Температура 5-25°C</td>
-                </tr>
-              </tbody>
-            </table>
-
+            <div className={styles.tableWrapper}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Тип материала</th>
+                    <th>Транспорт</th>
+                    <th>Упаковка</th>
+                    <th>Особенности</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Сухие смеси</td>
+                    <td>Тент, рефрижератор</td>
+                    <td>Мешки на палетах</td>
+                    <td>Влажность &lt; 50%</td>
+                  </tr>
+                  <tr>
+                    <td>Керамическая плитка</td>
+                    <td>Тент с амортизацией</td>
+                    <td>Картон, уголки</td>
+                    <td>Вертикальное положение</td>
+                  </tr>
+                  <tr>
+                    <td>Металлопрокат</td>
+                    <td>Открытая платформа</td>
+                    <td>Стрейч-пленка</td>
+                    <td>Защита от коррозии</td>
+                  </tr>
+                  <tr>
+                    <td>ЛКМ</td>
+                    <td>Рефрижератор</td>
+                    <td>Заводская упаковка</td>
+                    <td>Температура 5-25°C</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>
@@ -269,7 +264,6 @@ export default function GruzoperevozkiPage() {
                 <span>• Гидроборты для бескрановой погрузки</span>
               </div>
             </div>
-
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Гарантия сохранности:</span>
@@ -291,7 +285,6 @@ export default function GruzoperevozkiPage() {
               </span>{" "}
               для ценных и срочных отправлений.
             </p>
-
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Что перевозим:</span>
@@ -315,7 +308,6 @@ export default function GruzoperevozkiPage() {
                 <span>• Медицинские препараты</span>
               </div>
             </div>
-
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Запрещено к перевозке:</span>
@@ -325,7 +317,6 @@ export default function GruzoperevozkiPage() {
                 </span>
               </div>
             </div>
-
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Стоимость:</span>
@@ -356,44 +347,44 @@ export default function GruzoperevozkiPage() {
               — самый безопасный и эффективный способ перевозки упакованного
               товара.
             </p>
-
-            <table className={styles.palletTable}>
-              <thead>
-                <tr>
-                  <th>Тип палеты</th>
-                  <th>Размеры</th>
-                  <th>Грузоподъемность</th>
-                  <th>Применение</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Финская (FIN)</td>
-                  <td>1000×1200×144 мм</td>
-                  <td>2000 кг</td>
-                  <td>Европейские поставки</td>
-                </tr>
-                <tr>
-                  <td>Евро (EUR)</td>
-                  <td>800×1200×144 мм</td>
-                  <td>1500 кг</td>
-                  <td>Стройматериалы, техника</td>
-                </tr>
-                <tr>
-                  <td>Стандартная</td>
-                  <td>1200×1200×144 мм</td>
-                  <td>2500 кг</td>
-                  <td>Промышленные грузы</td>
-                </tr>
-                <tr>
-                  <td>Одноразовая</td>
-                  <td>800×600×144 мм</td>
-                  <td>500 кг</td>
-                  <td>Легкие товары</td>
-                </tr>
-              </tbody>
-            </table>
-
+            <div className={styles.tableWrapper}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Тип палеты</th>
+                    <th>Размеры</th>
+                    <th>Грузоподъемность</th>
+                    <th>Применение</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Финская (FIN)</td>
+                    <td>1000×1200×144 мм</td>
+                    <td>2000 кг</td>
+                    <td>Европейские поставки</td>
+                  </tr>
+                  <tr>
+                    <td>Евро (EUR)</td>
+                    <td>800×1200×144 мм</td>
+                    <td>1500 кг</td>
+                    <td>Стройматериалы, техника</td>
+                  </tr>
+                  <tr>
+                    <td>Стандартная</td>
+                    <td>1200×1200×144 мм</td>
+                    <td>2500 кг</td>
+                    <td>Промышленные грузы</td>
+                  </tr>
+                  <tr>
+                    <td>Одноразовая</td>
+                    <td>800×600×144 мм</td>
+                    <td>500 кг</td>
+                    <td>Легкие товары</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Наши услуги:</span>
@@ -413,7 +404,6 @@ export default function GruzoperevozkiPage() {
                 <span>4. Маркировка — бесплатно</span>
               </div>
             </div>
-
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Стоимость перевозки:</span>
@@ -437,56 +427,56 @@ export default function GruzoperevozkiPage() {
               </span>{" "}
               — решение для крупных партий товаров.
             </p>
-
-            <table className={styles.containerTable}>
-              <thead>
-                <tr>
-                  <th>Тип</th>
-                  <th>Размеры</th>
-                  <th>Объем</th>
-                  <th>Грузоподъемность</th>
-                  <th>Что перевозят</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>20' сухогруз</td>
-                  <td>6.00×2.44×2.59 м</td>
-                  <td>33 м³</td>
-                  <td>28.000 кг</td>
-                  <td>Штучные грузы, коробки</td>
-                </tr>
-                <tr>
-                  <td>40' сухогруз</td>
-                  <td>12.19×2.44×2.59 м</td>
-                  <td>67 м³</td>
-                  <td>26.500 кг</td>
-                  <td>Большие партии товаров</td>
-                </tr>
-                <tr>
-                  <td>40' High Cube</td>
-                  <td>12.19×2.44×2.89 м</td>
-                  <td>76 м³</td>
-                  <td>26.500 кг</td>
-                  <td>Легкие объемные грузы</td>
-                </tr>
-                <tr>
-                  <td>Рефрижератор</td>
-                  <td>12.19×2.44×2.59 м</td>
-                  <td>67 м³</td>
-                  <td>26.000 кг</td>
-                  <td>Температурные грузы</td>
-                </tr>
-                <tr>
-                  <td>Open Top</td>
-                  <td>12.19×2.44×2.59 м</td>
-                  <td>67 м³</td>
-                  <td>27.000 кг</td>
-                  <td>Негабарит сверху</td>
-                </tr>
-              </tbody>
-            </table>
-
+            <div className={styles.tableWrapper}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Тип</th>
+                    <th>Размеры</th>
+                    <th>Объем</th>
+                    <th>Грузоподъемность</th>
+                    <th>Что перевозят</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>20' сухогруз</td>
+                    <td>6.00×2.44×2.59 м</td>
+                    <td>33 м³</td>
+                    <td>28.000 кг</td>
+                    <td>Штучные грузы, коробки</td>
+                  </tr>
+                  <tr>
+                    <td>40' сухогруз</td>
+                    <td>12.19×2.44×2.59 м</td>
+                    <td>67 м³</td>
+                    <td>26.500 кг</td>
+                    <td>Большие партии товаров</td>
+                  </tr>
+                  <tr>
+                    <td>40' High Cube</td>
+                    <td>12.19×2.44×2.89 м</td>
+                    <td>76 м³</td>
+                    <td>26.500 кг</td>
+                    <td>Легкие объемные грузы</td>
+                  </tr>
+                  <tr>
+                    <td>Рефрижератор</td>
+                    <td>12.19×2.44×2.59 м</td>
+                    <td>67 м³</td>
+                    <td>26.000 кг</td>
+                    <td>Температурные грузы</td>
+                  </tr>
+                  <tr>
+                    <td>Open Top</td>
+                    <td>12.19×2.44×2.59 м</td>
+                    <td>67 м³</td>
+                    <td>27.000 кг</td>
+                    <td>Негабарит сверху</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div className={styles.infoBlock}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Дополнительные услуги:</span>
