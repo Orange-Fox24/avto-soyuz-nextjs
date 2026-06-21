@@ -23,18 +23,11 @@
   transition: color 0.2s ease;
 }
 
-.backLink:hover {
-  color: #ffa20c;
-}
-
-.backLink svg {
-  width: 20px;
-  height: 20px;
-}
+.backLink:hover { color: #ffa20c; }
+.backLink svg { width: 20px; height: 20px; }
 
 .title {
-  font-family:
-    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #0f0f0f;
@@ -45,11 +38,13 @@
   background-color: #f4f4f4;
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table {
   width: 100%;
+  min-width: 900px;
   border-collapse: collapse;
 }
 
@@ -74,9 +69,7 @@
   vertical-align: middle;
 }
 
-.table tr:hover td {
-  background-color: #fafafa;
-}
+.table tr:hover td { background-color: #fafafa; }
 
 .status {
   display: inline-block;
@@ -87,36 +80,14 @@
   border-radius: 8px;
 }
 
-.statusNew {
-  background-color: #dbeafe;
-  color: #1e40af;
-}
-.statusAssigned {
-  background-color: #fef3c7;
-  color: #92400e;
-}
-.statusLoading {
-  background-color: #fef3c7;
-  color: #92400e;
-}
-.statusInTransit {
-  background-color: #e0e7ff;
-  color: #3730a3;
-}
-.statusDelivered {
-  background-color: #d1fae5;
-  color: #065f46;
-}
-.statusCancelled {
-  background-color: #fee2e2;
-  color: #991b1b;
-}
+.statusNew { background-color: #dbeafe; color: #1e40af; }
+.statusAssigned { background-color: #fef3c7; color: #92400e; }
+.statusLoading { background-color: #fef3c7; color: #92400e; }
+.statusInTransit { background-color: #e0e7ff; color: #3730a3; }
+.statusDelivered { background-color: #d1fae5; color: #065f46; }
+.statusCancelled { background-color: #fee2e2; color: #991b1b; }
 
-.actions {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
+.actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
 .actionButton {
   font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
@@ -130,26 +101,14 @@
   color: #ffffff;
 }
 
-.assignButton {
-  background-color: #ffa20c;
-}
-.assignButton:hover {
-  background-color: #e69100;
-}
-
-.statusButton {
-  background-color: #6b7280;
-}
-.statusButton:hover {
-  background-color: #4b5563;
-}
+.assignButton { background-color: #ffa20c; }
+.assignButton:hover { background-color: #e69100; }
+.statusButton { background-color: #6b7280; }
+.statusButton:hover { background-color: #4b5563; }
 
 .modalOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -168,20 +127,14 @@
 }
 
 .modalTitle {
-  font-family:
-    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: #0f0f0f;
   margin-bottom: 1.5rem;
 }
 
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
-}
+.formGroup { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
 
 .label {
   font-family: "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
@@ -201,11 +154,7 @@
   border-radius: 12px;
 }
 
-.modalButtons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
+.modalButtons { display: flex; gap: 1rem; margin-top: 1.5rem; }
 
 .saveButton {
   background-color: #ffa20c;
@@ -230,28 +179,18 @@
   cursor: pointer;
 }
 
-.emptyState {
-  text-align: center;
-  padding: 3rem 1rem;
-}
+.emptyState { text-align: center; padding: 3rem 1rem; }
 
 .emptyTitle {
-  font-family:
-    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   color: #0f0f0f;
   margin-bottom: 0.5rem;
 }
 
-.emptyText {
-  font-family: "Actay", Arial, Helvetica, sans-serif;
-  color: #6b7280;
-}
+.emptyText { font-family: "Actay", Arial, Helvetica, sans-serif; color: #6b7280; }
 
-.actionMenu {
-  position: relative;
-  display: inline-block;
-}
+.actionMenu { position: relative; display: inline-block; }
 
 .actionMenuButton {
   font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
@@ -266,9 +205,7 @@
   transition: background-color 0.2s ease;
 }
 
-.actionMenuButton:hover {
-  background-color: #4b5563;
-}
+.actionMenuButton:hover { background-color: #4b5563; }
 
 .actionDropdown {
   position: absolute;
@@ -285,9 +222,7 @@
   display: none;
 }
 
-.actionDropdown.open {
-  display: block;
-}
+.actionDropdown.open { display: block; }
 
 .actionDropdownItem {
   display: block;
@@ -303,24 +238,33 @@
   transition: background-color 0.15s ease;
 }
 
-.actionDropdownItem:hover {
-  background-color: #f9fafb;
-  color: #ffa20c;
-}
-.actionDropdownItem:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
+.actionDropdownItem:hover { background-color: #f9fafb; color: #ffa20c; }
+.actionDropdownItem:disabled { opacity: 0.4; cursor: not-allowed; }
+
+
+@media (max-width: 1024px) {
+  .container { max-width: 100%; padding: 0 0.5rem; }
+  .title { font-size: 1.5rem; }
 }
 
 @media (max-width: 768px) {
-  .table {
-    min-width: 900px;
-  }
-  .actionMenuButton {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.5rem;
-  }
-  .filterRow {
-    flex-direction: column;
-  }
+  .page { padding: 1rem 0.5rem; }
+  .container { padding: 0; }
+  .title { font-size: 1.3rem; margin-bottom: 1rem; }
+  .backLink { font-size: 0.8rem; margin-bottom: 1rem; }
+  .tableWrapper { border-radius: 16px; }
+  .table { min-width: 750px; }
+  .table th, .table td { padding: 0.4rem 0.4rem; font-size: 0.7rem; }
+  .status { font-size: 0.65rem; padding: 0.15rem 0.4rem; }
+  .actionMenuButton { font-size: 0.65rem; padding: 0.25rem 0.5rem; }
+  .modal { padding: 1.5rem; max-width: 95%; border-radius: 16px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 0.75rem 0.25rem; }
+  .title { font-size: 1.15rem; }
+  .table { min-width: 650px; }
+  .table th, .table td { padding: 0.3rem 0.3rem; font-size: 0.65rem; }
+  .actionDropdown { min-width: 160px; }
+  .actionDropdownItem { font-size: 0.75rem; padding: 0.5rem 0.75rem; }
 }

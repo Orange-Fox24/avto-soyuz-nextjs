@@ -1,4 +1,3 @@
-
 /* src/app/admin/drivers/Drivers.module.css */
 
 .page {
@@ -24,18 +23,23 @@
   transition: color 0.2s ease;
 }
 
-.backLink:hover { color: #ffa20c; }
-.backLink svg { width: 20px; height: 20px; }
+.backLink:hover {
+  color: #ffa20c;
+}
+.backLink svg {
+  width: 20px;
+  height: 20px;
+}
 
 .title {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #0f0f0f;
   margin-bottom: 1.5rem;
 }
 
-/* Таблица */
 .tableWrapper {
   background-color: #f4f4f4;
   border-radius: 24px;
@@ -68,9 +72,10 @@
   vertical-align: middle;
 }
 
-.table tr:hover td { background-color: #fafafa; }
+.table tr:hover td {
+  background-color: #fafafa;
+}
 
-/* Статус */
 .status {
   display: inline-block;
   font-family: "Wadik Bold", "Wadik", Arial, Helvetica, sans-serif;
@@ -80,8 +85,14 @@
   border-radius: 8px;
 }
 
-.free { background-color: #d1fae5; color: #065f46; }
-.busy { background-color: #fef3c7; color: #92400e; }
+.free {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+.busy {
+  background-color: #fef3c7;
+  color: #92400e;
+}
 
 .emptyState {
   text-align: center;
@@ -89,7 +100,8 @@
 }
 
 .emptyTitle {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   color: #0f0f0f;
   margin-bottom: 0.5rem;
@@ -99,8 +111,56 @@
   font-family: "Actay", Arial, Helvetica, sans-serif;
   color: #6b7280;
 }
-
 .onLeave {
   background-color: #fef3c7;
   color: #92400e;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 1rem 0.75rem;
+  }
+  .title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .backLink {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .tableWrapper {
+    border-radius: 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table {
+    min-width: 500px;
+  }
+  .table th,
+  .table td {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  .status {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 0.75rem 0.5rem;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+  .table th,
+  .table td {
+    padding: 0.4rem 0.4rem;
+    font-size: 0.7rem;
+  }
+  .status {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+  }
 }

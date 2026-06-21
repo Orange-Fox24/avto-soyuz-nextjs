@@ -22,8 +22,13 @@
   margin-bottom: 1.5rem;
 }
 
-.backLink:hover { color: #ffa20c; }
-.backLink svg { width: 20px; height: 20px; }
+.backLink:hover {
+  color: #ffa20c;
+}
+.backLink svg {
+  width: 20px;
+  height: 20px;
+}
 
 .header {
   display: flex;
@@ -35,7 +40,8 @@
 }
 
 .title {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #0f0f0f;
@@ -56,7 +62,7 @@
 .tableWrapper {
   background: #f4f4f4;
   border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
@@ -93,13 +99,22 @@
   border-radius: 8px;
 }
 
-.available { background: #d1fae5; color: #065f46; }
-.unavailable { background: #fee2e2; color: #991b1b; }
+.available {
+  background: #d1fae5;
+  color: #065f46;
+}
+.unavailable {
+  background: #fee2e2;
+  color: #991b1b;
+}
 
 .modalOverlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +130,8 @@
 }
 
 .modalTitle {
-  font-family: "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
+  font-family:
+    "Actay Wide Bold", "Actay Wide", "Actay", Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -167,4 +183,76 @@
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 1rem 0.75rem;
+  }
+  .title {
+    font-size: 1.4rem;
+  }
+  .backLink {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .header {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .addButton {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+  }
+  .tableWrapper {
+    border-radius: 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table {
+    min-width: 550px;
+  }
+  .table th,
+  .table td {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  .status {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .modal {
+    padding: 1.5rem;
+    border-radius: 16px;
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 0.75rem 0.5rem;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+  .addButton {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    width: 100%;
+    text-align: center;
+  }
+  .table {
+    min-width: 480px;
+  }
+  .table th,
+  .table td {
+    padding: 0.4rem 0.4rem;
+    font-size: 0.7rem;
+  }
+  .saveButton,
+  .cancelButton {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
 }
